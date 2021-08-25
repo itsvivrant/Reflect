@@ -11,6 +11,7 @@ class Entry(db.Model):
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
     progress = db.Column(db.Boolean, nullable=False)
+    strengths = db.Column(db.String(500), nullable=False)
     letter = db.Column(db.Boolean, nullable=False)
     visit = db.Column(db.Boolean, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
@@ -27,6 +28,7 @@ class Entry(db.Model):
             'title': self.title,
             'content': self.content,
             'progress': self.progress,
+            'strengths': self.strengths,
             'letter': self.letter,
             'visit': self.visit,
             'created_at': self.created_at,
