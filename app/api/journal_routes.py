@@ -51,9 +51,15 @@ def update_journal(id):
 
 @journal_routes.route('/delete/<int:id>', methods=["DELETE"])
 def delete_journal(id):
-    journal = Journal.query.filter(Journal.user_id == current_user.id, Journal.id ==id)
     delete_journal = Journal.query.get(id)
-    if journal:
-        db.session.delete(delete_journal)
-        db.session.commit()
-    return journal.to_dict()
+    journalTest = delete_journal
+    db.session.delete(delete_journal)
+    db.session.commit()
+    return journalTest.to_dict()
+    ### Another way, wondering why it doesn't work
+    # journal = Journal.query.filter(Journal.user_id == current_user.id, Journal.id ==id)
+    # delete_journal = Journal.query.get(id)
+    # if journal:
+    #     db.session.delete(delete_journal)
+    #     db.session.commit()
+    #     return journal.to_dict()
