@@ -29,6 +29,7 @@
     align-items: center;
 }
 
-.fas.fa-portrait {
+.fas.fa-portrait, .fas.fa-bars {
     font-size: 40px;
+    color: black;
 }

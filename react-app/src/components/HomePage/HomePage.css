@@ -1,0 +1,30 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.journal-show-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,200px);
+}
+
+.journal-list {
+
+    justify-content: center;
+}
+
+.cover-img:hover {
+    opacity: 0.8;
+    background-color: black;
+}
+
+.journal-edit-trash {
+    display: none
+}
+
+.journal-show-container .each-journal:hover .journal-edit-trash {
+    display: block;
+    opacity: 0.5;
+    color: black;
+    position: absolute
+}

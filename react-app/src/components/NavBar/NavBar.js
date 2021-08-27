@@ -35,12 +35,12 @@ const NavBar = () => {
     <nav className='nav-bar-container'>
       <div className='nav-logo'>
         <Link to='/'>
-          <img className="logo" src={logo} alt=''/>
+          <i className="fas fa-bars"></i>
         </Link>
       </div>
       <div className='user-logout-container'>
         <div className='user-icon'>
-          <i class="fas fa-portrait"></i>
+          <i className="fas fa-portrait"></i>
         </div>
         <div>
           <LogoutButton />
