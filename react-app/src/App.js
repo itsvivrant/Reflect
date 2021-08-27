@@ -7,7 +7,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import HomePage from './components/HomePage/HomePage';
-import EntriesPage from './components/NavBar/EntriesPage/EntriesPage';
+import EntriesPage from './components/EntriesPage/EntriesPage';
 
 
 function App() {

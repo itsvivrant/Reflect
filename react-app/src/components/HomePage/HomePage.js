@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { NavLink, Link} from 'react-router-dom';
 import { allJournals } from '../../store/journal';
 import SplashPage from './SplashPage/SplashPage'
+import JournalForm from './JournalForm/JournalForm'
 
 import './HomePage.css'
 
@@ -27,24 +28,32 @@ function HomePage() {
 
                 <div className='journal-show-container'>
                 {journals?.journals?.map((journal) => (
-                    <div className='journal-list'>
-                        <Link className='entries-link' to={`/journals/${journal.id}/entries`}>
-                            {/* <div className='each-journal'> */}
-                                <img className='cover-img' src={journal.coverUrl} />
-                                <div className='journal-edit-trash'>
-                                    <div className='journal-form-icon'>
-                                        <i className="fas fa-info-circle"></i>
+                    <>
+                        <div className='testing-div'>
+
+                                <Link className='entries-link' to={`/journals/${journal.id}/entries`}>
+                                    <div className='each-journal'>
+                                        <img className='cover-img' src={journal.coverUrl} />
+                                        <div className='journal-edit-trash'>
+                                            <div className='journal-form-icon'>
+                                                <i className="fas fa-info-circle"></i>
+                                            </div>
+                                            <div className='journal-trash-icon'>
+                                                <i className="fas fa-trash"></i>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className='journal-trash-icon'>
-                                        <i className="fas fa-trash"></i>
-                                    </div>
-                                </div>
-                            {/* </div> */}
-                        </Link>
-                    </div>
+                                </Link>
+
+
+                            </div>
+
+
+
+                    </>
                     ))}
                 </div>
-
+                <JournalForm />
             </div>
 
         )
