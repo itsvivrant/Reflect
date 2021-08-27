@@ -31,7 +31,7 @@ def new_journal():
     journal = Journal(
         title = form.data['title'],
         coverUrl = form.data['coverUrl'],
-        user_id = form.data['user_id'] #always put foreign key in form
+        user_id = current_user.id #always put foreign key in form
     )
     db.session.add(journal)
     db.session.commit()
