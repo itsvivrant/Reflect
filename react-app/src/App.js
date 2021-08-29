@@ -6,7 +6,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import HomePage from './components/HomePage/HomePage';
+import HomePage from './components/HomePage/Home';
 import EntriesPage from './components/EntriesPage/EntriesPage';
 
 

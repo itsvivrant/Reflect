@@ -1,6 +1,8 @@
 const GET_JOURNALS = 'journal/GET_JOURNALS';
 const GET_JOURNAL_ENTRIES = 'journal/GET_JOURNAL_ENTRIES';
-const CREATE_JOURNAL = 'journal/CREATE_JOURNAL'
+const CREATE_JOURNAL = 'journal/CREATE_JOURNAL';
+const UPDATE_JOURNAL = 'journal/UPDATE_JOURNAL';
+const DELETE_JOURNAL = 'journal/DELETE_JOURNAL';
 
 const getJournals = (journals) => ({
     type: GET_JOURNALS,
@@ -14,6 +16,16 @@ const getJournalEntries = (journals) => ({
 
 const newJournal = (journal) => ({
     type: CREATE_JOURNAL,
+    journal
+})
+
+const updateJournal = (journal) => ({
+    type: UPDATE_JOURNAL,
+    journal
+})
+
+const deleteJournal = (journal) => ({
+    type: DELETE_JOURNAL,
     journal
 })
 
@@ -42,14 +54,31 @@ export const createJournal = (title, coverUrl, user_id) => async(dispatch) => {
          }),
     })
 
-        const new_data = await response.json();
-        dispatch(newJournal(new_data));
-        return new_data
-
-
+    const new_data = await response.json();
+    dispatch(newJournal(new_data));
+    return new_data
 }
 
+export const editJournal = (title, coverUrl, id, user_id) => async(dispatch) => {
+    const response  = await fetch(`/api/journals/edit/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title, coverUrl, user_id}),
+    })
+    const update_data = await response.json();
+    dispatch(updateJournal(update_data));
+    return update_data
+}
 
+export const deleteSingleJournal = (id) => async(dispatch) => {
+    const response = await fetch(`/api/journals/delete/${id}`, {
+        method: "DELETE"
+    })
+
+    const delete_data = await response.json();
+    dispatch(deleteJournal(delete_data))
+
+}
 
 export default function reducer(state={}, action){
     let newState = {...state}
@@ -57,6 +86,8 @@ export default function reducer(state={}, action){
         case GET_JOURNALS:
             newState = {...action.journals}
             return newState
+            //another way:
+            //newstate.journals
 
         case GET_JOURNAL_ENTRIES:
             newState["journal"] = action.journals.journal;
@@ -64,10 +95,22 @@ export default function reducer(state={}, action){
             return newState
 
         case CREATE_JOURNAL:
-            return {
-                ...state,
-                [action.journal.id]: action.journal
-            }
+            newState[action.journal.id] = action.journal
+            return newState
+            //another way:
+            // return {
+            //     ...state,
+            //     [action.journal.id]: action.journal
+            // }
+
+        case UPDATE_JOURNAL:
+            newState[action.journal.id] = action.journal
+            return newState
+
+        case DELETE_JOURNAL:
+            return newState
+
+
         default:
             return state;
     }

@@ -43,7 +43,7 @@ def update_journal(id):
     form = JournalForm()
     journal.title = form.data['title']
     journal.coverUrl = form.data['coverUrl']
-    journal.user_id = form.data['user_id']
+    journal.user_id = current_user.id
     db.session.commit()
     return journal.to_dict()
 
@@ -51,11 +51,11 @@ def update_journal(id):
 
 @journal_routes.route('/delete/<int:id>', methods=["DELETE"])
 def delete_journal(id):
-    delete_journal = Journal.query.get(id)
-    journalTest = delete_journal
-    db.session.delete(delete_journal)
+    journal = Journal.query.get(id)
+    deleted_journal= journal
+    db.session.delete(journal)
     db.session.commit()
-    return journalTest.to_dict()
+    return deleted_journal.to_dict()
     ### Another way, wondering why it doesn't work
     # journal = Journal.query.filter(Journal.user_id == current_user.id, Journal.id ==id)
     # delete_journal = Journal.query.get(id)
