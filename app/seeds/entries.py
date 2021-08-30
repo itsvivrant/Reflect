@@ -5,16 +5,16 @@ fake = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_entries():
 
-    e1 = Entry(user_id=1, journal_id=1, title='Strengths', content=fake.text(), progress=True, strengths='I\'m resilient in face of adversity', letter=False, visit=False)
-    e2 = Entry(user_id=1, journal_id=2, title='Savoring', content=fake.text(), progress=True, strengths='', letter=False, visit=False)
-    e3 = Entry(user_id=1, journal_id=3, title='Daily Graitude', content=fake.text(), progress=True, strengths='', letter=False, visit=False)
-    e4 = Entry(user_id=1, journal_id=4, title='Random Acts Of Kindness', content=fake.text(), progress=True, strengths='', letter=False, visit=False)
-    e5 = Entry(user_id=1, journal_id=5, title='Social Connection', content=fake.text(), progress=True, strengths='', letter=False, visit=False)
-    e6 = Entry(user_id=1, journal_id=6, title='Exercise', content=fake.text(), progress=True, strengths='', letter=False, visit=False)
-    e7 = Entry(user_id=1, journal_id=7, title='Sleep', content=fake.text(), progress=True, strengths='', letter=False, visit=False)
-    e8 = Entry(user_id=1, journal_id=8, title='Meditate', content=fake.text(), progress=True, strengths='', letter=False, visit=False)
-    e9 = Entry(user_id=1, journal_id=9, title='Gratitude Letter/Visit', content=fake.text(), progress=True, strengths='', letter=True, visit=True)
-    e10 = Entry(user_id=1, journal_id=10, title='Graduated App Academy!', content=fake.text(), progress=False, strengths='', letter=False, visit=False)
+    e1 = Entry(user_id=1, journal_id=1, title='Strengths', content=fake.text(), strengths='I\'m resilient in face of adversity')
+    e2 = Entry(user_id=1, journal_id=2, title='Savoring', content=fake.text(), strengths='')
+    e3 = Entry(user_id=1, journal_id=3, title='Daily Graitude', content=fake.text(),  strengths='')
+    e4 = Entry(user_id=1, journal_id=4, title='Random Acts Of Kindness', content=fake.text(), strengths='')
+    e5 = Entry(user_id=1, journal_id=5, title='Social Connection', content=fake.text(), strengths='')
+    e6 = Entry(user_id=1, journal_id=6, title='Exercise', content=fake.text(), strengths='')
+    e7 = Entry(user_id=1, journal_id=7, title='Sleep', content=fake.text(), strengths='')
+    e8 = Entry(user_id=1, journal_id=8, title='Meditate', content=fake.text(), strengths='')
+    e9 = Entry(user_id=1, journal_id=9, title='Gratitude Letter/Visit', content=fake.text(), strengths='')
+    e10 = Entry(user_id=1, journal_id=10, title='Graduated App Academy!', content=fake.text(), strengths='')
 
 
     db.session.add(e1)
