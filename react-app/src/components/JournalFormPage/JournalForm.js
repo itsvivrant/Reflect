@@ -28,6 +28,7 @@ function JournalForm() {
         await dispatch(createJournal(title, coverUrl))
         setTitle('')
         setCoverUrl('')
+        setShowModal(false)
         setJournalRender(true)
         history.push('/')
     }
@@ -36,7 +37,12 @@ function JournalForm() {
 
     return (
         <>
-        <i className="fas fa-plus" onClick={() => setShowModal(true)}>Journal</i>
+        {/* <div className='add-journal'> */}
+            <i className="fas fa-plus" onClick={() => setShowModal(true)}>
+                <p>Journal</p>
+            </i>
+        {/* </div> */}
+
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <div className='journal-form-container'>

@@ -6,24 +6,143 @@
     width: 100%;
 }
 
-.journal-show-container {
+.journal-nav-container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
     flex-direction: row;
-    background-color: #f7f7f7;
-    height: 100vh;
-
+    align-items: center;
+    justify-content:space-between;
+    margin-top: 30px;
 }
 
-.testing-div{
-    width: 170px;
-    height: 250px;
+.journal-nav-header {
+    margin-left: 4.5%;
+}
+
+.journal-nav-icons {
     display: flex;
-   justify-content: center;
-   flex-direction: row;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+    margin-right: 5%;
+    align-items: center;
 }
 
+/* ******* SORT ICON******** */
+.far.fa-calendar-alt {
+    font-size: 20px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.far.fa-calendar-alt p{
+    margin-left: 10px;
+    align-items: center;
+}
+
+.far.fa-calendar-alt:hover {
+    background-color: rgb(226, 220, 220);
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+/* ******************* Journal Gallery *********************************** */
+.journal-container  {
+    height: 100vh;
+    width: auto;
+    background-color: #f7f7f7;
+}
+
+.journal-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    padding: 25px;
+    background-color: #f7f7f7;
+    justify-content: flex-start;
+
+}
+
+.each-journal {
+    width: 170px;
+    height: 280px;
+    margin: 45px 40px 90px 45px;
+    background-size: 100%;
+    background-position: center;
+
+}
+
+
+
+.cover-img{
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    object-fit: cover;
+    object-position: bottom;
+    box-shadow: -2px 2px 4px 1px rgb(0 0 0 / 30%);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.cover-img::after{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: opacity 0.2s ease-in-out;
+}
+
+.cover-img:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.cover-img:hover::after {
+    opacity: 1;
+}
+
+.journal-title {
+    bottom: 100px;
+    height: 30px;
+    position: relative;
+}
+
+.journal-title p{
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Lato';
+    text-align: center!important;
+    line-height: 1.5;
+    margin-top: 40px;
+}
+
+
+.journal-icons-container {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    bottom: 110px;
+    padding: 10px;
+    right: 5px;
+
+}
+
+.journal-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
 
 
 .entries-link {
@@ -37,41 +156,170 @@
 }
 
 
-.each-journal {
-    height:100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 10px
-
+/* ********* ICONS BUTTON ******************************** */
+.journal-form-icon {
+    margin-bottom: 10px;
 }
 
 
-.cover-img {
+.fas.fa-trash, .fas.fa-info-circle {
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.fas.fa-trash:hover, .fas.fa-info-circle:hover {
+    transition: all 0.4s ease 0s;
+    text-shadow: 1px 1px 20px rgb(247, 245, 245);
+
+}
+
+/* ******** EDIT JOURNAL ***************************** */
+
+.journal-form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 550px;
+    position: fixed;
+    border-radius: 3px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    animation-duration: 1s;
+    animation-name: slideIn;
+}
+
+@keyframes slideIn {
+    from {
+    right: -100vh;
+    }
+
+    to {
+    right: 0;
+    }
+}
+
+.journal-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+
+}
+
+.edit-header {
+     width: 100%;
+    text-align: center;
+
+}
+
+.edit-header h1{
+    padding: 15px;
+    margin: 0
+}
+
+.edit-info-box {
+
+    height: auto;
+    display: grid;
+    height: 400px;
+    grid-template-columns: 7fr 10fr;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.edit-img {
+
+    width: 170px;
+    height: 270px;
+    padding: 30px;
+    margin-left: 20px;
+}
+
+.edit-img img {
     width: 100%;
     height: 100%;
-    align-self: center;
-    object-fit: cover;
     object-position: bottom;
     box-shadow: -2px 2px 4px 1px rgb(0 0 0 / 30%);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-
-    /* animation: .3s both scaleIn; */
+    bottom: 20px;
 }
 
-.cover-img:hover {
-    opacity: 0.8;
+.cover-url-input p{
+ margin: 2px;
+ padding: 0;
+ font-weight: 600;
+}
+
+.edit-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-title p{
+    font-weight: 600;
+    font-size: 26px;
+    font-family: "Lato";
+}
+
+.far.fa-edit {
+    margin-right: 30px;
+    color: grey;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.far.fa-edit:hover{
+    text-shadow: 0 0 1px rgb(68, 66, 66);;
+}
+
+.update-bttn {
     background-color: black;
+    color: white;
+    width: 100px;
+    height: 40px;
+    border-radius: 7px;
 }
 
-.journal-edit-trash {
-    display: none
+.cover-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #f7f7f7;
+    padding: 70px;
+    overflow-y: scroll;
 }
 
-.journal-show-container .each-journal:hover .journal-edit-trash {
-    display: block;
-    opacity: 0.5;
-    color: black;
-    position: absolute
+.cover-selection-gallery{
+    width: 170px;
+    height: 270px;
+    margin: 20px;
+
+
+}
+
+.cover-selection-gallery img {
+    width: 100%;
+    height: 100%;
+    object-position: bottom;
+    box-shadow: -2px 2px 4px 1px rgb(0 0 0 / 30%);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    cursor: pointer;
+}
+
+.cover-selection-gallery:hover img {
+    background-color: black;
+    opacity: 0.6;
+
 }
