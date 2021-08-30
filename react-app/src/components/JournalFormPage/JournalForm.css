@@ -1,6 +1,23 @@
 .fas.fa-plus {
-    font-size: 30px;
-    color: grey;
+    font-size: 20px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.fas.fa-plus p {
+  margin-left: 10px;
+  align-items: center;
+}
+
+.fas.fa-plus:hover {
+  background-color: rgb(226, 220, 220);
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
 }
 
 .journal-form-container {

@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux'
 import {allJournals, deleteSingleJournal } from '../../store/journal';
 
+import './Home.css'
+
 function DeleteJournal({journal}) {
     const dispatch = useDispatch();
     const [deleteRender, setDeleteRender] = useState(false)
