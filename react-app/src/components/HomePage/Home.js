@@ -36,7 +36,7 @@ function HomePage() {
                             <JournalForm />
                         </div>
                         <div className='date-modified'>
-                            <i class="far fa-calendar-alt">
+                            <i className="far fa-calendar-alt">
                                 <p>Sort </p>
                             </i>
                         </div>
@@ -50,8 +50,8 @@ function HomePage() {
                     {journals?.journals?.map((journal) => (
                         <>
                         <div className='each-journal'>
-                            <Link className='entries-link' to={`/journals/${journal.id}/entries`}>
-                                <img className='cover-img' src={journal.coverUrl} />
+                            <Link className='entries-link' key={journal.id} to={`/journals/${journal.id}/entries`}>
+                                <img className='cover-img' alt='' src={journal.coverUrl} />
                             </Link>
                             <div className='journal-icons-container'>
                                 <div className='journal-icons'>

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, session
 from flask_login import login_required, current_user
 from app.models import db, Entry
+from app.forms import EntryForm
 
 entry_routes = Blueprint('entries', __name__)
 
@@ -14,4 +15,22 @@ def get_entry(id):
     entry = Entry.query.get(id)
     return {'entry' : entry.to_dict()}
 
-# @entry_routes.route('/new-entry', methods=['POST'])
+
+@entry_routes.route('/edit/<int:id>', methods=['PUT'])
+def update_entry(id):
+    entry = Entry.query.get(id)
+    form = EntryForm()
+    entry.title = form.data['title']
+    entry.content = form.data['content']
+    entry.strengths = form.data['strengths']
+    entry.user_id = current_user.id
+    db.session.commit()
+    return entry.to_dict()
+
+@entry_routes.route('/delete/<int:id>', methods=['DELETE'])
+def delete_entry(id):
+    entry = Entry.query.get(id)
+    deleted_entry = entry
+    db.session.delete(entry)
+    db.session.commit()
+    return deleted_entry.to_dict()

@@ -1,11 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextField, BooleanField
+from wtforms import StringField, TextField, BooleanField, IntegerField
 from wtforms.validators import DataRequired, ValidationError
 
 class EntryForm(FlaskForm):
     title = StringField('Title')
-    content = TextField('Entry')
+    content = TextField('Entry', [DataRequired()])
     strengths = StringField("Strengths")
-    progress = BooleanField()
-    letter = BooleanField()
-    visit = BooleanField()
+    user_id = IntegerField('user_id')
+    journal_id = IntegerField('journal_id')

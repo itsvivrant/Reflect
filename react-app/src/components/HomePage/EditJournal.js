@@ -92,7 +92,7 @@ function EditJournalForm({journal, setRenderUpdate}) {
                             <div className='edit-info'>
                                 <div className='edit-title'>
                                     <p>{title}</p>
-                                    <i onclick={updateJournalTitle} className="far fa-edit"></i>
+                                    <i onClick={updateJournalTitle} className="far fa-edit"></i>
                                 </div>
                                 {updateJournalTitle ?
                                         <div>
@@ -117,7 +117,7 @@ function EditJournalForm({journal, setRenderUpdate}) {
                         {selectCovers.map(cover => (
                             <>
                             <div className='cover-selection-gallery'>
-                                <img onClick={handleSelectCover} src={cover}/>
+                                <img onClick={handleSelectCover} src={cover} alt=''/>
                             </div>
                             </>
                         ))}

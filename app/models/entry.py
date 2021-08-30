@@ -15,6 +15,7 @@ class Entry(db.Model):
     updated_at = db.Column(db.DateTime, onupdate=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     journal_id = db.Column(db.Integer, db.ForeignKey('journals.id'), nullable=False)
+    
     user = db.relationship('User', back_populates='entries')
     journal = db.relationship('Journal', back_populates='entries')
     progresses = db.relationship('Progress', back_populates='entry')
