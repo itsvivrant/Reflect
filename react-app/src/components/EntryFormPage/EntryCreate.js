@@ -5,7 +5,7 @@ import { createEntry, allJournalEntries} from '../../store/journal';
 
 
 
-function EntryForm({ setEntryRender}) {
+function EntryCreate({ setEntryRender}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -53,4 +53,4 @@ function EntryForm({ setEntryRender}) {
     )
 }
 
-export default EntryForm
+export default EntryCreate
