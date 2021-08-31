@@ -40,14 +40,12 @@ def new_journal():
 
 @journal_routes.route('/<int:id>/entries/new', methods=['POST'])
 def new_entry(id):
-    user = current_user.id
-    print('SLKDFJSDLKFJSDKLFJDSKLFJKDLSFJSDKLFJ', current_user)
     form = EntryForm()
     entry = Entry(
         title = form.data['title'],
         content = form.data['content'],
         strengths = form.data['strengths'],
-        user_id = user,
+        user_id = current_user.id,
         journal_id = id
     )
     db.session.add(entry)

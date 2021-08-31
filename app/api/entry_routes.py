@@ -23,7 +23,7 @@ def update_entry(id):
     entry.title = form.data['title']
     entry.content = form.data['content']
     entry.strengths = form.data['strengths']
-    entry.user_id = current_user.id
+    entry.user_id = form.data['user_id']
     db.session.commit()
     return entry.to_dict()
 
