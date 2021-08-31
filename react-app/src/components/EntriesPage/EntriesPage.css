@@ -1,1 +1,29 @@
+.entry-nav {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    align-items: center;
 
+}
+
+.fas.fa-arrow-left {
+    font-size: 30px;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.entry-nav p{
+    margin-left: 20px;
+    font-weight: 500;
+    font-family: "Lato";
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+.fas.fa-arrow-left:visited {
+    color: black;
+    text-decoration: none;
+}

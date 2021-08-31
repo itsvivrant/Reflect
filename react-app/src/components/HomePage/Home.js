@@ -50,7 +50,7 @@ function HomePage() {
                     {journals?.journals?.map((journal) => (
                         <>
                         <div className='each-journal'>
-                            <Link className='entries-link' key={journal.id} to={`/journals/${journal.id}/entries`}>
+                            <Link className='entries-link' key={journal.id} to={`/journals/${journal?.id}/entries`}>
                                 <img className='cover-img' alt='' src={journal.coverUrl} />
                             </Link>
                             <div className='journal-icons-container'>
@@ -68,17 +68,11 @@ function HomePage() {
                                 <p>{journal.title}</p>
                             </div>
                         </div>
-
-
                         </>
                         ))}
                     </div>
-
-
                 </div>
-
             </div>
-
         )
     } else {
         main = (
