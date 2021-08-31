@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session
 from flask_login import login_required, current_user
 from app.models import db, Journal, Entry
-from app.forms import JournalForm
+from app.forms import JournalForm, EntryForm
 
 journal_routes = Blueprint('journals', __name__)
 
@@ -36,6 +36,22 @@ def new_journal():
     db.session.add(journal)
     db.session.commit()
     return journal.to_dict()
+
+
+@journal_routes.route('/<int:id>/entries/new', methods=['POST'])
+def new_entry(id):
+    form = EntryForm()
+    entry = Entry(
+        title = form.data['title'],
+        content = form.data['content'],
+        strengths = form.data['strengths'],
+        user_id = current_user.id,
+        journal_id = id
+    )
+    db.session.add(entry)
+    db.session.commit()
+    return entry.to_dict()
+
 
 @journal_routes.route('/edit/<int:id>', methods=['PUT'])
 def update_journal(id):
