@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { Link} from 'react-router-dom';
-import { allJournals, deleteSingleJournal } from '../../store/journal';
+import { allJournals} from '../../store/journal';
 import SplashPage from './SplashPage/SplashPage'
 import JournalForm from '../JournalFormPage/JournalForm'
 import EditJournalForm from './EditJournal';

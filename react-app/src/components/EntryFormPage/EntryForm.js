@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { useHistory, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { createEntry, allJournalEntries} from '../../store/journal';
 
 
 
-function EntryForm({journal, setEntryRender}) {
+function EntryForm({ setEntryRender}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();

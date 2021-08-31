@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { NavLink, Link, useParams} from 'react-router-dom';
+import {  Link, useParams} from 'react-router-dom';
 import { allJournalEntries } from '../../store/journal';
 import EntryForm from '../EntryFormPage/EntryForm'
 
@@ -31,7 +31,7 @@ function EntriesPage() {
                 </div>
                 <div className='journal-nav-icons'>
                     <div className='add-journal'>
-                        <EntryForm journal={journal} setEntryRender={setEntryRender}/>
+                        <EntryForm setEntryRender={setEntryRender}/>
                     </div>
                     <div className='date-modified'>
                         <i className="far fa-calendar-alt">
