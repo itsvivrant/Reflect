@@ -29,27 +29,32 @@ function EntriesPage() {
                         <Link to='/' className="entries-link">
                             <i className="fas fa-arrow-left"></i>
                         </Link>
+                        <i className="fas fa-book"></i>
                         <p>{journal?.title}</p>
                 </div>
                 <div className='entry-list-container'>
                     {allEntries?.map(entry => (
-                        <div className='entry-content' key={entry.id}>
-                            <p>{entry.title}</p>
-                            <p>{entry.content}</p>
-                            <p>{entry.created_at}</p>
-                            <p>{entry.updated_at}</p>
-                        </div>
+                        <button onClick={() => (
+                            setShowForm(true)
+                        )}>
+                            <div className='entry-content' key={entry.id}>
+                                <p>{entry.title}</p>
+                                <p>{entry.content}</p>
+                                <p>{entry.created_at}</p>
+                                <p>{entry.updated_at}</p>
+                            </div>
+                        </button>
                     ))}
                 </div>
             </div>
             <div className='entry-right-container'>
                 {showForm ?
+                    <EntryEdit setShowForm={setShowForm}/>
 
-                    (<EntryCreate setEntryRender={setEntryRender}/> )
                 :
                 <>
-                    (<EntryEdit />
-                    </>
+                    <EntryCreate setEntryRender={setEntryRender} setShowForm={setShowForm}/> 
+                </>
                 }
 
 
