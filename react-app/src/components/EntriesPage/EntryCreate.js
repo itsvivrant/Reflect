@@ -20,9 +20,10 @@ function EntryCreate({ setEntryRender}) {
     const [showEntryForm, setShowEntryForm] =useState(false)
 
     const newTitle = (e) => setTitle(e.target.value)
+    const newContent = (e) =>setContent(e.target.value)
     const newStrengths = (e) => setStrengths(e.target.value)
 
-    const newContent = (e) =>{setContent(e.target.value)}
+
 
     useEffect(() => {
         dispatch(allJournalEntries())
