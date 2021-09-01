@@ -20,11 +20,9 @@ function EntryCreate({ setEntryRender}) {
     const [showEntryForm, setShowEntryForm] =useState(false)
 
     const newTitle = (e) => setTitle(e.target.value)
-    const newStrengths = (e) => setContent(e.target.value)
+    const newStrengths = (e) => setStrengths(e.target.value)
 
-    const newContent = (value) =>{
-        setContent(value)
-    }
+    const newContent = (e) =>{setContent(e.target.value)}
 
     useEffect(() => {
         dispatch(allJournalEntries())
@@ -55,11 +53,15 @@ function EntryCreate({ setEntryRender}) {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
                             placeholder="How's your day?"
+                            onChange={newContent}
+                            value={content}
                         />
                         </div>
                     </form>
                 </div>
-                <button className='submit-entry-bttn' type='submit'>Submit</button>
+                <form onSubmit={entry}>
+                    <button className='submit-entry-bttn' type='submit'>Submit</button>
+                </form>
             </div>
             <div>
                 </div>
