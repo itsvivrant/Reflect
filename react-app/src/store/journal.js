@@ -1,6 +1,7 @@
 const GET_JOURNALS = 'journal/GET_JOURNALS';
 const GET_JOURNAL_ENTRIES = 'journal/GET_JOURNAL_ENTRIES';
 const CREATE_JOURNAL = 'journal/CREATE_JOURNAL';
+const CREATE_ENTRY = 'journal/CREATE_ENTRY';
 const UPDATE_JOURNAL = 'journal/UPDATE_JOURNAL';
 const DELETE_JOURNAL = 'journal/DELETE_JOURNAL';
 
@@ -17,6 +18,11 @@ const getJournalEntries = (journals) => ({
 const newJournal = (journal) => ({
     type: CREATE_JOURNAL,
     journal
+})
+
+const newEntry = (entry) => ({
+    type: CREATE_ENTRY,
+    entry
 })
 
 const updateJournal = (journal) => ({
@@ -56,6 +62,25 @@ export const createJournal = (title, coverUrl, user_id) => async(dispatch) => {
 
     const new_data = await response.json();
     dispatch(newJournal(new_data));
+    return new_data
+}
+
+export const createEntry = (title, content, strengths, user_id, id) => async(dispatch) => {
+    const response = await fetch(`/api/journals/${id}/entries/new`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            title,
+            content,
+            strengths,
+            user_id,
+        })
+    })
+
+    const new_data = await response.json();
+    dispatch(newEntry(new_data));
     return new_data
 }
 
@@ -102,6 +127,10 @@ export default function reducer(state={}, action){
             //     ...state,
             //     [action.journal.id]: action.journal
             // }
+
+        case CREATE_ENTRY:
+            newState[action.entry.id] = action.entry
+            return newState
 
         case UPDATE_JOURNAL:
             newState[action.journal.id] = action.journal
