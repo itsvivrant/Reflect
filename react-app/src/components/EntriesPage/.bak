@@ -1,0 +1,12 @@
+ <i className="fas fa-plus" onClick={() => setShowEntryForm(true)}>
+            <p>Entry</p>
+        </i>
+
+        {showEntryForm ?
+            <form onSubmit={entry}>
+                <input type='text' value={title} onChange={newTitle}></input>
+                <input type='text' value={content} onChange={newContent}></input>
+                <input type='text' value={strengths} onChange={newStrengths}></input>
+                <button type='submit'>Submit</button>
+            </form>
+        : ''}

@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {  Link, useParams} from 'react-router-dom';
 import { allJournalEntries } from '../../store/journal';
-import EntryCreate from '../EntryFormPage/EntryCreate';
-import EntryEdit from '../EntryFormPage/EntryEdit'
+import EntryCreate from './EntryCreate';
+import EntryEdit from './EntryEdit'
 
 import './EntriesPage.css'
 
@@ -17,6 +17,7 @@ function EntriesPage() {
     id = Number(id)
 
 
+
     useEffect(() => {
         dispatch(allJournalEntries(id))
         setEntryRender(false)
@@ -26,24 +27,30 @@ function EntriesPage() {
         <div className='entry-home-container'>
             <div className='entry-left-container'>
                 <div className='entry-nav'>
-                        <Link to='/' className="entries-link">
-                            <i className="fas fa-arrow-left"></i>
-                        </Link>
-                        <i className="fas fa-book"></i>
-                        <p>{journal?.title}</p>
+                        <div className='left-icon'>
+                            <Link to='/' className="entries-link">
+                                <i className="fas fa-arrow-left"></i>
+                            </Link>
+                        </div>
+                        <div className='book-icon-title'>
+                            <i className="fas fa-book"></i>
+                            <p>{journal?.title}</p>
+                            <p>({allEntries?.length} Notebooks)</p>
+                        </div>
+
+
                 </div>
                 <div className='entry-list-container'>
                     {allEntries?.map(entry => (
-                        <button onClick={() => (
+                        <div onClick={() => (
                             setShowForm(true)
                         )}>
                             <div className='entry-content' key={entry.id}>
                                 <p>{entry.title}</p>
                                 <p>{entry.content}</p>
                                 <p>{entry.created_at}</p>
-                                <p>{entry.updated_at}</p>
                             </div>
-                        </button>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -53,7 +60,7 @@ function EntriesPage() {
 
                 :
                 <>
-                    <EntryCreate setEntryRender={setEntryRender} setShowForm={setShowForm}/> 
+                    <EntryCreate setEntryRender={setEntryRender} setShowForm={setShowForm}/>
                 </>
                 }
 
