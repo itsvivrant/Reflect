@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux'
-import { useHistory} from 'react-router-dom';
 import { editJournal} from '../../store/journal';
 import {Modal} from '../../context/Modal'
 
@@ -39,7 +38,6 @@ const selectCovers = [
 
 function EditJournalForm({journal, setRenderUpdate}) {
     const dispatch = useDispatch();
-    const history = useHistory();
     const [title, setTitle] = useState(journal.title || '');
     const [updatedAt, setUpdatedAt] = useState(journal.updated_at || journal.created_at)
     const [createdAt, setCreatedAt] = useState(journal.created_at)
