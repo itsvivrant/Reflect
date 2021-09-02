@@ -5,6 +5,7 @@ import { allJournalEntries } from '../../store/journal';
 import { getOneEntry } from '../../store/entry'
 import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit'
+import moment from 'moment';
 
 import './EntriesPage.css'
 
@@ -21,6 +22,7 @@ function EntriesPage() {
 
     const journal = useSelector(state => state.journal.journal)
 
+    const currentDate = moment().format("MM/DD/YYYY");
 
 
 
@@ -43,8 +45,11 @@ function EntriesPage() {
                         <div className='book-icon-title'>
                             <i className="fas fa-book"></i>
                             <p>{journal?.title}</p>
-                            <p>({allEntries?.length} Notebooks)</p>
                         </div>
+                </div>
+                <div className='entries-length-search'>
+                    <p>{allEntries?.length} Entries</p>
+                    <i className="fas fa-search"></i>
 
 
                 </div>
@@ -70,11 +75,11 @@ function EntriesPage() {
             </div>
             <div className='entry-right-container'>
                 {showForm ?
-                    <EntryEdit setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
+                    <EntryEdit currentDate={currentDate} setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
 
                 :
                 <>
-                    <EntryCreate setEntryRender={setEntryRender} setShowForm={setShowForm}/>
+                    <EntryCreate currentDate={currentDate} setEntryRender={setEntryRender} setShowForm={setShowForm}/>
                 </>
                 }
 
