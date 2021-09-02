@@ -7,7 +7,7 @@ import { createEntry, allJournalEntries} from '../../store/journal';
 
 import './EntriesPage.css'
 
-function EntryCreate({ setEntryRender, readOnly}) {
+function EntryCreate({ setEntryRender}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -18,10 +18,7 @@ function EntryCreate({ setEntryRender, readOnly}) {
     const [strengths, setStrengths] = useState('');
 
     const newTitle = (e) => setTitle(e.target.value)
-    const newContent = (value) => {
-       setContent(value)
-
-    }
+    const newContent = (e) => setContent(e.target.value)
     const newStrengths = (e) => setStrengths(e.target.value)
 
 
