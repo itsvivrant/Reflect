@@ -82,7 +82,7 @@ function JournalEdit({journal, setRenderUpdate}) {
                                 <div className='cover-url-input'>
                                     <p>CoverUrl: </p>
                                     <form className='journal-form-box'onSubmit={handleSubmit} >
-                                        <input type='text' placeholder='coverUrl' value={coverUrl} onChange={updatedCoverUrl}></input>
+                                        <input className='cover-url-input' type='text' placeholder='coverUrl' value={coverUrl} onChange={updatedCoverUrl}></input>
                                     </form>
                                 </div>
 
@@ -95,7 +95,7 @@ function JournalEdit({journal, setRenderUpdate}) {
                                 {updateJournalTitle ?
                                         <div>
                                             <form className='journal-form-box'onSubmit={handleSubmit} >
-                                                <input type='text' placeholder='title' value={title} onChange={updatedTitle}></input>
+                                                <input className='journal-edit-input' type='text' placeholder='title' value={title} onChange={updatedTitle}></input>
                                             </form>
                                         </div>
                                     : "" }
