@@ -7,7 +7,7 @@ import {allJournalEntries} from '../../store/journal'
 
 import './EntriesPage.css'
 
-function EntryEdit({editEntryId, setShowForm, setDeleteRender}) {
+function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -61,6 +61,9 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender}) {
                 <div className='form-edit-container'>
                     <form onSubmit={handleUpdateEntry}>
                         <div className='content-title'>
+                            <i className="far fa-calendar-alt">
+                                <h4>{currentDate}</h4>
+                            </i>
                             <label>Title</label>
                             <input type='text' onChange={updatedTitle} value={entry?.title}></input>
                         </div>

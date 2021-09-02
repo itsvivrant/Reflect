@@ -1,6 +1,6 @@
 .entry-home-container {
     display: grid;
-    grid-template-columns: 3fr 6fr;
+    grid-template-columns: 1fr 6fr;
     height: 100vh;
     width: auto;
 }
@@ -18,9 +18,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
-    height: 100px;
-    background-color: black;
+    width: 340px;
+    height: 80px;
+    background-color: rgb(35, 35, 35);
 
 }
 
@@ -30,14 +30,14 @@
     color: white;
     cursor: pointer;
     text-decoration: none;
-    margin-left: 30px;
+    margin-left: 16px;
 }
 
 .book-icon-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 40px;
+    /* width: 100%; */
 }
 
 .fas.fa-book {
@@ -53,6 +53,13 @@
     font-size: 25px;
     font-weight: 600;
     color: white;
+}
+
+.entries-length-search {
+    border-bottom: 1px solid black;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .entry-list-container {
