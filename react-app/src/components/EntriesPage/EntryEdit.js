@@ -50,8 +50,10 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
     }
 
     const cancel = async(e)=> {
-        e.preventDefault()
-        setShowForm(true)
+        setTitle('')
+        setContent('')
+        setShowForm(false)
+        history.push(`/journals/${id}/entries`)
 
     }
 
