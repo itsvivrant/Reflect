@@ -62,7 +62,7 @@
     flex-wrap: wrap;
     width: auto;
     height: auto;
-    padding: 25px;
+    margin-left: 38px;;
     background-color: #f7f7f7;
     justify-content: flex-start;
 
@@ -71,7 +71,7 @@
 .each-journal {
     width: 170px;
     height: 280px;
-    margin: 45px 40px 90px 45px;
+    margin: 20px 40px 90px 20px;
     background-size: 100%;
     background-position: center;
 
@@ -175,6 +175,35 @@
 
 }
 
+/* ************************ CREATE JOURNAL ******************************  */
+.fas.fa-plus {
+    font-size: 20px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.fas.fa-plus p {
+  margin-left: 10px;
+  align-items: center;
+}
+
+.fas.fa-plus:hover {
+  background-color: rgb(226, 220, 220);
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.journal-create {
+    width: 200px;
+    height: 10px;
+    padding: 10px;
+}
+
 /* ******** EDIT JOURNAL ***************************** */
 
 .journal-form-container {
@@ -250,9 +279,16 @@
 }
 
 .cover-url-input p{
- margin: 2px;
- padding: 0;
- font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin: 2px;
+    padding: 9px;
+    font-weight: 600;
+}
+
+.cover-url-input input{
+    width: 150px;
+    padding: 6px;
 }
 
 .edit-info {
@@ -270,6 +306,12 @@
     font-weight: 600;
     font-size: 26px;
     font-family: "Lato";
+}
+
+.journal-edit-input {
+    width: 200px;
+    height: 10px;
+    padding: 10px;
 }
 
 .far.fa-edit {
@@ -294,18 +336,15 @@
 
 .cover-selection {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: #f7f7f7;
-    padding: 70px;
     overflow-y: scroll;
 }
 
 .cover-selection-gallery{
-    width: 170px;
-    height: 270px;
-    margin: 20px;
-
-
+    width: 120px;
+    height: 180px;
+    padding: 30px;
 }
 
 .cover-selection-gallery img {

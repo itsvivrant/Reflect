@@ -4,7 +4,7 @@ import {allJournals, deleteSingleJournal } from '../../store/journal';
 
 import './Home.css'
 
-function DeleteJournal({journal}) {
+function JournalDelete({journal}) {
     const dispatch = useDispatch();
     const [deleteRender, setDeleteRender] = useState(false)
 
@@ -24,4 +24,4 @@ function DeleteJournal({journal}) {
 
 }
 
-export default DeleteJournal
+export default JournalDelete

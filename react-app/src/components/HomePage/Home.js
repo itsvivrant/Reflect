@@ -3,9 +3,9 @@ import {useSelector, useDispatch} from 'react-redux'
 import { Link} from 'react-router-dom';
 import { allJournals} from '../../store/journal';
 import SplashPage from './SplashPage/SplashPage'
-import JournalForm from '../JournalFormPage/JournalForm'
-import EditJournalForm from './EditJournal';
-import DeleteJournal from './DeleteJournal';
+import JournalCreate from './JournalCreate'
+import JournalEdit from './JournalEdit';
+import JournalDelete from './JournalDelete';
 
 import './Home.css'
 
@@ -33,7 +33,7 @@ function HomePage() {
                     </div>
                     <div className='journal-nav-icons'>
                         <div className='add-journal'>
-                            <JournalForm />
+                            <JournalCreate />
                         </div>
                         <div className='date-modified'>
                             <i className="far fa-calendar-alt">
@@ -56,10 +56,10 @@ function HomePage() {
                             <div className='journal-icons-container'>
                                 <div className='journal-icons'>
                                     <div className='journal-form-icon'>
-                                        <EditJournalForm journal={journal} setRenderUpdate={setRenderUpdate}/>
+                                        <JournalEdit journal={journal} setRenderUpdate={setRenderUpdate}/>
                                     </div>
                                     <div className='journal-trash-icon'>
-                                        <DeleteJournal journal={journal}/>
+                                        <JournalDelete journal={journal}/>
                                     </div>
                                 </div>
 
