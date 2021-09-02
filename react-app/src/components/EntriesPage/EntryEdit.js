@@ -22,10 +22,10 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender}) {
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
-    // const updatedContent = (e) =>setContent(e.target.value)
-    const updatedContent = (value) => {
-        setContent(value)
-    }
+    const updatedContent = (e) =>setContent(e.target.value)
+    // const updatedContent = (value) => {
+    //     setContent(value)
+    // }
     const updatedStrengths = (e) => setStrengths(e.target.value)
 
     useEffect(() => {
