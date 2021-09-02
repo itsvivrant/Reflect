@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useParams} from 'react-router-dom';
 import { createEntry, allJournalEntries} from '../../store/journal';
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css';
+
 
 
 import './EntriesPage.css'
@@ -53,15 +52,8 @@ function EntryCreate({ setEntryRender, readOnly}) {
                             {/* <input type='text' onChange={newContent} value={content}></input> */}
                         </div>
                         <div className='editor-content'>
-                            <ReactQuill
-                                className="editor"
-                                name="content"
-                                type="text"
-                                placeholder="Content"
-                                value={content || ''}
-                                onChange={newContent}
-                                
-                            />
+                        <input type='text' onChange={newContent} value={content}></input>
+
 
                         </div>
                     </form>
