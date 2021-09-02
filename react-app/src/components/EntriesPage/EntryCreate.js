@@ -40,33 +40,32 @@ function EntryCreate({ setEntryRender, currentDate}) {
 
     return (
         <div className="text-editor-container">
-            <div className='text-editor'>
                 <div className='form-edit-container'>
-                    <form onSubmit={entry}>
-                        <div className='content-title'>
-                            <i className="far fa-calendar-alt">
-                                <h4>{currentDate}</h4>
-                            </i>
-                            <label>Title</label>
-                            <input type='text' onChange={newTitle} value={title}></input>
-                            {/* <input type='text' onChange={newContent} value={content}></input> */}
-                        </div>
-                        <div className='editor-content'>
-                        <input type='text' onChange={newContent} value={content}></input>
+                    <div className='content-title'>
+                        <label>Title</label>
+                        <form onSubmit={entry}>
+                            <input placeholder="Title..."type='text' onChange={newTitle} value={title}></input>
+                        </form>
+                    </div>
+                    <div className='content-date'>
+                        <i className="far fa-calendar-alt">
+                            <h4>{currentDate}</h4>
+                        </i>
+                    </div>
 
+                    <div className='editor-content'>
+                        <form onSubmit={entry}>
+                            <input type='text' onChange={newContent} value={content}></input>
+                        </form>
+                    </div>
 
-                        </div>
-                    </form>
+                </div>
+                <div>
+                    
                 </div>
                 <form onSubmit={entry}>
                     <button className='submit-entry-bttn' type='submit'>Submit</button>
                 </form>
-            </div>
-            <div>
-                </div>
-
-
-
         </div>
 
     )

@@ -96,7 +96,8 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    width: auto;
+    width: 100%;
+    padding: 40px;
 
 }
 
@@ -104,12 +105,12 @@
     padding: 80px;
     background-color: white;
     width: 80%;
-    margin-top: 30px;
-    border-radius:7px;
-    height: 75%;
+    height: 100%;
 }
 .form-edit-container{
     height: 100%;
+    width: 100%;
+    background-color: white;
     overflow-y: scroll;
 }
 .content-title {
@@ -119,7 +120,9 @@
 }
 
 .content-title input{
-    height: 30px;
+    height: 20px;
+    width: 800px;
+    padding:6px
 }
 
 .editor{
