@@ -2,26 +2,34 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {  Link, useParams} from 'react-router-dom';
 import { allJournalEntries } from '../../store/journal';
+import { getOneEntry } from '../../store/entry'
 import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit'
 
 import './EntriesPage.css'
 
 function EntriesPage() {
-    const dispatch = useDispatch()
-    const [entryRender, setEntryRender] = useState(false)
-    const [showForm, setShowForm] = useState(false)
-    const allEntries = useSelector(state => state.journal.entries)
-    const journal = useSelector(state => state.journal.journal)
     let { id }  = useParams();
     id = Number(id)
+    const dispatch = useDispatch()
+    // const entry = useSelector(state => state.entry.entry)
+    const [entryRender, setEntryRender] = useState(false)
+    const [editEntryId, setEditEntryId] = useState('')
+    const [deleteRender, setDeleteRender] = useState(false)
+    const [showForm, setShowForm] = useState(false)
+    const allEntries = useSelector(state => state.journal.entries)
+
+    const journal = useSelector(state => state.journal.journal)
+
 
 
 
     useEffect(() => {
         dispatch(allJournalEntries(id))
+        // dispatch(getOneEntry(entry.id))
         setEntryRender(false)
-    }, [dispatch, id, entryRender])
+        setDeleteRender(false)
+    }, [dispatch, id, entryRender, deleteRender])
 
     return(
         <div className='entry-home-container'>
@@ -42,13 +50,19 @@ function EntriesPage() {
                 </div>
                 <div className='entry-list-container'>
                     {allEntries?.map(entry => (
+
                         <div onClick={() => (
                             setShowForm(true)
                         )}>
-                            <div className='entry-content' key={entry.id}>
-                                <p>{entry.title}</p>
-                                <p>{entry.content}</p>
-                                <p>{entry.created_at}</p>
+                            <div onClick={() => (
+                            setEditEntryId(entry.id)
+                        )}>
+
+                                <div className='entry-content' readOnly={true} key={entry.id}>
+                                    <p>{entry.title}</p>
+                                    <p>{entry.content}</p>
+                                    <p>{entry.created_at}</p>
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -56,7 +70,7 @@ function EntriesPage() {
             </div>
             <div className='entry-right-container'>
                 {showForm ?
-                    <EntryEdit setShowForm={setShowForm}/>
+                    <EntryEdit setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
 
                 :
                 <>
