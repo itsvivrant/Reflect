@@ -3,8 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { getOneEntry, editEntry, deleteSingleEntry} from '../../store/entry';
 import {useParams, useHistory} from 'react-router-dom'
 import {allJournalEntries} from '../../store/journal'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css';
+
 
 import './EntriesPage.css'
 
@@ -65,16 +64,9 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender}) {
                             <label>Title</label>
                             <input type='text' onChange={updatedTitle} value={entry?.title}></input>
                         </div>
-                        <div className='editor-content'>
-                            <ReactQuill
-                                className="editor"
-                                name="content"
-                                type="text"
-                                placeholder="Content"
-                                value={entry?.content || ''}
-                                onChange={updatedContent}
+                        <div>
+                            <input type='text' onChange={updatedContent} value={entry?.content}></input>
 
-                            />
                         </div>
                     </form>
                 </div>
