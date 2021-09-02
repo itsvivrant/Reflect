@@ -1,27 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { editEntry, deleteSingleEntry} from '../../store/entry';
-import {useParams} from 'react-router-dom'
+import { getOneEntry, editEntry, deleteSingleEntry} from '../../store/entry';
+import {useParams, useHistory} from 'react-router-dom'
 import {allJournalEntries} from '../../store/journal'
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
 
 import './EntriesPage.css'
 
-function EntryEdit() {
+function EntryEdit({editEntryId, setShowForm, setDeleteRender}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
+    const history = useHistory()
     const sessionUser = useSelector((state) => state.session.user)
-    const entry = useSelector((state) => state.entry)
+    const entry = useSelector(state => state.entry.entry)
 
-    const [title, setTitle] = useState(entry.title ||'')
-    const [content, setContent] = useState(entry.content ||'')
-    const [strengths, setStrengths] = useState(entry.strengths ||'')
+    const [title, setTitle] = useState(entry?.title ||'')
+    const [content, setContent] = useState(entry?.content ||'')
+    const [strengths, setStrengths] = useState(entry?.strengths ||'')
+    const [deleteEntry, setDeleteEntry] = useState(false)
+
 
     const updatedTitle = (e) => setTitle(e.target.value)
-    const updatedContent = (e) =>setContent(e.target.value)
+    // const updatedContent = (e) =>setContent(e.target.value)
+    const updatedContent = (value) => {
+        setContent(value)
+    }
     const updatedStrengths = (e) => setStrengths(e.target.value)
+
+    useEffect(() => {
+        dispatch(allJournalEntries(id))
+        dispatch(getOneEntry(editEntryId))
+    }, [dispatch, id, editEntryId, deleteEntry])
 
 
     const handleUpdateEntry = async(e) => {
@@ -32,41 +43,51 @@ function EntryEdit() {
     const handleDeleteEntry = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleEntry(entry.id))
+        setDeleteRender(true)
+        setDeleteEntry(true)
+        setShowForm(false)
+        history.push(`/journals/${id}/entries`)
+
+    }
+
+    const cancel = async(e)=> {
+        e.preventDefault()
+        setShowForm(true)
 
     }
 
     return (
-        <h1>Edit</h1>
-        // <div className="text-editor-container">
-        //     <div className='text-editor'>
-        //         <div className='form-edit-container'>
-        //             <form onSubmit={handleUpdateEntry}>
-        //                 <div className='content-title'>
-        //                     <label>Title</label>
-        //                     <input type='text' onChange={updatedTitle} value={title}></input>
-        //                 </div>
-        //                 <div className='editor-content'>
-        //                 <Editor className='editor'
-        //                     toolbarClassName="toolbarClassName"
-        //                     wrapperClassName="wrapperClassName"
-        //                     editorClassName="editorClassName"
-        //                     placeholder="How's your day?"
-        //                     onChange={updatedContent}
-        //                     value={content}
-        //                 />
-        //                 </div>
-        //             </form>
-        //         </div>
-        //         <form onSubmit={handleUpdateEntry}>
-        //             <button className='submit-entry-bttn' type='submit'>Submit</button>
-        //         </form>
-        //     </div>
-        //     <div>
-        //         </div>
+        <div className="text-editor-container">
+            <div className='text-editor'>
+                <div className='form-edit-container'>
+                    <form onSubmit={handleUpdateEntry}>
+                        <div className='content-title'>
+                            <label>Title</label>
+                            <input type='text' onChange={updatedTitle} value={entry?.title}></input>
+                        </div>
+                        <div className='editor-content'>
+                            <ReactQuill
+                                className="editor"
+                                name="content"
+                                type="text"
+                                placeholder="Content"
+                                value={entry?.content || ''}
+                                onChange={updatedContent}
 
+                            />
+                        </div>
+                    </form>
+                </div>
+                <form onSubmit={handleUpdateEntry}>
+                    <button className='submit-entry-bttn' type='submit'>Submit</button>
+                </form>
+                <button className='submit-entry-bttn' onClick={cancel}>Cancel</button>
+                <button className='submit-entry-bttn' onClick={handleDeleteEntry}>Delete</button>
+            </div>
+            <div>
+                </div>
 
-
-        // </div>
+        </div>
 
     )
 }
