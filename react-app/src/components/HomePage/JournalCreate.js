@@ -82,22 +82,17 @@ function JournalCreate() {
                         <div className='edit-header'>
                             <h1>Create</h1>
                         </div>
-                        <div className='edit-info-box'>
+                        <div className='create-info-box'>
                             <div className='edit-img'>
                                 {coverUrl ?
                                     <img src={coverUrl} />
                                 : <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" />}
 
-                                <div className='cover-url-input'>
-                                    <p>CoverUrl: </p>
-                                    <form className='journal-form-box'onSubmit={journal} >
-                                        <input type='text' placeholder='CoverUrl' value={coverUrl} onChange={newCoverUrl}></input>
-                                    </form>
-                                </div>
+
 
                             </div>
                             <div className='edit-info'>
-                                <div className='edit-title'>
+                                <div className='create-title'>
                                     <p>Title</p>
                                 </div>
                                 <div className='journal-title-container'>
@@ -105,7 +100,12 @@ function JournalCreate() {
                                         <input className='journal-create' type='text' placeholder='Title' value={title} onChange={newTitle}></input>
                                     </form>
                                 </div>
-                                <p></p>
+                                <div className='create-cover-url-input'>
+                                    <p>Cover Link: </p>
+                                    <form className='journal-form-box'onSubmit={journal} >
+                                        <input className='cover-url-input' type='text' placeholder='CoverUrl' value={coverUrl} onChange={newCoverUrl}></input>
+                                    </form>
+                                </div>
                                 <p></p>
                                 <form className='journal-form-box'onSubmit={journal} >
                                     <button className='update-bttn' type='submit' >Submit</button>

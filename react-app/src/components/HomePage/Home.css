@@ -176,6 +176,15 @@
 }
 
 /* ************************ CREATE JOURNAL ******************************  */
+
+.create-info-box {
+    height: auto;
+    display: grid;
+    height: 340px;
+    grid-template-columns: 7fr 10fr;
+    justify-content: center;
+}
+
 .fas.fa-plus {
     font-size: 20px;
     color: black;
@@ -202,6 +211,31 @@
     width: 200px;
     height: 10px;
     padding: 10px;
+}
+
+.create-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+.create-title p{
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "Lato";
+}
+
+.create-cover-url-input p{
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "Lato";
+}
+
+.cover-url-input {
+    height: 30px;
+    width: 220px;
 }
 
 /* ******** EDIT JOURNAL ***************************** */
