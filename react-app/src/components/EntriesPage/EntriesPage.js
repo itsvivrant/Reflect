@@ -22,7 +22,7 @@ function EntriesPage() {
 
     const journal = useSelector(state => state.journal.journal)
 
-    const currentDate = moment().format("MM/DD/YYYY");
+    const currentDate = moment().format("dddd, MM/DD/YYYY");
 
 
 
