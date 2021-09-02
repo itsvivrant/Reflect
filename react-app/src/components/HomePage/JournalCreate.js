@@ -4,9 +4,10 @@ import { useHistory} from 'react-router-dom';
 import { createJournal, allJournals} from '../../store/journal';
 import {Modal} from '../../context/Modal'
 
-import './JournalForm.css'
+import './Home.css'
 
-function JournalForm() {
+function JournalCreate
+() {
     const sessionUser = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory();
@@ -63,4 +64,5 @@ function JournalForm() {
 }
 
 
-export default JournalForm;
+export default JournalCreate
+;

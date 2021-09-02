@@ -36,7 +36,7 @@ const selectCovers = [
 '    https://images.unsplash.com/photo-1525124568695-c4c6cd3a8842?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTc5fHxoZCUyMHBhdHRlcm4lMjBud2FsbHBhcGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
 ]
 
-function EditJournalForm({journal, setRenderUpdate}) {
+function JournalEdit({journal, setRenderUpdate}) {
     const dispatch = useDispatch();
     const [title, setTitle] = useState(journal.title || '');
     const [updatedAt, setUpdatedAt] = useState(journal.updated_at || journal.created_at)
@@ -129,4 +129,4 @@ function EditJournalForm({journal, setRenderUpdate}) {
     )
 }
 
-export default EditJournalForm;
+export default JournalEdit;
