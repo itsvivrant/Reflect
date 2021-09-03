@@ -9,7 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 
 import './EntriesPage.css'
 
-function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setUpdateRender}) {
+function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -38,7 +38,6 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setU
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, id, ))
-        setUpdateRender(true)
         setUpdatedEntry(true)
     }
 
@@ -98,6 +97,7 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setU
                             className="editor"
                             name="content"
                             type="text"
+                            placeholder={entry?.content}
                             value={content}
                             onChange={updatedContent}
                         />

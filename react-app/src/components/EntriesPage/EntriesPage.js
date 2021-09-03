@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {  Link, useParams} from 'react-router-dom';
 import { allJournalEntries } from '../../store/journal';
-import { getOneEntry } from '../../store/entry'
 import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit'
 import moment from 'moment';
@@ -26,7 +25,7 @@ function EntriesPage() {
     const [entryRender, setEntryRender] = useState(false)
     const [editEntryId, setEditEntryId] = useState('')
     const [deleteRender, setDeleteRender] = useState(false)
-    const [updateRender, setUpdateRender] = useState(false)
+    const [selectedPicture, setSelectedPicture] = useState('')
     const [showForm, setShowForm] = useState(false)
     const allEntries = useSelector(state => state.journal.entries)
 
@@ -35,19 +34,11 @@ function EntriesPage() {
 
     const currentDate = moment().format("dddd, MM/DD/YYYY");
 
-
-
-    const [selectedPicture, setSelectedPicture] = useState('')
-
-
-
-
     useEffect(() => {
         dispatch(allJournalEntries(id))
-        // dispatch(getOneEntry(entry.id))
         setEntryRender(false)
         setDeleteRender(false)
-        setUpdateRender(false)
+
 
         const pictureArray =[b2, b3, b4, b5,b6, b9, b10]
         const randomIndex =  Math.floor(Math.random() * pictureArray.length);
@@ -55,7 +46,7 @@ function EntriesPage() {
 
 
 
-    }, [dispatch, journal?.id, entryRender, deleteRender, updateRender, journalName])
+    }, [dispatch, id, journal?.id, entryRender, deleteRender, journalName])
 
     return(
         <div className='entry-home-container'>
@@ -94,7 +85,7 @@ function EntriesPage() {
             </div>
             <div className='entry-right-container' style={{backgroundImage: `url(${selectedPicture})`}}>
                 {showForm ?
-                    <EntryEdit currentDate={currentDate} setUpdateRender={setUpdateRender} setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
+                    <EntryEdit currentDate={currentDate}  setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
 
                 :
                 <>
