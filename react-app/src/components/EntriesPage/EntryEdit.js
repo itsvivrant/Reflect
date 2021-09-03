@@ -42,7 +42,6 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender,  currentDate}) {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, editEntryId))
         setUpdatedEntry(true)
-        // setUpdateRender(true)
         // history.push(`/journals/${id}/entries`)
     }
 
