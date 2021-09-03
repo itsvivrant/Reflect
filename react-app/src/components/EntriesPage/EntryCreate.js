@@ -3,6 +3,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useParams} from 'react-router-dom';
 import { createEntry, allJournalEntries} from '../../store/journal';
 
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
 
 
 import './EntriesPage.css'
@@ -18,7 +20,10 @@ function EntryCreate({ setEntryRender, currentDate}) {
     const [strengths, setStrengths] = useState('');
 
     const newTitle = (e) => setTitle(e.target.value)
-    const newContent = (e) => setContent(e.target.value)
+    // const newContent = (e) => setContent(e.target.value)
+    const newContent = (value) => {
+        setContent(value)
+    }
     const newStrengths = (e) => setStrengths(e.target.value)
 
 
@@ -54,9 +59,17 @@ function EntryCreate({ setEntryRender, currentDate}) {
                     </div>
 
                     <div className='editor-content'>
-                        <form onSubmit={entry}>
+                        {/* <form onSubmit={entry}>
                             <input type='text' onChange={newContent} value={content}></input>
-                        </form>
+                        </form> */}
+                        <ReactQuill
+                            className="editor"
+                            name="content"
+                            type="text"
+                            placeholder="Content"
+                            value={content}
+                            onChange={newContent}
+                        />
                     </div>
 
                 </div>

@@ -15,8 +15,8 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
     const sessionUser = useSelector((state) => state.session.user)
     const entry = useSelector(state => state.entry.entry)
 
-    const [title, setTitle] = useState(entry?.title ||'')
-    const [content, setContent] = useState(entry?.content ||'')
+    const [title, setTitle] = useState(entry?.title||'')
+    const [content, setContent] = useState(entry?.content.replace(/<[^>]*>/g, '') ||'')
     const [strengths, setStrengths] = useState(entry?.strengths ||'')
     const [deleteEntry, setDeleteEntry] = useState(false)
 
@@ -70,7 +70,7 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
                             <input type='text' onChange={updatedTitle} value={entry?.title}></input>
                         </div>
                         <div>
-                            <input type='text' onChange={updatedContent} value={entry?.content}></input>
+                            <input type='text' onChange={updatedContent} value={entry?.content.replace(/<[^>]*>/g, '')}></input>
 
                         </div>
                     </form>
