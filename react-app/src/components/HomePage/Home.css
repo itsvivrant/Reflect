@@ -164,14 +164,14 @@
 
 .fas.fa-trash, .fas.fa-info-circle {
     font-size: 25px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     cursor: pointer;
     transition: all ease 0.3s;
 }
 
 .fas.fa-trash:hover, .fas.fa-info-circle:hover {
     transition: all 0.4s ease 0s;
-    text-shadow: 1px 1px 20px rgb(247, 245, 245);
+    text-shadow: 1px 1px 20px rgb(0, 0, 0);
 
 }
 

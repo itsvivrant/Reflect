@@ -7,8 +7,17 @@ import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit'
 import moment from 'moment';
 
+import b2 from '../EntriesPage/background-img/b2.jpg'
+import b3 from '../EntriesPage/background-img/b3.jpg'
+import b4 from '../EntriesPage/background-img/b4.jpg'
+import b5 from '../EntriesPage/background-img/b5.jpg'
+import b6 from '../EntriesPage/background-img/b6.jpg'
+import b9 from '../EntriesPage/background-img/b9.jpg'
+import b10 from '../EntriesPage/background-img/b10.jpg'
+
+
 import './EntriesPage.css'
-import { convertToRaw } from 'draft-js';
+
 
 function EntriesPage() {
     let { id }  = useParams();
@@ -26,12 +35,11 @@ function EntriesPage() {
 
     const currentDate = moment().format("dddd, MM/DD/YYYY");
 
-    function randomColor(e) {
-        let randomColor = Math.floor(Math.random()*16777215).toString(16);
-        // const op = 0.3;
-        const color = "#" + randomColor;
-        e.target.style.backgroundColor = color;
-      }
+
+
+    const [selectedPicture, setSelectedPicture] = useState('')
+
+
 
 
     useEffect(() => {
@@ -39,6 +47,12 @@ function EntriesPage() {
         // dispatch(getOneEntry(entry.id))
         setEntryRender(false)
         setDeleteRender(false)
+
+        const pictureArray =[b2, b3, b4, b5,b6, b9, b10]
+        const randomIndex =  Math.floor(Math.random() * pictureArray.length);
+        setSelectedPicture(pictureArray[randomIndex])
+
+
 
     }, [dispatch, journal?.id, entryRender, deleteRender, journalName])
 
@@ -77,7 +91,7 @@ function EntriesPage() {
                     </div>
                 </div>
             </div>
-            <div className='entry-right-container'>
+            <div className='entry-right-container' style={{backgroundImage: `url(${selectedPicture})`}}>
                 {showForm ?
                     <EntryEdit currentDate={currentDate} setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
 

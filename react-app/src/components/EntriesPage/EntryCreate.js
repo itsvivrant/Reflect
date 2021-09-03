@@ -3,6 +3,15 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useParams} from 'react-router-dom';
 import { createEntry, allJournalEntries} from '../../store/journal';
 
+import b2 from '../EntriesPage/background-img/b2.jpg'
+import b3 from '../EntriesPage/background-img/b3.jpg'
+import b4 from '../EntriesPage/background-img/b4.jpg'
+import b5 from '../EntriesPage/background-img/b5.jpg'
+import b6 from '../EntriesPage/background-img/b6.jpg'
+import b9 from '../EntriesPage/background-img/b9.jpg'
+import b10 from '../EntriesPage/background-img/b10.jpg'
+
+
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 
@@ -20,7 +29,6 @@ function EntryCreate({ setEntryRender, currentDate}) {
     const [strengths, setStrengths] = useState('');
 
     const newTitle = (e) => setTitle(e.target.value)
-    // const newContent = (e) => setContent(e.target.value)
     const newContent = (value) => {
         setContent(value)
     }
@@ -41,20 +49,19 @@ function EntryCreate({ setEntryRender, currentDate}) {
     }
 
 
-
-
     return (
         <div className="text-editor-container">
+
                 <div className='form-edit-container'>
                     <div className='content-title'>
-                        <label>Title</label>
+                        <p>Title</p>
                         <form onSubmit={entry}>
                             <input placeholder="Title..."type='text' onChange={newTitle} value={title}></input>
                         </form>
                     </div>
                     <div className='content-date'>
                         <i className="far fa-calendar">
-                            <h4>{currentDate}</h4>
+                            <h5>{currentDate}</h5>
                         </i>
                     </div>
 
@@ -72,13 +79,12 @@ function EntryCreate({ setEntryRender, currentDate}) {
                         />
                     </div>
 
+                    <div>
+                        <form onSubmit={entry}>
+                            <button className='submit-entry-bttn' type='submit'>Submit</button>
+                        </form>
+                    </div>
                 </div>
-                <div>
-
-                </div>
-                <form onSubmit={entry}>
-                    <button className='submit-entry-bttn' type='submit'>Submit</button>
-                </form>
         </div>
 
     )

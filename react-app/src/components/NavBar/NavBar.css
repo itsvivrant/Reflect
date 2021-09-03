@@ -4,6 +4,7 @@
     justify-content: space-between;
     height: 70px;
     box-shadow: -2px 2px 4px 1px rgb(0 0 0 / 30%);
+    /* background-image: linear-gradient(to right,#f23f21,#e74c3c); */
 }
 
 .nav-logo {
