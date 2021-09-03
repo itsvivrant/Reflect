@@ -58,6 +58,7 @@ function EntriesPage() {
                 </div>
                 <div className='entries-length-search'>
                     <i className="fas fa-search"></i>
+                    <input className='search-input' type='text' placeholder='Search entries...'></input>
                 </div>
                 <div className='entry-list-container'>
                     <div className='entry-list-box'>
@@ -67,7 +68,7 @@ function EntriesPage() {
                             <div onClick={() => (setEditEntryId(entry.id))}>
                                 <div className='entry-content'  key={entry.id}>
                                     <div className='entry-content-title'> <p>{entry?.title.length < 50 ? entry?.title : `${entry?.title.slice(0 , 30)}...`}</p></div>
-                                    <div className='entry-content-content'> <p>{entry?.content.length < 50? entry?.content : `${entry?.content.slice(0,30)}...`}</p> </div>
+                                    <div className='entry-content-content'> <p>{entry?.content.length < 50? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,30).replace(/<[^>]*>/g, '')}...`}</p> </div>
                                     <div className='entry-content-created'> <p>{entry.created_at}</p></div>
                                 </div>
                             </div>
