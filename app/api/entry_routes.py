@@ -19,6 +19,7 @@ def get_entry(id):
 @entry_routes.route('/edit/<int:id>', methods=['PUT'])
 def update_entry(id):
     entry = Entry.query.get(id)
+    print('SDLFJSLDKFJSLKDFJKSDFJ', entry)
     form = EntryForm()
     entry.title = form.data['title']
     entry.content = form.data['content']
@@ -26,6 +27,18 @@ def update_entry(id):
     entry.user_id = form.data['user_id']
     db.session.commit()
     return entry.to_dict()
+
+
+# updated_entry = Entry (
+#         title = form.title.data,
+#         content = form.content.data,
+#         strengths = form.strengths.data,
+#         user_id = form.user_id.data
+#     )
+#     entry.title = updated_entry.title
+#     entry.content = updated_entry.content
+#     entry.strengths = updated_entry.strengths
+#     entry.user_id = updated_entry.user_id
 
 @entry_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_entry(id):
