@@ -147,7 +147,7 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    
+
 }
 
 
@@ -159,34 +159,40 @@
     align-items: center;
     height: 100%;
     width: auto;
-    padding: 40px;
+    padding: 25px;
 
 }
 
 
 
 .form-edit-container{
+    padding: 40px;
     height: 100%;
-    width: 100%;
+    justify-content: center;
     background-color: white;
     overflow-y: scroll;
 }
 .content-title {
     display: flex;
     flex-direction: row;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 .content-title p{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
 }
 
-.content-title input{
-    height: 20px;
+.content-title-input {
+    height: 30px;
     width: 800px;
     padding:6px;
     border: 0;
+    font-size: 20px;
+    margin-left: 7px;
 }
 
 
@@ -194,15 +200,25 @@
     outline: none;
 }
 
+.content-date {
+    margin-bottom: 20px;
+    padding: 0;
+    border-top: 1px solid rgb(217, 217, 217);
+    border-bottom: 1px solid rgb(217, 217, 217);
+}
+
 .far.fa-calendar {
     display: flex;
     flex-direction: row;
     align-items: center;
     font-size: 25px;
+    height: 50px;
+
+
 }
 
 .editor{
-    overflow-y: scroll;
+    height: 450px;
 }
 
 .submit-entry-bttn {

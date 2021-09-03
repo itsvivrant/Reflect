@@ -32,7 +32,7 @@ function EntryCreate({ setEntryRender, currentDate}) {
     const newContent = (value) => {
         setContent(value)
     }
-    const newStrengths = (e) => setStrengths(e.target.value)
+    // const newStrengths = (e) => setStrengths(e.target.value)
 
 
     useEffect(() => {
@@ -54,10 +54,15 @@ function EntryCreate({ setEntryRender, currentDate}) {
 
                 <div className='form-edit-container'>
                     <div className='content-title'>
-                        <p>Title</p>
+                        <p>Title: </p>
                         <form onSubmit={entry}>
-                            <input placeholder="Title..."type='text' onChange={newTitle} value={title}></input>
+                            <input className='content-title-input' placeholder="........Your Title "type='text' onChange={newTitle} value={title}></input>
                         </form>
+                        <div>
+                            <form onSubmit={entry}>
+                                <button className='submit-entry-bttn' type='submit'>Save</button>
+                            </form>
+                        </div>
                     </div>
                     <div className='content-date'>
                         <i className="far fa-calendar">
@@ -73,18 +78,15 @@ function EntryCreate({ setEntryRender, currentDate}) {
                             className="editor"
                             name="content"
                             type="text"
-                            placeholder="Content"
+                            placeholder="Tell a story. . ."
                             value={content}
                             onChange={newContent}
                         />
                     </div>
 
-                    <div>
-                        <form onSubmit={entry}>
-                            <button className='submit-entry-bttn' type='submit'>Submit</button>
-                        </form>
-                    </div>
+
                 </div>
+
         </div>
 
     )

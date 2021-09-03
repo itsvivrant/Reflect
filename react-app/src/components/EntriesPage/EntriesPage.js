@@ -6,7 +6,6 @@ import { getOneEntry } from '../../store/entry'
 import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit'
 import moment from 'moment';
-
 import b2 from '../EntriesPage/background-img/b2.jpg'
 import b3 from '../EntriesPage/background-img/b3.jpg'
 import b4 from '../EntriesPage/background-img/b4.jpg'
