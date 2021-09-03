@@ -1,8 +1,8 @@
 .entry-home-container {
     display: grid;
     grid-template-columns: 2fr 7fr;
-    height: 100%;
-    width: auto;
+    height: 100vh;
+    width: 100%;
     background-color: white;
 }
 
@@ -13,7 +13,8 @@
     height: 100%;
     border-right: 6px solid rgb(8, 8, 8);
     position: sticky;
-    background-color: white
+    background-color: white;
+    overflow: hidden;
 }
 
 .entry-nav {
@@ -35,7 +36,8 @@
     cursor: pointer;
     text-decoration: none;
     margin-left: 16px;
-    width: 50px
+    width: 50px;
+    margin-bottom: 10px;
 }
 
 
@@ -49,9 +51,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     height: 100%;
     width: 240px;
+    padding: 20px;
 
 }
 
@@ -69,27 +72,38 @@
 .book-icon-title h5{
     font-weight: 500;
     font-family: "Lato";
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     color: white;
     padding: 0;
-    margin: 0 0 0 20px;
+    margin: 0;
 }
 
 .entries-length-search {
-    border-bottom: 1px solid black;
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color:rgb(97, 97, 97);
     color: white;
+    padding: 10px;
+}
+
+.search-input {
+    border-radius: 20px;
+    height: 25px;
+    width: 280px;
+    border: 0
+}
+
+.search-input:focus {
+    outline: none;
 }
 
 .entry-list-container {
     width: 100%;
     height: 100%;
-
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -133,8 +147,7 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    border-right: 6px solid rgb(8, 8, 8);
-    background-color: rgb(243, 236, 236);
+    
 }
 
 
@@ -145,17 +158,13 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
-    width: 100%;
+    width: auto;
     padding: 40px;
 
 }
 
-.text-editor {
-    padding: 80px;
-    background-color: white;
-    width: 80%;
-    height: 100%;
-}
+
+
 .form-edit-container{
     height: 100%;
     width: 100%;
@@ -164,14 +173,32 @@
 }
 .content-title {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 20px;
+}
+
+.content-title p{
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .content-title input{
     height: 20px;
     width: 800px;
-    padding:6px
+    padding:6px;
+    border: 0;
+}
+
+
+.content-title input:focus{
+    outline: none;
+}
+
+.far.fa-calendar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 25px;
 }
 
 .editor{
