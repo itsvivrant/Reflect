@@ -26,6 +26,7 @@ function EntriesPage() {
     const [entryRender, setEntryRender] = useState(false)
     const [editEntryId, setEditEntryId] = useState('')
     const [deleteRender, setDeleteRender] = useState(false)
+    const [updateRender, setUpdateRender] = useState(false)
     const [showForm, setShowForm] = useState(false)
     const allEntries = useSelector(state => state.journal.entries)
 
@@ -46,6 +47,7 @@ function EntriesPage() {
         // dispatch(getOneEntry(entry.id))
         setEntryRender(false)
         setDeleteRender(false)
+        setUpdateRender(false)
 
         const pictureArray =[b2, b3, b4, b5,b6, b9, b10]
         const randomIndex =  Math.floor(Math.random() * pictureArray.length);
@@ -53,7 +55,7 @@ function EntriesPage() {
 
 
 
-    }, [dispatch, journal?.id, entryRender, deleteRender, journalName])
+    }, [dispatch, journal?.id, entryRender, deleteRender, updateRender, journalName])
 
     return(
         <div className='entry-home-container'>
@@ -92,7 +94,7 @@ function EntriesPage() {
             </div>
             <div className='entry-right-container' style={{backgroundImage: `url(${selectedPicture})`}}>
                 {showForm ?
-                    <EntryEdit currentDate={currentDate} setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
+                    <EntryEdit currentDate={currentDate} setUpdateRender={setUpdateRender} setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
 
                 :
                 <>

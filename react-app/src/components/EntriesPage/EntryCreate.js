@@ -3,14 +3,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useParams} from 'react-router-dom';
 import { createEntry, allJournalEntries} from '../../store/journal';
 
-import b2 from '../EntriesPage/background-img/b2.jpg'
-import b3 from '../EntriesPage/background-img/b3.jpg'
-import b4 from '../EntriesPage/background-img/b4.jpg'
-import b5 from '../EntriesPage/background-img/b5.jpg'
-import b6 from '../EntriesPage/background-img/b6.jpg'
-import b9 from '../EntriesPage/background-img/b9.jpg'
-import b10 from '../EntriesPage/background-img/b10.jpg'
-
 
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
