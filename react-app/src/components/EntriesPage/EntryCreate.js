@@ -48,7 +48,7 @@ function EntryCreate({ setEntryRender, currentDate}) {
                         </form>
                     </div>
                     <div className='content-date'>
-                        <i className="far fa-calendar-alt">
+                        <i className="far fa-calendar">
                             <h4>{currentDate}</h4>
                         </i>
                     </div>
@@ -61,7 +61,7 @@ function EntryCreate({ setEntryRender, currentDate}) {
 
                 </div>
                 <div>
-                    
+
                 </div>
                 <form onSubmit={entry}>
                     <button className='submit-entry-bttn' type='submit'>Submit</button>

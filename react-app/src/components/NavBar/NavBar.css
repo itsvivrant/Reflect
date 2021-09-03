@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     height: 70px;
+    box-shadow: -2px 2px 4px 1px rgb(0 0 0 / 30%);
 }
 
 .nav-logo {
