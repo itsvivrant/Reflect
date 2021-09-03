@@ -9,7 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 
 import './EntriesPage.css'
 
-function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
+function EntryEdit({editEntryId, setShowForm, setDeleteRender,  currentDate}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -17,28 +17,33 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
     const sessionUser = useSelector((state) => state.session.user)
     const entry = useSelector(state => state.entry.entry)
 
-    const [title, setTitle] = useState(entry?.title||'')
-    const [content, setContent] = useState(entry?.content.replace(/<[^>]*>/g, '') ||'')
-    const [strengths, setStrengths] = useState(entry?.strengths ||'')
+    const [title, setTitle] = useState("")
+    const [content, setContent] = useState("")
+    const [strengths, setStrengths] = useState("")
     const [deleteEntry, setDeleteEntry] = useState(false)
-    const [updatedEntry, setUpdatedEntry] = useState('')
+    const [updatedEntry, setUpdatedEntry] = useState(false)
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
     const updatedContent = (value) => {setContent(value)}
-
     // const updatedStrengths = (e) => setStrengths(e.target.value)
 
     useEffect(() => {
-        dispatch(allJournalEntries(id))
         dispatch(getOneEntry(editEntryId))
-    }, [dispatch, id, editEntryId, deleteEntry, updatedEntry])
+
+        setTitle(entry?.title)
+        setContent(entry?.content.replace(/<[^>]*>/g, ''))
+        setStrengths(entry?.strengths)
+
+    }, [dispatch, editEntryId, deleteEntry, updatedEntry, ])
 
 
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
-        await dispatch(editEntry(title, content, strengths, sessionUser.id, id, ))
+        await dispatch(editEntry(title, content, strengths, sessionUser.id, editEntryId))
         setUpdatedEntry(true)
+        // setUpdateRender(true)
+        // history.push(`/journals/${id}/entries`)
     }
 
     const handleDeleteEntry = async(e) => {
@@ -66,7 +71,7 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
                     <div className='content-title'>
                         {/* <p>{title} </p> */}
                         <form onSubmit={handleUpdateEntry}>
-                            <input className='content-title-input' placeholder="edit" type='text' onChange={updatedTitle} value={entry?.title}></input>
+                            <input className='content-title-input' placeholder="edit" type='text' onChange={updatedTitle} value={title}></input>
                         </form>
                         <div>
                             <form onSubmit={handleUpdateEntry}>

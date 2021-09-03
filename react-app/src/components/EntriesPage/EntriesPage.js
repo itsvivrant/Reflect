@@ -34,6 +34,8 @@ function EntriesPage() {
 
     const currentDate = moment().format("dddd, MM/DD/YYYY");
 
+    const [updateEntryId, setUpdateEntryId] = useState('')
+
     useEffect(() => {
         dispatch(allJournalEntries(id))
         setEntryRender(false)
@@ -46,7 +48,7 @@ function EntriesPage() {
 
 
 
-    }, [dispatch, id, journal?.id, entryRender, deleteRender, journalName])
+    }, [dispatch, id, entryRender, deleteRender, journalName])
 
     return(
         <div className='entry-home-container'>
@@ -71,12 +73,10 @@ function EntriesPage() {
                     {allEntries?.map(entry => (
 
                         <div onClick={() => (setShowForm(true))}>
-                            <div onClick={() => (setEditEntryId(entry.id))}>
-                                <div className='entry-content'  key={entry.id}>
-                                    <div className='entry-content-title'> <p>{entry?.title.length < 50 ? entry?.title : `${entry?.title.slice(0 , 30)}...`}</p></div>
-                                    <div className='entry-content-content'> <p>{entry?.content.length < 50? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,30).replace(/<[^>]*>/g, '')}...`}</p> </div>
-                                    <div className='entry-content-created'> <p>{entry.created_at}</p></div>
-                                </div>
+                            <div onClick={() => (setEditEntryId(entry.id))} className='entry-content'  key={entry.id}>
+                                <div className='entry-content-title'> <p>{entry?.title.length < 50 ? entry?.title : `${entry?.title.slice(0 , 30)}...`}</p></div>
+                                <div className='entry-content-content'> <p>{entry?.content.length < 50? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,30).replace(/<[^>]*>/g, '')}...`}</p> </div>
+                                <div className='entry-content-created'> <p>{entry.created_at}</p></div>
                             </div>
                         </div>
                     ))}
