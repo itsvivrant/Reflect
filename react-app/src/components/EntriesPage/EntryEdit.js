@@ -21,13 +21,12 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setU
     const [content, setContent] = useState(entry?.content.replace(/<[^>]*>/g, '') ||'')
     const [strengths, setStrengths] = useState(entry?.strengths ||'')
     const [deleteEntry, setDeleteEntry] = useState(false)
-    const [updatedEntry, setUpdatedEntry] = useState(false)
+    const [updatedEntry, setUpdatedEntry] = useState('')
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
-    const updatedContent = (value) => {
-        setContent(value)
-    }
+    const updatedContent = (value) => {setContent(value)}
+
     // const updatedStrengths = (e) => setStrengths(e.target.value)
 
     useEffect(() => {
@@ -39,13 +38,13 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setU
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, id, ))
-        setUpdatedEntry(true)
+        setUpdateRender(true)
+        setUpdatedEntry(entry?.content)
     }
 
     const handleDeleteEntry = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleEntry(entry.id))
-        setUpdateRender(true)
         setDeleteRender(true)
         setDeleteEntry(true)
         setShowForm(false)
@@ -68,7 +67,7 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setU
                     <div className='content-title'>
                         {/* <p>{title} </p> */}
                         <form onSubmit={handleUpdateEntry}>
-                            <input className='content-title-input' placeholder={`${title}`} type='text' onChange={updatedTitle} value={entry?.title}></input>
+                            <input className='content-title-input' placeholder="edit" type='text' onChange={updatedTitle} value={entry?.title}></input>
                         </form>
                         <div>
                             <form onSubmit={handleUpdateEntry}>
@@ -99,7 +98,6 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setU
                             className="editor"
                             name="content"
                             type="text"
-                            placeholder={content}
                             value={content}
                             onChange={updatedContent}
                         />
