@@ -39,7 +39,7 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setU
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, id, ))
         setUpdateRender(true)
-        setUpdatedEntry(entry?.content)
+        setUpdatedEntry(true)
     }
 
     const handleDeleteEntry = async(e) => {
