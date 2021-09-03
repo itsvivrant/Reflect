@@ -27,9 +27,9 @@ function EntryCreate({ setEntryRender, currentDate}) {
     // const newStrengths = (e) => setStrengths(e.target.value)
 
 
-    useEffect(() => {
-        dispatch(allJournalEntries(id))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(allJournalEntries(id))
+    // }, [dispatch])
 
     const entry = async(e) => {
         e.preventDefault()

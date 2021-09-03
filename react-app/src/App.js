@@ -38,7 +38,7 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
         </ProtectedRoute>
-        <ProtectedRoute path='/journals/:id/entries'>
+        <ProtectedRoute path='/journals/:id/entries' exact={true}>
           <EntriesPage />
         </ProtectedRoute>
       </Switch>
