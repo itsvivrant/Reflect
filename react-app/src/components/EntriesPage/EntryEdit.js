@@ -4,10 +4,12 @@ import { getOneEntry, editEntry, deleteSingleEntry} from '../../store/entry';
 import {useParams, useHistory} from 'react-router-dom'
 import {allJournalEntries} from '../../store/journal'
 
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
 
 import './EntriesPage.css'
 
-function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
+function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate, setUpdateRender}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -19,24 +21,25 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
     const [content, setContent] = useState(entry?.content.replace(/<[^>]*>/g, '') ||'')
     const [strengths, setStrengths] = useState(entry?.strengths ||'')
     const [deleteEntry, setDeleteEntry] = useState(false)
+    const [updatedEntry, setUpdatedEntry] = useState('')
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
-    const updatedContent = (e) =>setContent(e.target.value)
-    // const updatedContent = (value) => {
-    //     setContent(value)
-    // }
-    const updatedStrengths = (e) => setStrengths(e.target.value)
+    const updatedContent = (value) => {setContent(value)}
+
+    // const updatedStrengths = (e) => setStrengths(e.target.value)
 
     useEffect(() => {
         dispatch(allJournalEntries(id))
         dispatch(getOneEntry(editEntryId))
-    }, [dispatch, id, editEntryId, deleteEntry])
+    }, [dispatch, id, editEntryId, deleteEntry, updatedEntry])
 
 
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, id, ))
+        setUpdateRender(true)
+        setUpdatedEntry(entry?.content)
     }
 
     const handleDeleteEntry = async(e) => {
@@ -59,32 +62,53 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender, currentDate}) {
 
     return (
         <div className="text-editor-container">
-            <div className='text-editor'>
+
                 <div className='form-edit-container'>
-                    <form onSubmit={handleUpdateEntry}>
-                        <div className='content-title'>
-                            <i className="far fa-calendar-alt">
-                                <h4>{currentDate}</h4>
-                            </i>
-                            <label>Title</label>
-                            <input type='text' onChange={updatedTitle} value={entry?.title}></input>
+                    <div className='content-title'>
+                        {/* <p>{title} </p> */}
+                        <form onSubmit={handleUpdateEntry}>
+                            <input className='content-title-input' placeholder="edit" type='text' onChange={updatedTitle} value={entry?.title}></input>
+                        </form>
+                        <div>
+                            <form onSubmit={handleUpdateEntry}>
+                                <button className='submit-entry-bttn' type='submit'>Save</button>
+                            </form>
                         </div>
                         <div>
-                            <input type='text' onChange={updatedContent} value={entry?.content.replace(/<[^>]*>/g, '')}></input>
-
+                            <button className='submit-entry-bttn' onClick={cancel}>Cancel</button>
                         </div>
-                    </form>
-                </div>
-                <form onSubmit={handleUpdateEntry}>
-                    <button className='submit-entry-bttn' type='submit'>Submit</button>
-                </form>
-                <button className='submit-entry-bttn' onClick={cancel}>Cancel</button>
-                <button className='submit-entry-bttn' onClick={handleDeleteEntry}>Delete</button>
-            </div>
-            <div>
+                    </div>
+                    <div className='content-date'>
+                        <div>
+                            <i className="far fa-calendar">
+                                <h5>{currentDate}</h5>
+                            </i>
+                        </div>
+                        <div>
+                            <i className="far fa-trash-alt" onClick={handleDeleteEntry}></i>
+                        </div>
+
+                    </div>
+
+                    <div className='editor-content'>
+                        {/* <form onSubmit={entry}>
+                            <input type='text' onChange={newContent} value={content}></input>
+                        </form> */}
+                        <ReactQuill
+                            className="editor"
+                            name="content"
+                            type="text"
+                            value={content}
+                            onChange={updatedContent}
+                        />
+                    </div>
+
+
                 </div>
 
         </div>
+
+
 
     )
 }
