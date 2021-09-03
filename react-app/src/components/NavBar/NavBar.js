@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink, Link} from 'react-router-dom';
 import {useSelector} from 'react-redux'
 import LogoutButton from '../auth/LogoutButton';
-import logo from '../NavBar/reflect-logo.png'
+import logoOne from '../NavBar/logo/logo-1.png'
+import logoTwo from '../NavBar/logo/logo-2.png'
 
 import './NavBar.css'
 
@@ -15,7 +16,7 @@ const NavBar = () => {
     <nav className='nav-bar-container'>
       <div className='nav-logo'>
           <Link to='/'>
-            <img className="logo" src={logo} alt=''/>
+            <img className="logo" src={logoOne} alt=''/>
           </Link>
       </div>
       <div className='nav-login-signup-container'>
@@ -37,6 +38,11 @@ const NavBar = () => {
         <Link to='/'>
           <i className="fas fa-bars"></i>
         </Link>
+      </div>
+      <div className='nav-logo'>
+          <Link to='/'>
+            <img className="logo" src={logoTwo} alt=''/>
+          </Link>
       </div>
       <div className='user-logout-container'>
         <div className='user-icon'>
