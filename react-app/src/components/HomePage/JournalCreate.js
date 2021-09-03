@@ -43,6 +43,7 @@ function JournalCreate() {
     const history = useHistory();
     const [title, setTitle] = useState('');
     const [coverUrl, setCoverUrl] = useState('')
+    const [selectCoverRender, setSelectCoverRender] = useState(false)
     const [journalRender, setJournalRender] = useState(false)
     const [showModal, setShowModal] = useState(false);
 
@@ -51,7 +52,7 @@ function JournalCreate() {
 
     useEffect(() => {
         dispatch(allJournals())
-    },[dispatch, sessionUser.id, journalRender])
+    },[dispatch, sessionUser.id, journalRender, coverUrl])
 
 
     const journal = async(e) => {
@@ -62,10 +63,12 @@ function JournalCreate() {
         setShowModal(false)
         setJournalRender(true)
         history.push('/')
+
     }
 
     const handleSelectCover = async(e) => {
         setCoverUrl(e.target.src)
+
     }
 
 
