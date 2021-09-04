@@ -14,7 +14,7 @@ def get_journals():
 @journal_routes.route('/<int:id>/entries', methods=["GET"])
 def get_single_journal_with_entries(id):
     journal = Journal.query.get(id)
-    entries = Entry.query.filter(Entry.journal_id==id).order_by(Entry.updated_at.desc())
+    entries = Entry.query.filter(Entry.journal_id==id).order_by(Entry.updated_at.desc()).all()
 
     return {
       "journal": journal.to_dict(),

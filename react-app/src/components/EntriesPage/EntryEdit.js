@@ -102,7 +102,7 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender,  currentDate}) {
                             name="content"
                             type="text"
                             placeholder={entry?.content}
-                            value={content}
+                            value={content || ''}
                             onChange={updatedContent}
                         />
                     </div>

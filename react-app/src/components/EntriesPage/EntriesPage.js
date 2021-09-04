@@ -34,7 +34,6 @@ function EntriesPage() {
 
     const currentDate = moment().format("dddd, MM/DD/YYYY");
 
-    const [updateEntryId, setUpdateEntryId] = useState('')
 
     useEffect(() => {
         dispatch(allJournalEntries(id))
@@ -80,7 +79,7 @@ function EntriesPage() {
                                 <div className='entry-content-content'>
                                     <p>{entry?.content.length < 50? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,30).replace(/<[^>]*>/g, '')}...`}</p>
                                 </div>
-                                <div className='entry-content-created'> <p>{entry.created_at}</p></div>
+                                <div className='entry-content-created'> <p>{entry.created_at.toString().split(" ").splice(1,3).join(" ")}</p></div>
                             </div>
                         </div>
                     ))}
