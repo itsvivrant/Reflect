@@ -86,7 +86,7 @@ function JournalEdit({journal, setRenderUpdate}) {
                             <div className='edit-img'>
                                 <img src={coverUrl} />
                                 <div className='cover-url-input'>
-                                    <p>CoverUrl: </p>
+                                    <p>Cover Link: </p>
                                     <form className='journal-form-box'onSubmit={handleSubmit} >
                                         <input className='cover-url-input' type='text' placeholder='coverUrl' value={coverUrl} onChange={updatedCoverUrl}></input>
                                     </form>
