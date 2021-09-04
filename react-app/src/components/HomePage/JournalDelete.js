@@ -5,19 +5,19 @@ import {allJournals, deleteSingleJournal } from '../../store/journal';
 
 import './Home.css'
 
-function JournalDelete({journal}) {
+function JournalDelete({journal, setRenderDelete}) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [deleteRender, setDeleteRender] = useState(false)
+    // const [deleteRender, setDeleteRender] = useState(false)
 
     useEffect(() => {
         dispatch(allJournals())
-    }, [dispatch, deleteRender, journal.id])
+    }, [dispatch, journal.id])
 
     const handleDelete = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleJournal(journal.id))
-        setDeleteRender(true)
+        setRenderDelete(true)
         history.push(`/`)
     }
 

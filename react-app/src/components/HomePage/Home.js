@@ -13,13 +13,15 @@ function HomePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user)
     const journals = useSelector((state) => state.journal);
-    const [renderUpdate, setRenderUpdate] = useState(false)
+    const [renderUpdate, setRenderUpdate] = useState(false);
+    const [renderDelete, setRenderDelete] = useState(false)
 
 
     useEffect(() => {
         dispatch(allJournals())
         setRenderUpdate(false)
-    }, [dispatch, renderUpdate])
+        setRenderDelete(false)
+    }, [dispatch, renderUpdate, renderDelete])
 
 
 
@@ -59,7 +61,7 @@ function HomePage() {
                                         <JournalEdit journal={journal} setRenderUpdate={setRenderUpdate}/>
                                     </div>
                                     <div className='journal-trash-icon'>
-                                        <JournalDelete journal={journal}/>
+                                        <JournalDelete journal={journal} setRenderDelete={setRenderDelete}/>
                                     </div>
                                 </div>
 
