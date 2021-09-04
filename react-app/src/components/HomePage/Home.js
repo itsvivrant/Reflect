@@ -14,7 +14,8 @@ function HomePage() {
     const sessionUser = useSelector((state) => state.session.user)
     const journals = useSelector((state) => state.journal);
     const [renderUpdate, setRenderUpdate] = useState(false);
-    const [renderDelete, setRenderDelete] = useState(false)
+    const [renderDelete, setRenderDelete] = useState(false);
+
 
 
     useEffect(() => {
@@ -36,11 +37,6 @@ function HomePage() {
                     <div className='journal-nav-icons'>
                         <div className='add-journal'>
                             <JournalCreate />
-                        </div>
-                        <div className='date-modified'>
-                            <i className="far fa-calendar-alt">
-                                <p>Sort </p>
-                            </i>
                         </div>
                     </div>
 
