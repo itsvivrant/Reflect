@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux'
-import { editJournal} from '../../store/journal';
+import {useDispatch, useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+import { editJournal} from '../../store/journal'
+import {oneJournal} from '../../store/singleJournal';
 import {Modal} from '../../context/Modal'
+
 
 import './Home.css'
 
@@ -36,19 +39,27 @@ const selectCovers = [
 '    https://images.unsplash.com/photo-1525124568695-c4c6cd3a8842?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTc5fHxoZCUyMHBhdHRlcm4lMjBud2FsbHBhcGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
 ]
 
-function JournalEdit({journal, setRenderUpdate}) {
+function JournalEdit({journal,journalId, setRenderPage, renderPage}) {
     const dispatch = useDispatch();
-    const [title, setTitle] = useState(journal.title || 'Untitled');
-    const [updatedAt, setUpdatedAt] = useState(journal.updated_at || journal.created_at)
-    const [createdAt, setCreatedAt] = useState(journal.created_at)
-    const [coverUrl, setCoverUrl] = useState(journal.coverUrl || '')
+    const singleJournal = useSelector(state=> state.singleJournal)
+    const [title, setTitle] = useState(singleJournal?.title || 'Untitled');
+    const [updatedAt, setUpdatedAt] = useState(singleJournal?.updated_at || "No edits made")
+    const [createdAt, setCreatedAt] = useState(singleJournal?.created_at)
+    const [coverUrl, setCoverUrl] = useState(singleJournal?.coverUrl || '')
     const [showModal, setShowModal] = useState(false);
     const [updateTitleDiv, setUpdateTitleDiv] = useState('')
+    // const [updateRender, setUpdateRender] = useState(false)
 
-    useEffect(() => {
+
+
+    useEffect(async () => {
         setUpdateTitleDiv(false)
-        setRenderUpdate(false)
-    }, [])
+       await dispatch(oneJournal(journalId))
+       await setTitle(singleJournal?.title || 'Untitled');
+       await setCoverUrl(singleJournal?.coverUrl);
+       await setCreatedAt(singleJournal?.created_at);
+       await setUpdatedAt(singleJournal?.updated_at || "No edits made")
+    }, [ dispatch, journalId, singleJournal.id])
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
@@ -56,9 +67,10 @@ function JournalEdit({journal, setRenderUpdate}) {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        await dispatch(editJournal(title, coverUrl, journal.id))
+        await dispatch(editJournal(title, coverUrl, singleJournal?.id))
         setShowModal(false)
-        setRenderUpdate(true)
+        renderPage? setRenderPage(false): setRenderPage(true)
+        // setRenderPage(true)
 
     }
 
@@ -75,7 +87,9 @@ function JournalEdit({journal, setRenderUpdate}) {
 
     return (
         <>
+
         <i className="fas fa-info-circle" onClick={() => setShowModal(true)}></i>
+
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <div className="journal-form-container">

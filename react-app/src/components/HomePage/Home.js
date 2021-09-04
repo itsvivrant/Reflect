@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { Link} from 'react-router-dom';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { allJournals} from '../../store/journal';
 import SplashPage from './SplashPage/SplashPage'
 import JournalCreate from './JournalCreate'
@@ -13,15 +14,16 @@ function HomePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user)
     const journals = useSelector((state) => state.journal);
-    const [renderUpdate, setRenderUpdate] = useState(false);
-    const [renderDelete, setRenderDelete] = useState(false)
+    const [renderPage, setRenderPage] = useState(false);
+    const [journalId, setJournalId] = useState('')
 
 
+console.log('this is it', journalId)
     useEffect(() => {
         dispatch(allJournals())
-        setRenderUpdate(false)
-        setRenderDelete(false)
-    }, [dispatch, renderUpdate, renderDelete])
+
+
+    }, [dispatch, renderPage])
 
 
 
@@ -35,7 +37,7 @@ function HomePage() {
                     </div>
                     <div className='journal-nav-icons'>
                         <div className='add-journal'>
-                            <JournalCreate />
+                            <JournalCreate setRenderPage={setRenderPage} renderPage={renderPage}/>
                         </div>
                     </div>
 
@@ -52,11 +54,11 @@ function HomePage() {
                             </Link>
                             <div className='journal-icons-container'>
                                 <div className='journal-icons'>
-                                    <div className='journal-form-icon'>
-                                        <JournalEdit journal={journal} setRenderUpdate={setRenderUpdate}/>
+                                    <div className='journal-form-icon' onClick={()=> setJournalId(journal.id)} >
+                                        <JournalEdit journal={journal} journalId={journalId} setRenderPage={setRenderPage} renderPage={renderPage}/>
                                     </div>
                                     <div className='journal-trash-icon'>
-                                        <JournalDelete journal={journal} setRenderDelete={setRenderDelete}/>
+                                        <JournalDelete journal={journal}  setRenderPage={setRenderPage} renderPage={renderPage}/>
                                     </div>
                                 </div>
 

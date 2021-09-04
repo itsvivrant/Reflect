@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import journal from './journal'
 import entry from './entry'
+import singleJournal from './singleJournal'
 
 const rootReducer = combineReducers({
   session,
   journal,
-  entry
+  entry,
+  singleJournal
 });
 
 

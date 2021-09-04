@@ -5,7 +5,7 @@ import {allJournals, deleteSingleJournal } from '../../store/journal';
 
 import './Home.css'
 
-function JournalDelete({journal, setRenderDelete}) {
+function JournalDelete({journal, setRenderPage, renderPage}) {
     const dispatch = useDispatch();
     const history = useHistory();
     // const [deleteRender, setDeleteRender] = useState(false)
@@ -17,8 +17,8 @@ function JournalDelete({journal, setRenderDelete}) {
     const handleDelete = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleJournal(journal.id))
-        setRenderDelete(true)
-        history.push(`/`)
+        // setRenderDelete(true)
+        setRenderPage(true)
     }
 
     return (
