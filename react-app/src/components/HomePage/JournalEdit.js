@@ -38,12 +38,16 @@ const selectCovers = [
 
 function JournalEdit({journal, setRenderUpdate}) {
     const dispatch = useDispatch();
-    const [title, setTitle] = useState(journal.title || '');
+    const [title, setTitle] = useState(journal.title || 'Untitled');
     const [updatedAt, setUpdatedAt] = useState(journal.updated_at || journal.created_at)
     const [createdAt, setCreatedAt] = useState(journal.created_at)
     const [coverUrl, setCoverUrl] = useState(journal.coverUrl || '')
     const [showModal, setShowModal] = useState(false);
-    const [titleInput, setTitleInput] = useState(false)
+    const [updateTitleDiv, setUpdateTitleDiv] = useState('')
+
+    useEffect(() => {
+        setUpdateTitleDiv(false)
+    }, [])
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
@@ -54,13 +58,15 @@ function JournalEdit({journal, setRenderUpdate}) {
         await dispatch(editJournal(title, coverUrl, journal.id))
         setShowModal(false)
         setRenderUpdate(true)
-        setTitleInput(false)
+
     }
 
-    const updateJournalTitle = async() => {
-        setTitleInput(true)
-        setTitle('')
+    const updateATitle = (e) => {
+        setUpdateTitleDiv(true)
+
     }
+
+
 
     const handleSelectCover = async(e) => {
         setCoverUrl(e.target.src)
@@ -90,20 +96,19 @@ function JournalEdit({journal, setRenderUpdate}) {
                             <div className='edit-info'>
                                 <div className='edit-title'>
                                     <p>{title}</p>
-                                    <i onClick={updateJournalTitle} className="far fa-edit"></i>
+                                    <i onClick={updateATitle} className="far fa-edit"></i>
                                 </div>
-                                {updateJournalTitle ?
-                                        <div>
-                                            <form className='journal-form-box'onSubmit={handleSubmit} >
-                                                <input className='journal-edit-input' type='text' placeholder='title' value={title} onChange={updatedTitle}></input>
-                                            </form>
-                                        </div>
-                                    : "" }
+
+                                {updateTitleDiv ?
+                                    <div >
+                                        <form className='journal-form-box'onSubmit={handleSubmit} >
+                                            <input className='journal-edit-input' type='text' placeholder='title' value={title} onChange={updatedTitle}></input>
+                                        </form>
+                                    </div>
+                                : ''  }
                                 <p>Created : {createdAt}</p>
                                 <p>Updated : {updatedAt}</p>
                                 <form className='journal-form-box'onSubmit={handleSubmit} >
-                                    {/* <input type='text' placeholder='title' value={title} onChange={updatedTitle}></input> */}
-                                    {/* <input type='text' placeholder='coverUrl' value={coverUrl} onChange={updatedCoverUrl}></input> */}
                                     <button className='update-bttn' type='submit' >Submit</button>
                                 </form>
                             </div>
@@ -112,9 +117,9 @@ function JournalEdit({journal, setRenderUpdate}) {
 
                     </div>
                     <div className='cover-selection'>
-                        {selectCovers.map(cover => (
+                        {selectCovers.map((cover, idx) => (
                             <>
-                            <div className='cover-selection-gallery'>
+                            <div key={idx} className='cover-selection-gallery'>
                                 <img onClick={handleSelectCover} src={cover} alt=''/>
                             </div>
                             </>
