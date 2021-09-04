@@ -7,7 +7,7 @@ journal_routes = Blueprint('journals', __name__)
 
 @journal_routes.route('/', methods=["GET"])
 def get_journals():
-    journals = Journal.query.filter(Journal.user_id == current_user.id).all()
+    journals = Journal.query.filter(Journal.user_id == current_user.id).order_by(Journal.created_at.desc()).all()
     return {'journals': [journal.to_dict() for journal in journals]}
 
 
