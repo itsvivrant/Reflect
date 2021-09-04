@@ -41,13 +41,15 @@ function JournalEdit({journal, setRenderUpdate}) {
     const [title, setTitle] = useState(journal.title || 'Untitled');
     const [updatedAt, setUpdatedAt] = useState(journal.updated_at || journal.created_at)
     const [createdAt, setCreatedAt] = useState(journal.created_at)
+    const [updateJournal, setUpdateJournal] = useState(false)
     const [coverUrl, setCoverUrl] = useState(journal.coverUrl || '')
     const [showModal, setShowModal] = useState(false);
     const [updateTitleDiv, setUpdateTitleDiv] = useState('')
 
     useEffect(() => {
         setUpdateTitleDiv(false)
-    }, [])
+        setRenderUpdate(false)
+    }, [updateJournal])
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
@@ -58,6 +60,7 @@ function JournalEdit({journal, setRenderUpdate}) {
         await dispatch(editJournal(title, coverUrl, journal.id))
         setShowModal(false)
         setRenderUpdate(true)
+        setUpdateJournal(true)
 
     }
 

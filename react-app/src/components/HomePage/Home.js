@@ -37,11 +37,6 @@ function HomePage() {
                         <div className='add-journal'>
                             <JournalCreate />
                         </div>
-                        <div className='date-modified'>
-                            <i className="far fa-calendar-alt">
-                                <p>Sort </p>
-                            </i>
-                        </div>
                     </div>
 
 

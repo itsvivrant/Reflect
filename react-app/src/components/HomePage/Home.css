@@ -27,28 +27,7 @@
     align-items: center;
 }
 
-/* ******* SORT ICON******** */
-.far.fa-calendar-alt {
-    font-size: 20px;
-    color: black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 700;
-}
 
-.far.fa-calendar-alt p{
-    margin-left: 10px;
-    align-items: center;
-}
-
-.far.fa-calendar-alt:hover {
-    background-color: rgb(226, 220, 220);
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-}
 /* ******************* Journal Gallery *********************************** */
 .journal-container  {
     height: 100vh;
