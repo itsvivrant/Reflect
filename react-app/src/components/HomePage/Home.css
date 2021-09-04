@@ -314,9 +314,8 @@
 
 .cover-url-input p{
     display: flex;
-    justify-content: center;
-    margin: 2px;
-    padding: 9px;
+    align-items: center;
+    margin: 5px 0 5px 40px;
     font-weight: 600;
 }
 
