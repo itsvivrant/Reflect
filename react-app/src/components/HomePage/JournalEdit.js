@@ -48,7 +48,7 @@ function JournalEdit({journal,journalId, setRenderPage, renderPage}) {
     const [coverUrl, setCoverUrl] = useState(singleJournal?.coverUrl || '')
     const [showModal, setShowModal] = useState(false);
     const [updateTitleDiv, setUpdateTitleDiv] = useState('')
-    // const [updateRender, setUpdateRender] = useState(false)
+
 
 
 
@@ -70,7 +70,7 @@ function JournalEdit({journal,journalId, setRenderPage, renderPage}) {
         await dispatch(editJournal(title, coverUrl, singleJournal?.id))
         setShowModal(false)
         renderPage? setRenderPage(false): setRenderPage(true)
-        // setRenderPage(true)
+      
 
     }
 
