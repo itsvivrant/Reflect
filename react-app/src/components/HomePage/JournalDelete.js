@@ -8,16 +8,16 @@ import './Home.css'
 function JournalDelete({journal, setRenderPage, renderPage}) {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const [deleteRender, setDeleteRender] = useState(false)
+    const [deleteRender, setRenderDelete] = useState(false)
 
     useEffect(() => {
         dispatch(allJournals())
-    }, [dispatch, journal.id])
+    }, [dispatch, journal.id, deleteRender])
 
     const handleDelete = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleJournal(journal.id))
-        // setRenderDelete(true)
+        setRenderDelete(true)
         setRenderPage(true)
     }
 
