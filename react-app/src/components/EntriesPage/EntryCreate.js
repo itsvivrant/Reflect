@@ -10,7 +10,7 @@ import 'react-quill/dist/quill.snow.css';
 
 import './EntriesPage.css'
 
-function EntryCreate({ setEntryRender, currentDate}) {
+function EntryCreate({ setRenderPage, currentDate}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -24,12 +24,9 @@ function EntryCreate({ setEntryRender, currentDate}) {
     const newContent = (value) => {
         setContent(value)
     }
-    // const newStrengths = (e) => setStrengths(e.target.value)
 
 
-    // useEffect(() => {
-    //     dispatch(allJournalEntries(id))
-    // }, [dispatch])
+
 
     const entry = async(e) => {
         e.preventDefault()
@@ -37,7 +34,7 @@ function EntryCreate({ setEntryRender, currentDate}) {
         setTitle('')
         setContent('')
         setStrengths('')
-        setEntryRender(true)
+        setRenderPage(true)
     }
 
 

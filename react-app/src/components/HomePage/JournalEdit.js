@@ -39,7 +39,7 @@ const selectCovers = [
 '    https://images.unsplash.com/photo-1525124568695-c4c6cd3a8842?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTc5fHxoZCUyMHBhdHRlcm4lMjBud2FsbHBhcGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
 ]
 
-function JournalEdit({journal,journalId, setRenderPage, renderPage}) {
+function JournalEdit({journalId, setRenderPage, renderPage}) {
     const dispatch = useDispatch();
     const singleJournal = useSelector(state=> state.singleJournal)
     const [title, setTitle] = useState(singleJournal?.title || 'Untitled');
@@ -48,8 +48,6 @@ function JournalEdit({journal,journalId, setRenderPage, renderPage}) {
     const [coverUrl, setCoverUrl] = useState(singleJournal?.coverUrl || '')
     const [showModal, setShowModal] = useState(false);
     const [updateTitleDiv, setUpdateTitleDiv] = useState('')
-    // const [updateRender, setUpdateRender] = useState(false)
-
 
 
     useEffect(async () => {
@@ -70,7 +68,7 @@ function JournalEdit({journal,journalId, setRenderPage, renderPage}) {
         await dispatch(editJournal(title, coverUrl, singleJournal?.id))
         setShowModal(false)
         renderPage? setRenderPage(false): setRenderPage(true)
-        // setRenderPage(true)
+
 
     }
 
