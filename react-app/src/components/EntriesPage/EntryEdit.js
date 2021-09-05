@@ -9,7 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 
 import './EntriesPage.css'
 
-function EntryEdit({editEntryId, setShowForm, setDeleteRender,  currentDate}) {
+function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, currentDate}) {
     let {id} = useParams()
     id = Number(id)
     const dispatch = useDispatch();
@@ -21,35 +21,36 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender,  currentDate}) {
     const [content, setContent] = useState("")
     const [strengths, setStrengths] = useState("")
     const [deleteEntry, setDeleteEntry] = useState(false)
-    const [updatedEntry, setUpdatedEntry] = useState(false)
+
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
     const updatedContent = (value) => {setContent(value)}
     // const updatedStrengths = (e) => setStrengths(e.target.value)
 
-    useEffect(() => {
+    useEffect(async () => {
         dispatch(getOneEntry(editEntryId))
 
         setTitle(entry?.title)
         setContent(entry?.content.replace(/<[^>]*>/g, ''))
         setStrengths(entry?.strengths)
 
-    }, [dispatch, editEntryId, deleteEntry, updatedEntry, ])
+
+    }, [dispatch, entry?.id, editEntryId, deleteEntry ])
 
 
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, editEntryId))
-        setUpdatedEntry(true)
-        // history.push(`/journals/${id}/entries`)
+        setRenderPage(true)
+        renderPage? setRenderPage(false): setRenderPage(true)
     }
 
     const handleDeleteEntry = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleEntry(entry.id))
-        setDeleteRender(true)
         setDeleteEntry(true)
+        setRenderPage(true)
         setShowForm(false)
         history.push(`/journals/${id}/entries`)
 
@@ -94,15 +95,12 @@ function EntryEdit({editEntryId, setShowForm, setDeleteRender,  currentDate}) {
                     </div>
 
                     <div className='editor-content'>
-                        {/* <form onSubmit={entry}>
-                            <input type='text' onChange={newContent} value={content}></input>
-                        </form> */}
                         <ReactQuill
                             className="editor"
                             name="content"
                             type="text"
                             placeholder={entry?.content}
-                            value={content}
+                            value={content || ''}
                             onChange={updatedContent}
                         />
                     </div>

@@ -66,8 +66,8 @@ export default function reducer(state={}, action) {
             return newState
 
         case GET_ENTRY:
-            newState = {...action.entry}
-            return newState
+            return {...state,...action.entry}
+
 
         case UPDATE_ENTRY:
             newState[action.entry.id] = action.entry

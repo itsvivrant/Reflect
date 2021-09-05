@@ -5,7 +5,7 @@ import { allJournalEntries } from '../../store/journal';
 import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit'
 import moment from 'moment';
-import b2 from '../EntriesPage/background-img/b2.jpg'
+
 import b3 from '../EntriesPage/background-img/b3.jpg'
 import b4 from '../EntriesPage/background-img/b4.jpg'
 import b5 from '../EntriesPage/background-img/b5.jpg'
@@ -21,10 +21,10 @@ function EntriesPage() {
     let { id }  = useParams();
     id = Number(id)
     const dispatch = useDispatch()
-    // const entry = useSelector(state => state.entry.entry)
-    const [entryRender, setEntryRender] = useState(false)
+
+    const [renderPage, setRenderPage] = useState(false)
     const [editEntryId, setEditEntryId] = useState('')
-    const [deleteRender, setDeleteRender] = useState(false)
+
     const [selectedPicture, setSelectedPicture] = useState('')
     const [showForm, setShowForm] = useState(false)
     const allEntries = useSelector(state => state.journal.entries)
@@ -34,21 +34,18 @@ function EntriesPage() {
 
     const currentDate = moment().format("dddd, MM/DD/YYYY");
 
-    const [updateEntryId, setUpdateEntryId] = useState('')
+
 
     useEffect(() => {
         dispatch(allJournalEntries(id))
-        setEntryRender(false)
-        setDeleteRender(false)
+        setRenderPage(false)
 
 
-        const pictureArray =[b2, b3, b4, b5,b6, b9, b10]
+        const pictureArray =[b3, b4, b5,b6, b9, b10]
         const randomIndex =  Math.floor(Math.random() * pictureArray.length);
         setSelectedPicture(pictureArray[randomIndex])
 
-
-
-    }, [dispatch, id, entryRender, deleteRender, journalName])
+    }, [dispatch, id, renderPage , journalName])
 
     return(
         <div className='entry-home-container'>
@@ -88,12 +85,12 @@ function EntriesPage() {
                 </div>
             </div>
             <div className='entry-right-container' style={{backgroundImage: `url(${selectedPicture})`}}>
-                {showForm ?
-                    <EntryEdit currentDate={currentDate}  setDeleteRender={setDeleteRender} editEntryId={editEntryId} setShowForm={setShowForm}/>
+                {showForm && editEntryId ?
+                    <EntryEdit currentDate={currentDate} setRenderPage={setRenderPage} renderPage={renderPage} editEntryId={editEntryId} setShowForm={setShowForm}/>
 
                 :
                 <>
-                    <EntryCreate currentDate={currentDate} setEntryRender={setEntryRender} setShowForm={setShowForm}/>
+                    <EntryCreate currentDate={currentDate} setRenderPage={setRenderPage} setShowForm={setShowForm}/>
                 </>
                 }
 
