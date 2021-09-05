@@ -41,10 +41,11 @@ const selectCovers = [
 
 function JournalEdit({journalId, setRenderPage, renderPage}) {
     const dispatch = useDispatch();
+    const history = useHistory();
     const singleJournal = useSelector(state=> state.singleJournal)
     const [title, setTitle] = useState(singleJournal?.title || 'Untitled');
-    const [updatedAt, setUpdatedAt] = useState(singleJournal?.updated_at || "No edits made")
-    const [createdAt, setCreatedAt] = useState(singleJournal?.created_at)
+    const [updatedAt, setUpdatedAt] = useState(singleJournal?.updated_at?.slice(0,17) || "No edits made")
+    const [createdAt, setCreatedAt] = useState(singleJournal?.created_at?.slice(0,17) )
     const [coverUrl, setCoverUrl] = useState(singleJournal?.coverUrl || '')
     const [showModal, setShowModal] = useState(false);
     const [updateTitleDiv, setUpdateTitleDiv] = useState('')
@@ -55,8 +56,8 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
        await dispatch(oneJournal(journalId))
        await setTitle(singleJournal?.title || 'Untitled');
        await setCoverUrl(singleJournal?.coverUrl);
-       await setCreatedAt(singleJournal?.created_at);
-       await setUpdatedAt(singleJournal?.updated_at || "No edits made")
+       await setCreatedAt(singleJournal?.created_at?.slice(0,17))
+       await setUpdatedAt(singleJournal?.updated_at?.slice(0,17) || "No edits made")
     }, [ dispatch, journalId, singleJournal.id])
 
 
@@ -66,10 +67,19 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
     const handleSubmit = async(e) => {
         e.preventDefault()
         await dispatch(editJournal(title, coverUrl, singleJournal?.id))
+        await setUpdateTitleDiv(false)
         setShowModal(false)
         renderPage? setRenderPage(false): setRenderPage(true)
+    }
 
-
+    const cancel = async(e) => {
+        e.preventDefault()
+        await setCoverUrl(singleJournal?.coverUrl)
+        await setTitle(singleJournal?.title)
+        await setUpdateTitleDiv(false)
+        setShowModal(false)
+        setRenderPage(true)
+        history.push('/')
     }
 
     const updateATitle = async(e) => {
@@ -89,7 +99,7 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
         <i className="fas fa-info-circle" onClick={() => setShowModal(true)}></i>
 
         {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
+            <Modal>
                 <div className="journal-form-container">
                     <div className='journal-info-container'>
                         <div className='edit-header'>
@@ -122,7 +132,8 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
                                 <p>Created : {createdAt}</p>
                                 <p>Updated : {updatedAt}</p>
                                 <form className='journal-form-box'onSubmit={handleSubmit} >
-                                    <button className='update-bttn' type='submit' >Submit</button>
+                                    <button className='submit-entry-bttn' type='submit' >Submit</button>
+                                    <button className='cancel-entry-bttn' onClick={cancel}>Cancel</button>
                                 </form>
                             </div>
 

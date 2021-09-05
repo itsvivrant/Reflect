@@ -99,7 +99,7 @@
 .journal-title p{
     font-size: 17px;
     font-weight: 600;
-    font-family: 'Lato';
+    font-family: 'Roboto', sans-serif;
     text-align: center!important;
     line-height: 1.5;
     margin-top: 40px;
@@ -203,13 +203,13 @@
 .create-title p{
     font-weight: 600;
     font-size: 20px;
-    font-family: "Lato";
+    font-family: 'Roboto', sans-serif;
 }
 
 .create-cover-url-input p{
     font-weight: 600;
     font-size: 20px;
-    font-family: "Lato";
+    font-family: 'Roboto', sans-serif;
 }
 
 .cover-url-input {
@@ -317,7 +317,7 @@
 .edit-title p{
     font-weight: 600;
     font-size: 26px;
-    font-family: "Lato";
+    font-family:'Roboto', sans-serif;
 }
 
 

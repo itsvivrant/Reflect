@@ -44,7 +44,7 @@ function JournalCreate({setRenderPage, renderPage}) {
     const [title, setTitle] = useState('');
     const [coverUrl, setCoverUrl] = useState('')
     const [showModal, setShowModal] = useState(false);
-    // const [createRender, setCreateRender] = useState(false) ,  createRender
+
 
     const newTitle = (e) => setTitle(e.target.value)
     const newCoverUrl = (e) => setCoverUrl(e.target.value)
@@ -61,7 +61,6 @@ function JournalCreate({setRenderPage, renderPage}) {
         setTitle('')
         setCoverUrl('')
         setShowModal(false)
-        // setCreateRender(true)
         setRenderPage(true)
         // renderPage? setRenderPage(false): setRenderPage(true)
 
@@ -69,6 +68,13 @@ function JournalCreate({setRenderPage, renderPage}) {
 
     const handleSelectCover = async(e) => {
         setCoverUrl(e.target.src)
+    }
+
+    const cancel = (e) => {
+        e.preventDefault()
+        setShowModal(false)
+        setRenderPage(true)
+        history.push('/')
     }
 
 
@@ -79,7 +85,7 @@ function JournalCreate({setRenderPage, renderPage}) {
             <p>Journal</p>
         </i>
         {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
+            <Modal>
                <div className="journal-form-container">
                     <div className='journal-info-container'>
                         <div className='edit-header'>
@@ -108,7 +114,8 @@ function JournalCreate({setRenderPage, renderPage}) {
                                 </div>
                                 <p></p>
                                 <form className='journal-form-box'onSubmit={journal} >
-                                    <button className='update-bttn' type='submit' >Submit</button>
+                                    <button className='submit-entry-bttn'type='submit' >Submit</button>
+                                    <button className='cancel-entry-bttn' onClick={cancel}>Cancel</button>
                                 </form>
                             </div>
 

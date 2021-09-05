@@ -32,7 +32,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
         dispatch(getOneEntry(editEntryId))
 
         setTitle(entry?.title)
-        setContent(entry?.content.replace(/<[^>]*>/g, ''))
+        setContent(entry?.content.replace(/<[^>]*>/g, '') || "Tell a story...")
         setStrengths(entry?.strengths)
 
 
@@ -69,7 +69,6 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
 
                 <div className='form-edit-container'>
                     <div className='content-title'>
-                        {/* <p>{title} </p> */}
                         <form onSubmit={handleUpdateEntry}>
                             <input className='content-title-input' placeholder="edit" type='text' onChange={updatedTitle} value={title}></input>
                         </form>
@@ -79,7 +78,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
                             </form>
                         </div>
                         <div>
-                            <button className='submit-entry-bttn' onClick={cancel}>Cancel</button>
+                            <button className='cancel-entry-bttn' onClick={cancel}>Cancel</button>
                         </div>
                     </div>
                     <div className='content-date'>
@@ -99,7 +98,6 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
                             className="editor"
                             name="content"
                             type="text"
-                            placeholder={entry?.content}
                             value={content || ''}
                             onChange={updatedContent}
                         />
