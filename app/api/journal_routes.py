@@ -11,7 +11,7 @@ def get_journals():
     return {'journals': [journal.to_dict() for journal in journals]}
 
 #single journal
-@journal_routes.route('/singleJournal/<int:id>', methods=["GET"])
+@journal_routes.route('/<int:id>', methods=["GET"])
 def get_one_journal(id):
     journal = Journal.query.filter(Journal.id == id).one()
     return journal.to_dict()
