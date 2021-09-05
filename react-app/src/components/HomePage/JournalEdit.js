@@ -67,6 +67,7 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
     const handleSubmit = async(e) => {
         e.preventDefault()
         await dispatch(editJournal(title, coverUrl, singleJournal?.id))
+        await setUpdateTitleDiv(false)
         setShowModal(false)
         renderPage? setRenderPage(false): setRenderPage(true)
     }
@@ -74,6 +75,8 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
     const cancel = async(e) => {
         e.preventDefault()
         await setCoverUrl(singleJournal?.coverUrl)
+        await setTitle(singleJournal?.title)
+        await setUpdateTitleDiv(false)
         setShowModal(false)
         setRenderPage(true)
         history.push('/')
