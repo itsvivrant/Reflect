@@ -1,9 +1,12 @@
+
 const GET_JOURNALS = 'journal/GET_JOURNALS';
 const GET_JOURNAL_ENTRIES = 'journal/GET_JOURNAL_ENTRIES';
 const CREATE_JOURNAL = 'journal/CREATE_JOURNAL';
 const CREATE_ENTRY = 'journal/CREATE_ENTRY';
 const UPDATE_JOURNAL = 'journal/UPDATE_JOURNAL';
 const DELETE_JOURNAL = 'journal/DELETE_JOURNAL';
+
+
 
 const getJournals = (journals) => ({
     type: GET_JOURNALS,
@@ -34,6 +37,8 @@ const deleteJournal = (journal) => ({
     type: DELETE_JOURNAL,
     journal
 })
+
+
 
 export const allJournals = () => async(dispatch) => {
     const response = await fetch('/api/journals/');
@@ -113,7 +118,7 @@ export default function reducer(state={}, action){
             return newState
             //another way:
             //newstate.journals
-
+    
         case GET_JOURNAL_ENTRIES:
             newState["journal"] = action.journals.journal;
             newState["entries"] = action.journals.entries;

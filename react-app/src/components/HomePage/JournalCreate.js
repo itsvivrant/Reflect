@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 import { createJournal, allJournals} from '../../store/journal';
 import {Modal} from '../../context/Modal'
 
@@ -37,22 +37,22 @@ const selectCovers = [
     '    https://images.unsplash.com/photo-1525124568695-c4c6cd3a8842?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTc5fHxoZCUyMHBhdHRlcm4lMjBud2FsbHBhcGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60'
     ]
 
-function JournalCreate() {
+function JournalCreate({setRenderPage, renderPage}) {
     const sessionUser = useSelector((state) => state.session.user)
     const dispatch = useDispatch();
-    const history = useHistory();
+    const history = useHistory()
     const [title, setTitle] = useState('');
     const [coverUrl, setCoverUrl] = useState('')
-    const [selectCoverRender, setSelectCoverRender] = useState(false)
-    const [journalRender, setJournalRender] = useState(false)
     const [showModal, setShowModal] = useState(false);
+    // const [createRender, setCreateRender] = useState(false) ,  createRender
 
     const newTitle = (e) => setTitle(e.target.value)
     const newCoverUrl = (e) => setCoverUrl(e.target.value)
 
     useEffect(() => {
         dispatch(allJournals())
-    },[dispatch, sessionUser.id, journalRender, coverUrl])
+
+    },[dispatch, sessionUser.id, coverUrl])
 
 
     const journal = async(e) => {
@@ -61,14 +61,14 @@ function JournalCreate() {
         setTitle('')
         setCoverUrl('')
         setShowModal(false)
-        setJournalRender(true)
-        history.push('/')
+        // setCreateRender(true)
+        setRenderPage(true)
+        // renderPage? setRenderPage(false): setRenderPage(true)
 
     }
 
     const handleSelectCover = async(e) => {
         setCoverUrl(e.target.src)
-
     }
 
 
@@ -90,9 +90,6 @@ function JournalCreate() {
                                 {coverUrl ?
                                     <img src={coverUrl} />
                                 : <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" />}
-
-
-
                             </div>
                             <div className='edit-info'>
                                 <div className='create-title'>
