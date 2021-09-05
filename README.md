@@ -1,6 +1,8 @@
 # Welcome to Reflect
 
-This is the starter for the Flask React project.
+Reflect is an app within the mental health space, inspired by a notable positive psychology course called The Science of Wellbeing with design inspired by Zoho notebooks and Penzu. With Reflect, the user engages in weekly rewirements designed to increase one's happiness and build more productive habits. 
+
+### Live Link: [*Reflect within yoursrelf*](https://reflect-in.herokuapp.com/)
 
 ## Technologies
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
@@ -12,6 +14,9 @@ This is the starter for the Flask React project.
 * <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" /></a>
 * <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
 * <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
+
+## Features
+
 
 ## Getting started
 
