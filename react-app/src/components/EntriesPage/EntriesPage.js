@@ -77,7 +77,7 @@ function EntriesPage() {
                                 <div className='entry-content-content'>
                                     <p>{entry?.content.length < 50? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,30).replace(/<[^>]*>/g, '')}...`}</p>
                                 </div>
-                                <div className='entry-content-created'> <p>{entry.created_at}</p></div>
+                                <div className='entry-content-created'> <p>{entry.created_at?.slice(0,17)}</p></div>
                             </div>
                         </div>
                     ))}

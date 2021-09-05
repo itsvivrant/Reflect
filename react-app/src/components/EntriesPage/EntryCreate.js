@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useParams} from 'react-router-dom';
-import { createEntry, allJournalEntries} from '../../store/journal';
+import { createEntry} from '../../store/journal';
 
 
 import ReactQuill from 'react-quill'
@@ -45,7 +45,7 @@ function EntryCreate({ setRenderPage, currentDate}) {
                     <div className='content-title'>
                         <p>Title: </p>
                         <form onSubmit={entry}>
-                            <input className='content-title-input' placeholder="........Your Title "type='text' onChange={newTitle} value={title}></input>
+                            <input className='content-title-input' placeholder="Your title. . ."type='text' onChange={newTitle} value={title}></input>
                         </form>
                         <div>
                             <form onSubmit={entry}>
@@ -60,14 +60,11 @@ function EntryCreate({ setRenderPage, currentDate}) {
                     </div>
 
                     <div className='editor-content'>
-                        {/* <form onSubmit={entry}>
-                            <input type='text' onChange={newContent} value={content}></input>
-                        </form> */}
                         <ReactQuill
                             className="editor"
                             name="content"
                             type="text"
-                            placeholder="Tell a story. . ."
+                            placeholder="Tell a story"
                             value={content}
                             onChange={newContent}
                         />

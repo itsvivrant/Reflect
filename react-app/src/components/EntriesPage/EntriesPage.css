@@ -60,7 +60,7 @@
 
 .book-icon-title p{
     font-weight: 500;
-    font-family: "Lato";
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: white;
@@ -71,7 +71,7 @@
 
 .book-icon-title h5{
     font-weight: 500;
-    font-family: "Lato";
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 600;
     color: white;
@@ -232,7 +232,48 @@
 .submit-entry-bttn {
     background-color: black;
     color: white;
-    width: 100px;
-    height: 40px;
-    border-radius: 7px;
+    width: 90px;
+    height: 37px;
+    border-radius: 45px;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    outline: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  transition: all 0.3s ease 0s;
+
+}
+
+.cancel-entry-bttn {
+    background-color: black;
+    color: white;
+    width: 90px;
+    height: 37px;
+    border-radius: 45px;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    outline: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  transition: all 0.3s ease 0s;
+}
+
+.submit-entry-bttn:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.cancel-entry-bttn:hover {
+    background-color: #e52e2e;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
 }
