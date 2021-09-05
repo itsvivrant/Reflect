@@ -21,11 +21,11 @@ function SplashPage() {
             <div className="div-one">
                 <div className='div-one-inner'>
                     <h2 >Sanctuary for Your Mind & Soul</h2>
-                    <div className="get-started">
+                    <div onClick={demoLogin} className="get-started">
                         <h3>Get Started</h3>
                         <i className="fas fa-chevron-right"></i>
                     </div>
-                    <div onClick={demoLogin} className='div-one-img'>
+                    <div className='div-one-img'>
                         <img src='https://i.imgur.com/LLSxi4q.png' />
                     </div>
 
