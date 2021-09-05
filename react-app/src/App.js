@@ -35,9 +35,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/' exact={true} >
           <HomePage />
-        </ProtectedRoute>
+        </Route>
         <ProtectedRoute path='/journals/:id/entries' exact={true}>
           <EntriesPage />
         </ProtectedRoute>
