@@ -1,0 +1,89 @@
+.div-one {
+    display: flex;
+    justify-content: center;
+    height: 580px;
+    width: 100%;
+    background-color:rgba(255, 255, 255, 0.929) ;
+    margin-top: 30px;
+}
+.div-one-inner h2{
+    margin-left: 150px;
+    letter-spacing: 1.2px;
+}
+
+.get-started {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 40px;
+    align-items: center;
+    width: 200px;
+    margin-left: 240px      ;
+    text-transform: uppercase;
+}
+.get-started:hover {
+    box-shadow: -2px 2px 4px 1px rgb(0 0 0 / 30%);
+}
+
+.get-started i{
+    margin-left: 20px;
+
+}
+
+.div-one-img {
+   margin: 0;
+   padding: 0;
+   height: 430px;
+   width: 700px
+}
+
+.div-one-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.div-two {
+    margin: 0;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1.2px;
+}
+
+.div-three {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.div-three-box {
+    display: grid;
+    grid-template-columns: 10fr 10fr;
+}
+
+.div-three-p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+
+}
+
+.div-three-p h4 {
+    margin-left: 80px;
+    line-height: 25px;
+    letter-spacing: 1.2px;
+}
+
+.div-three-img {
+    width: 500px;
+    height: 500px;
+    margin-left: 50px;
+}
+
+.div-three-img img {
+    width : 100%;
+    height: 100%;
+}

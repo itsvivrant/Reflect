@@ -99,7 +99,7 @@ function JournalCreate({setRenderPage, renderPage}) {
                             </div>
                             <div className='edit-info'>
                                 <div className='create-title'>
-                                    <p>Title</p>
+                                    <p>Title: </p>
                                 </div>
                                 <div className='journal-title-container'>
                                     <form className='journal-form-box'onSubmit={journal} >
