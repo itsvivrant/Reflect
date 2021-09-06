@@ -3,8 +3,9 @@ import {useSelector, useDispatch} from 'react-redux'
 import { Link} from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { allJournals} from '../../store/journal';
-import SplashPage from './SplashPage/SplashPage'
-import JournalCreate from './JournalCreate'
+import SplashPage from './SplashPage/SplashPage';
+import Footer from '../Footer/Footer';
+import JournalCreate from './JournalCreate';
 import JournalEdit from './JournalEdit';
 import JournalDelete from './JournalDelete';
 
