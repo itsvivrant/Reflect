@@ -2,7 +2,8 @@
     background-color: black ;
     height: 280px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+   align-items: center;
 }
 
 .top-content {
@@ -31,3 +32,26 @@ a:visited {
     text-decoration: none;
     color: white;
 }
+
+.bottom-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.reflect h4{
+    color: white;
+    padding: 5px;
+    border-bottom: 1px solid grey;
+    width: 100px;
+ }
+
+ .reflect p{
+     color: white
+ }
+
+ .journal-prompts h4{
+    color: white;
+    padding: 5px;
+    border-bottom: 1px solid grey;
+    width: 200px;
+ }
