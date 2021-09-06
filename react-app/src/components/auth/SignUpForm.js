@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import Footer from '../Footer/Footer'
 import './Auth.css'
 
 const SignUpForm = () => {
@@ -59,6 +60,7 @@ const SignUpForm = () => {
   }
 
   return (
+    <>
     <div className='signup-container'>
       <div className='signup-form-page'>
         <div className='signup-form' >
@@ -112,6 +114,8 @@ const SignUpForm = () => {
           </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

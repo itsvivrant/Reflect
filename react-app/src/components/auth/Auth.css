@@ -1,6 +1,7 @@
 .login-page-container {
     display: grid;
     grid-template-columns: 10fr 10fr;
+    height: 100vh;
 }
 
 .login-pic-container img{
@@ -75,7 +76,7 @@
     height: 80%;
     width: 35%;
     border-radius: 6px;
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 

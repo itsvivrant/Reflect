@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { getOneEntry, editEntry, deleteSingleEntry} from '../../store/entry';
 import {useParams, useHistory} from 'react-router-dom'
-import {allJournalEntries} from '../../store/journal'
 
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
@@ -32,7 +31,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
         dispatch(getOneEntry(editEntryId))
 
         setTitle(entry?.title)
-        setContent(entry?.content.replace(/<[^>]*>/g, '') || "Tell a story...")
+        setContent(entry?.content.replace(/<[^>]*>/g, '') || "Tell a story")
         setStrengths(entry?.strengths)
 
 
@@ -66,7 +65,6 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
     }
 
     return (
-        <div className="text-editor-container">
 
                 <div className='form-edit-container'>
                     <div className='content-title'>
@@ -107,7 +105,6 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
 
                 </div>
 
-        </div>
 
 
 
