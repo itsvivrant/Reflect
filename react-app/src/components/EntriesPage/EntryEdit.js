@@ -20,13 +20,13 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [strengths, setStrengths] = useState("")
+    const [editRender, setEditRender] = useState(false)
     const [deleteEntry, setDeleteEntry] = useState(false)
 
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
     const updatedContent = (value) => {setContent(value)}
-    // const updatedStrengths = (e) => setStrengths(e.target.value)
 
     useEffect(async () => {
         dispatch(getOneEntry(editEntryId))
@@ -36,13 +36,14 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
         setStrengths(entry?.strengths)
 
 
-    }, [dispatch, entry?.id, editEntryId, deleteEntry ])
+    }, [dispatch, entry?.id, editEntryId, deleteEntry, editRender])
 
 
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, editEntryId))
         setRenderPage(true)
+        setEditRender(true)
         renderPage? setRenderPage(false): setRenderPage(true)
     }
 

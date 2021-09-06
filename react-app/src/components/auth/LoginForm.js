@@ -54,7 +54,7 @@ const LoginForm = () => {
                 <input name='password' type='password' placeholder='Password' value={password} onChange={updatePassword} />
               </div>
               <div className='signup-redirect'>
-                <p>Don't have an account? <a href='/sign-up'>Sign up here</a></p>
+                <p>Don't have an account? <a className='signup-link' href='/sign-up'>Sign up here</a></p>
               </div>
             </form>
             <form onSubmit={onLogin}>

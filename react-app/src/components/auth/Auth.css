@@ -45,7 +45,7 @@
     margin-top: 20px;
 }
 
-.signup-redirect a {
+.signup-redirect .signup-link {
     text-decoration: none;
     color: black;
     font-weight: 700;
@@ -58,4 +58,49 @@
 
 .login-buttons {
     margin-top: 70px;
+}
+
+.signup-container {
+    background-image: url(https://i.imgur.com/6zCQPaa.jpg);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.signup-form-page {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    height: 80%;
+    width: 35%;
+    border-radius: 6px;
+    margin-top: 80px;
+}
+
+
+
+.signup-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.signup-inputs label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.signup-inputs input {
+    height: 35px;
+    border: 0.5px solid #e4e9ed;
+    border-radius: 5px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.signup-bttn {
+    margin-left: 160px;
 }
