@@ -19,12 +19,14 @@ function JournalDelete({journal, setRenderPage}) {
     const handleDelete = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleJournal(journal.id))
+        setShowModal(false)
         setRenderDelete(true)
         setRenderPage(true)
+
     }
 
     const deleteJournalModal = (
-        <div className='delete-modal'>
+
             <div className="delete-journal-box">
                 <h3>Your journal, {`"${journal.title}"`}, will be deleted. Do you want to continue?</h3>
                 <div className='delete-buttons'>
@@ -32,7 +34,7 @@ function JournalDelete({journal, setRenderPage}) {
                     <button className='confirm-delete'onClick={handleDelete} >Delete</button>
                 </div>
             </div>
-        </div>
+
     )
 
     return (
