@@ -60,13 +60,17 @@
     cursor: pointer;
     font-family: “Playfair Display”, “Didot”, "Times New Roman", Times, serif;
     font-size: 17px;
+    letter-spacing: 1.2px;
+    color: white;
+    background-color: black;
 }
 
 #login-nav, #signup-nav {
     text-decoration: none;
     margin: 25px;
     font-size: 17px;
-    cursor: pointer
+    cursor: pointer;
+    letter-spacing: 1.2px;
 }
 
 #login-nav:visited, #signup-nav:visited {

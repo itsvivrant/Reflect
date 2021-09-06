@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { NavLink, Link, Redirect, useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {login} from '../../../store/session'
+import Footer from '../../Footer/Footer';
 
 import "./SplashPage.css";
 
@@ -17,6 +18,7 @@ function SplashPage() {
     }
 
     return (
+        <>
         <div>
             <div className="div-one">
                 <div className='div-one-inner'>
@@ -54,6 +56,8 @@ function SplashPage() {
             </div>
 
         </div>
+        <Footer />
+        </>
     )
 }
 

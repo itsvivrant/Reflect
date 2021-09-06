@@ -1,0 +1,33 @@
+.footer-container {
+    background-color: black ;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+}
+
+.top-content {
+    margin: 30px 0 0 35px;;
+    border-bottom: 1px solid rgb(144, 144, 144);
+    height: 50px;
+    width: 80%;
+}
+
+.linkedin-github {
+    margin-left: 40%;
+}
+
+
+.fab.fa-github, .fab.fa-linkedin {
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    text-decoration: none;
+    color: white;
+}
