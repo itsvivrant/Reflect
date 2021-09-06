@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './Auth.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -58,49 +59,59 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
+    <div className='signup-container'>
+      <div className='signup-form-page'>
+        <div className='signup-form' >
+  `        <form onSubmit={onSignUp}>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
 
-      <div>
-        <label>First Name</label>
-        <input placeholder='First Name' type='text'name='first_name' onChange={updateFirst} value={first_name} ></input>
-      </div>
+            <div className='signup-inputs'>
+              <label>First Name</label>
+              <input placeholder='First Name' type='text'name='first_name' onChange={updateFirst} value={first_name} ></input>
+            </div>
 
-      <div>
-        <label>Last Name</label>
-        <input placeholder='Last Name' type='text' name='last_name' onChange={updateLast} value={last_name} ></input>
-      </div>
+            <div className='signup-inputs'>
+              <label>Last Name</label>
+              <input placeholder='Last Name' type='text' name='last_name' onChange={updateLast} value={last_name} ></input>
+            </div>
 
-      <div>
-        <label>User Name</label>
-        <input type='text' name='username' onChange={updateUsername} value={username}></input>
-      </div>
+            <div className='signup-inputs'>
+              <label>User Name</label>
+              <input type='text' name='username' onChange={updateUsername} value={username}></input>
+            </div>
 
-      <div>
-        <label>Email</label>
-        <input type='text' name='email' onChange={updateEmail} value={email}></input>
-      </div>
+            <div className='signup-inputs'>
+              <label>Email</label>
+              <input type='text' name='email' onChange={updateEmail} value={email}></input>
+            </div>
 
-      <div>
-        <input placeholder="Date of Birth" type='date' name='DOB' onChange={updateDob} value={date_of_birth}></input>
-      </div>
+            <div className='signup-inputs'>
+              <label>Date Of Birth</label>
+              <input placeholder="Date of Birth" type='date' name='DOB' onChange={updateDob} value={date_of_birth}></input>
+            </div>
 
-      <div>
-        <label>Password</label>
-        <input type='password' name='password' onChange={updatePassword} value={password}></input>
-      </div>
+            <div className='signup-inputs'>
+              <label>Password</label>
+              <input type='password' name='password' onChange={updatePassword} value={password}></input>
+            </div>
 
-      <div>
-        <label>Repeat Password</label>
-        <input type='password' name='repeat_password' onChange={updateRepeatPassword} value={repeatPassword} required={true} ></input>
-      </div>
+            <div className='signup-inputs'>
+              <label>Repeat Password</label>
+              <input type='password' name='repeat_password' onChange={updateRepeatPassword} value={repeatPassword} required={true} ></input>
+            </div>
 
-      <button type='submit'>Sign Up</button>
-    </form>
+          </form>`
+          <form onSubmit={onSignUp}>
+              <button type='submit' className='submit-entry-bttn signup-bttn'>Sign Up</button>
+            </form>
+
+          </div>
+      </div>
+    </div>
   );
 };
 
