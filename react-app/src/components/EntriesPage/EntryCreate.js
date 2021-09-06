@@ -39,7 +39,7 @@ function EntryCreate({ setRenderPage, currentDate}) {
 
 
     return (
-        <div className="text-editor-container">
+
 
                 <div className='form-edit-container'>
                     <div className='content-title'>
@@ -73,7 +73,7 @@ function EntryCreate({ setRenderPage, currentDate}) {
 
                 </div>
 
-        </div>
+    
 
     )
 }
