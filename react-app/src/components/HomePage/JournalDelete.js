@@ -6,22 +6,23 @@ import {Modal} from '../../context/Modal'
 
 import './Home.css'
 
-function JournalDelete({journal, setRenderPage}) {
+function JournalDelete({journal, setRenderPage, renderPage}) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [deleteRender, setRenderDelete] = useState(false)
     const [showModal, setShowModal] = useState('')
 
-    useEffect(() => {
-        dispatch(allJournals())
+    useEffect(async () => {
+        await dispatch(allJournals())
     }, [dispatch, journal.id, deleteRender])
 
     const handleDelete = async(e) => {
         e.preventDefault()
         await dispatch(deleteSingleJournal(journal.id))
-        setShowModal(false)
         setRenderDelete(true)
-        setRenderPage(true)
+        renderPage? setRenderPage(false): setRenderPage(true)
+        setShowModal(false)
+        history.push('/')
 
     }
 
