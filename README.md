@@ -1,4 +1,6 @@
-# Welcome to Reflect
+# Welcome to Reflect!
+
+![](https://i.imgur.com/F6nDmNn.png)
 
 Reflect is an app within the mental health space, inspired by a notable positive psychology course called The Science of Wellbeing with design inspired by Zoho notebooks and Penzu. With Reflect, the user engages in weekly rewirements designed to increase one's happiness and build more productive habits. 
 
@@ -16,6 +18,36 @@ Reflect is an app within the mental health space, inspired by a notable positive
 * <a href="https://www.heroku.com/home"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
 
 ## Features
+
+### User log in and sign up
+![](https://i.imgur.com/zpgALhj.png)
+![](https://i.imgur.com/op0NuY6.png)
+
+### View user journals and delete journals
+![](https://i.imgur.com/6c7ED6k.png)
+![](https://i.imgur.com/o37Pxz0.png)
+
+### Create a journal
+![](https://i.imgur.com/hTBAWf0.png)
+
+### Edit a journal
+![](https://i.imgur.com/pxNKFMH.png)
+
+### View journal entries and create an entry
+![](https://i.imgur.com/wpkRqoQ.png)
+![](https://i.imgur.com/wpkRqoQ.png)
+
+### Edit and delet
+![](https://i.imgur.com/hASLsco.png)
+
+# Challenges 
+At first, it was difficult for me to figure out how each modal and page affect the states of of one 
+another. However, I'ver realized how strong of a tool react hooks like useState and useEffect 
+can make the rendering of the page seamless. 
+
+# Stretch Goals 
+* Search bar
+* Favorites 
 
 
 ## Getting started
