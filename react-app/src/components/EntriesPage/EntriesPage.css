@@ -220,6 +220,7 @@
 .far.fa-trash-alt {
     font-size: 20px;
     color: grey;
+    cursor: pointer;
 }
 
 .far.fa-calendar {

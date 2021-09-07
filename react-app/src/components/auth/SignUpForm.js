@@ -64,6 +64,11 @@ const SignUpForm = () => {
     <div className='signup-container'>
       <div className='signup-form-page'>
         <div className='signup-form' >
+          <div className='signup-header'>
+            <h1>Join Reflect</h1>
+            <h3>Start Journaling Today</h3>
+          </div>
+
   `        <form onSubmit={onSignUp}>
             <div className='signup-inputs'>
               <label>First Name</label>

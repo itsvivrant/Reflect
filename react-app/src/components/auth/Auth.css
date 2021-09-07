@@ -83,23 +83,38 @@
 .signup-container {
     background-image: url(https://i.imgur.com/GCovHP3.jpg);
     background-size: cover;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
+    padding: 40px;
 }
 
 .signup-form-page {
     display: flex;
     justify-content: center;
     background-color: white;
-    height: 85%;
+    height: 100%;
     width: 35%;
     border-radius: 6px;
-    margin-top: 40px;
+    margin-top: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 30px;
 }
 
-
+.signup-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0
+}
+.signup-header h1, h3 {
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 5px
+}
 
 .signup-inputs {
     display: flex;

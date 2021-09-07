@@ -5,11 +5,9 @@
     height: 60px;
     background: rgb(255, 255, 255);
     position: sticky;
-    -webkit-position: sticky;
-    top: -16px;
+    top: -1px;
     color: white;
     text-align: center;
-    -webkit-backface-visibility: hidden;
 }
 
 .nav-bar-container::before, .nav-bar-container::after {
@@ -18,17 +16,17 @@
     position: sticky;
     -webkit-position: sticky;
 }
-.nav-bar-container::before {
+/* .nav-bar-container::before {
     top: 48px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
 }
 
 .nav-bar-container::after {
     background: linear-gradient(white 10%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.4) 70%, transparent);
-    top: 0;
+    top: 40px;
     z-index: 2;
 
-}
+} */
 
 
 .nav-logo {
@@ -88,7 +86,9 @@
     align-items: center;
 }
 
-.fas.fa-portrait, .fas.fa-bars {
-    font-size: 40px;
+.fas.fa-portrait, .fas.fa-bars , .fas.fa-sign-out-alt{
+    font-size: 34px;
     color: black;
+    margin: 10px;
+    cursor: pointer;
 }

@@ -63,15 +63,13 @@ function JournalCreate({setRenderPage, renderPage}) {
         if (data) {
             setErrors(data)
         }else{
-        showModal? setShowModal(false): setShowModal(true)
-        setTitle('')
-        setCoverUrl('')
-
-        renderPage? setRenderPage(false): setRenderPage(true)
+            showModal? setShowModal(false): setShowModal(true)
+            setTitle('')
+            setCoverUrl('')
+            renderPage? setRenderPage(false): setRenderPage(true)
         }
 
 
-        // createRender? setCreateRender(false):setCreateRender(true)
 
     }
 
