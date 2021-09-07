@@ -20,9 +20,7 @@ function HomePage() {
 
 
     useEffect( () => {
-        (async() => {
-        await dispatch(allJournals())
-        })();
+        dispatch(allJournals())
     }, [dispatch, renderPage])
 
 

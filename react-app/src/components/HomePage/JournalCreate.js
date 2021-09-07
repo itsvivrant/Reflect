@@ -65,10 +65,11 @@ function JournalCreate({setRenderPage, renderPage}) {
         } else {
             setTitle('')
             setCoverUrl('')
-            renderPage? setRenderPage(false): setRenderPage(true)
             setShowModal(false)
-            history.push('/')
+            renderPage? setRenderPage(false): setRenderPage(true)
+            setCreateRender(true)
         }
+
 
     }
 
