@@ -4,7 +4,7 @@
 
 Reflect is an app within the mental health space, inspired by a notable positive psychology course called The Science of Wellbeing with design inspired by Zoho notebooks and Penzu. With Reflect, the user engages in weekly rewirements designed to increase one's happiness and build more productive habits. 
 
-### Live Link: [*Reflect within yoursrelf*](https://reflect-in.herokuapp.com/)
+### Live Link: [*Reflect within yourself*](https://reflect-in.herokuapp.com/)
 
 ## Technologies
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
@@ -37,7 +37,7 @@ Reflect is an app within the mental health space, inspired by a notable positive
 ![](https://i.imgur.com/wpkRqoQ.png)
 ![](https://i.imgur.com/wpkRqoQ.png)
 
-### Edit and delet
+### Edit and delete
 ![](https://i.imgur.com/hASLsco.png)
 
 # Challenges 
