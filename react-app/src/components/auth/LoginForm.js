@@ -42,18 +42,28 @@ const LoginForm = () => {
         <div className='login-form-page'>
           <div className='login-form'>
             <form className='user-login-info' onSubmit={onLogin}>
-              <div lassName="login-validations-container">
+              {/* <div lassName="login-validations-container">
                 {errors.map((error, ind) => (
                   <div key={ind}>{error}</div>
                 ))}
-              </div>
+              </div> */}
               <div className='login-info-inputs'>
                 <label htmlFor='email'>Email</label>
-                <input name='email' type='text' placeholder='Email' value={email} onChange={updateEmail} />
+                <input name='email' type='text' placeholder='Email' value={email} onChange={updateEmail} required={true}/>
+                {errors.length > 0 &&
+                <p className='errors_message'>
+                  {errors[0].email}
+                </p>
+              }
               </div>
               <div className='login-info-inputs'>
                 <label htmlFor='password'>Password</label>
-                <input name='password' type='password' placeholder='Password' value={password} onChange={updatePassword} />
+                <input name='password' type='password' placeholder='Password' value={password} onChange={updatePassword} required={true}/>
+                {errors.length > 0 &&
+                <p className='errors_message'>
+                  {errors[0].password}
+                </p>
+              }
               </div>
               <div className='signup-redirect'>
                 <p>Don't have an account? <a className='signup-link' href='/sign-up'>Sign up here</a></p>
