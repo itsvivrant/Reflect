@@ -4,11 +4,9 @@
     justify-content: space-between;
     height: 60px;
     background: rgb(255, 255, 255);
-    height: 60px;  /* 64 + 16px */
     position: sticky;
     -webkit-position: sticky;
     top: -16px;
-    z-index: 1;
     color: white;
     text-align: center;
     -webkit-backface-visibility: hidden;
