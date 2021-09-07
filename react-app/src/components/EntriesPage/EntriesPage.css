@@ -151,6 +151,13 @@
 
 /* ********************* ENTRY CREATE ****************************** */
 
+.errors-div p {
+    font-size: 15px;
+    color: red;
+    margin: 0;
+    padding: 0;
+}
+
 .text-editor-container {
     display: flex;
     flex-direction: column;

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session
+from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
 from app.models import db, Journal, Entry
 from app.forms import JournalForm, EntryForm
@@ -16,20 +16,17 @@ def validation_errors_to_error_messages(validation_errors):
     return {'errors': [ error_obj ]}, 401
 
 @journal_routes.route('/', methods=["GET"])
-@login_required
 def get_journals():
     journals = Journal.query.filter(Journal.user_id == current_user.id).all()
     return {'journals': [journal.to_dict() for journal in journals]}
 
 #single journal
 @journal_routes.route('/<int:id>', methods=["GET"])
-@login_required
 def get_one_journal(id):
     journal = Journal.query.filter(Journal.id == id).one()
     return journal.to_dict()
 
 @journal_routes.route('/<int:id>/entries', methods=["GET"])
-@login_required
 def get_single_journal_with_entries(id):
     journal = Journal.query.get(id)
     entries = Entry.query.filter(Entry.journal_id==id)
@@ -42,9 +39,9 @@ def get_single_journal_with_entries(id):
 # {image.to_dict()['id']: image.to_dict() for image in images}
 
 @journal_routes.route('/new-journal', methods=['POST'])
-@login_required
 def new_journal():
     form = JournalForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         journal = Journal(
             title = form.data['title'],
@@ -58,9 +55,9 @@ def new_journal():
 
 
 @journal_routes.route('/<int:id>/entries/new', methods=['POST'])
-@login_required
 def new_entry(id):
     form = EntryForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         entry = Entry(
             title = form.data['title'],
@@ -77,10 +74,10 @@ def new_entry(id):
 
 
 @journal_routes.route('/edit/<int:id>', methods=['PUT'])
-@login_required
 def update_journal(id):
     journal = Journal.query.get(id)
     form = JournalForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         journal.title = form.data['title']
         journal.coverUrl = form.data['coverUrl']
@@ -92,7 +89,6 @@ def update_journal(id):
 
 
 @journal_routes.route('/delete/<int:id>', methods=["DELETE"])
-@login_required
 def delete_journal(id):
     journal = Journal.query.get(id)
     deleted_journal= journal
