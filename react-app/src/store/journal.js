@@ -68,7 +68,7 @@ export const createJournal = (title, coverUrl, user_id) => async(dispatch) => {
     if (response.ok) {
         const new_data = await response.json();
         dispatch(newJournal(new_data));
-        return new_data
+        return null
     }   else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -97,7 +97,7 @@ export const createEntry = (title, content, strengths, user_id, id) => async(dis
 
         const new_data = await response.json();
         dispatch(newEntry(new_data));
-        return new_data
+        return null
     }  else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -119,7 +119,7 @@ export const editJournal = (title, coverUrl, id, user_id) => async(dispatch) => 
 
         const update_data = await response.json();
         dispatch(updateJournal(update_data));
-        return update_data
+        return null
     }  else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {

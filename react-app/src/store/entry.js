@@ -46,7 +46,7 @@ export const editEntry = (title, content, strengths, user_id, id) => async(dispa
     if (response.ok) {
         const update_data = await response.json();
         dispatch(updateEntry(update_data));
-        return update_data
+        return null
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {

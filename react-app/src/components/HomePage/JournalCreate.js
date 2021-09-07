@@ -53,23 +53,25 @@ function JournalCreate({setRenderPage, renderPage}) {
     useEffect(() => {
         dispatch(allJournals())
 
-    },[dispatch, coverUrl, createRender])
+    },[dispatch, coverUrl, showModal])
 
 
     const journal = async(e) => {
         e.preventDefault()
-
+        // await dispatch(createJournal(title, coverUrl))
         const data = await dispatch(createJournal(title, coverUrl))
         if (data) {
             setErrors(data)
-        } else {
-            setTitle('')
-            setCoverUrl('')
-            setShowModal(false)
-            renderPage? setRenderPage(false): setRenderPage(true)
-            setCreateRender(true)
+        }else{
+        showModal? setShowModal(false): setShowModal(true)
+        setTitle('')
+        setCoverUrl('')
+
+        renderPage? setRenderPage(false): setRenderPage(true)
         }
 
+
+        // createRender? setCreateRender(false):setCreateRender(true)
 
     }
 
@@ -81,6 +83,8 @@ function JournalCreate({setRenderPage, renderPage}) {
         e.preventDefault()
         setShowModal(false)
         setRenderPage(true)
+        setTitle('')
+        setCoverUrl('')
         setErrors([])
         history.push('/')
     }
@@ -137,6 +141,7 @@ function JournalCreate({setRenderPage, renderPage}) {
                                     <button className='submit-entry-bttn'type='submit' >Submit</button>
                                     <button className='cancel-entry-bttn' onClick={cancel}>Cancel</button>
                                 </form>
+
                             </div>
 
                         </div>
