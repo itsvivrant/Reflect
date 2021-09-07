@@ -200,6 +200,14 @@
 
 }
 
+.journal-form-box p{
+    font-size: 10px;
+    color: red;
+    margin: 0;
+    padding: 0;
+
+}
+
 .journal-create {
     width: 200px;
     height: 10px;
@@ -210,7 +218,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 
@@ -220,7 +228,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.create-cover-url-input p{
+.cover-p{
     font-weight: 600;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;

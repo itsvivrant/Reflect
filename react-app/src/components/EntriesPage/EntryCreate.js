@@ -19,14 +19,12 @@ function EntryCreate({ setRenderPage, currentDate}) {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [strengths, setStrengths] = useState('');
+    const [errors, setErrors] = useState([])
 
     const newTitle = (e) => setTitle(e.target.value)
     const newContent = (value) => {
         setContent(value)
     }
-
-
-
 
     const entry = async(e) => {
         e.preventDefault()
@@ -73,7 +71,7 @@ function EntryCreate({ setRenderPage, currentDate}) {
 
                 </div>
 
-    
+
 
     )
 }

@@ -63,11 +63,20 @@ export const createJournal = (title, coverUrl, user_id) => async(dispatch) => {
             coverUrl,
             user_id
          }),
-    })
+    });
 
-    const new_data = await response.json();
-    dispatch(newJournal(new_data));
-    return new_data
+    if (response.ok) {
+        const new_data = await response.json();
+        dispatch(newJournal(new_data));
+        return new_data
+    }   else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 export const createEntry = (title, content, strengths, user_id, id) => async(dispatch) => {
@@ -84,9 +93,19 @@ export const createEntry = (title, content, strengths, user_id, id) => async(dis
         })
     })
 
-    const new_data = await response.json();
-    dispatch(newEntry(new_data));
-    return new_data
+    if (response.ok) {
+
+        const new_data = await response.json();
+        dispatch(newEntry(new_data));
+        return new_data
+    }  else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 export const editJournal = (title, coverUrl, id, user_id) => async(dispatch) => {
@@ -95,9 +114,20 @@ export const editJournal = (title, coverUrl, id, user_id) => async(dispatch) => 
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({title, coverUrl, user_id}),
     })
-    const update_data = await response.json();
-    dispatch(updateJournal(update_data));
-    return update_data
+
+    if (response.ok) {
+
+        const update_data = await response.json();
+        dispatch(updateJournal(update_data));
+        return update_data
+    }  else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 export const deleteSingleJournal = (id) => async(dispatch) => {
@@ -118,7 +148,7 @@ export default function reducer(state={}, action){
             return newState
             //another way:
             //newstate.journals
-    
+
         case GET_JOURNAL_ENTRIES:
             newState["journal"] = action.journals.journal;
             newState["entries"] = action.journals.entries;

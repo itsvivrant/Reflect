@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextField, BooleanField, IntegerField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Length, InputRequired
 
 class EntryForm(FlaskForm):
-    title = StringField('Title')
-    content = TextField('Entry', [DataRequired()])
-    strengths = StringField("Strengths")
-    user_id = IntegerField('user_id')
-    journal_id = IntegerField('journal_id')
+    title = StringField('Title', validators=[Length(min=3, max=20, message="Title must be more than 3 and greater than 20 characters.")])
+    content = TextField('Entry', validators=[InputRequired(message="Don't forget to write something!")])
+    strengths = StringField("Strengths", validators=[DataRequired(())])
+    user_id = IntegerField('user_id', validators=[DataRequired(())])
+    journal_id = IntegerField('journal_id', validators=[DataRequired(())])

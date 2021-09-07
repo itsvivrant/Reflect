@@ -41,10 +41,20 @@ export const editEntry = (title, content, strengths, user_id, id) => async(dispa
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({title, content, strengths, user_id})
-    })
-    const update_data = await response.json();
-    dispatch(updateEntry(update_data));
-    return update_data
+    });
+
+    if (response.ok) {
+        const update_data = await response.json();
+        dispatch(updateEntry(update_data));
+        return update_data
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+      }
 }
 
 export const deleteSingleEntry = (id) => async(dispatch) => {
