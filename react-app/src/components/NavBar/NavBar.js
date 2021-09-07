@@ -50,11 +50,11 @@ const NavBar = () => {
     </nav> :
 
     <nav className='nav-bar-container'>
-      <div className='nav-logo'>
+      {/* <div className='nav-logo'>
         <Link to='/'>
           <i className="fas fa-bars"></i>
         </Link>
-      </div>
+      </div> */}
       <div className='nav-logo'>
           <Link to='/'>
             <img className="logo" src={logoTwo} alt=''/>

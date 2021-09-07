@@ -61,10 +61,10 @@ function EntriesPage() {
                             <p>{allEntries?.length} Entries</p>
                         </div>
                 </div>
-                <div className='entries-length-search'>
+                {/* <div className='entries-length-search'>
                     <i className="fas fa-search"></i>
                     <input className='search-input' type='text' placeholder='Search entries...'></input>
-                </div>
+                </div> */}
                 <div className='entry-list-container'>
                     <div className='entry-list-box'>
                     {allEntries?.map(entry => (
@@ -72,10 +72,10 @@ function EntriesPage() {
                         <div onClick={() => (setShowForm(true))}>
                             <div onClick={() => (setEditEntryId(entry.id))} className='entry-content'  key={entry.id}>
                                 <div className='entry-content-title'>
-                                    <p>{entry?.title.length < 35 ? entry?.title : `${entry?.title.slice(0 , 30)}...`}</p>
+                                    <p>{entry?.title.length < 15 ? entry?.title : `${entry?.title.slice(0 , 15)}...`}</p>
                                 </div>
                                 <div className='entry-content-content'>
-                                    <p>{entry?.content.length < 35 ? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,30).replace(/<[^>]*>/g, '')}...`}</p>
+                                    <p>{entry?.content.length < 15 ? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,15).replace(/<[^>]*>/g, '')}...`}</p>
                                 </div>
                                 <div className='entry-content-created'> <p>{entry.created_at?.slice(0,17)}</p></div>
                             </div>
