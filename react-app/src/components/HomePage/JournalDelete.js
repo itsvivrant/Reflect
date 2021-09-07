@@ -12,8 +12,10 @@ function JournalDelete({journal, setRenderPage, renderPage}) {
     const [deleteRender, setRenderDelete] = useState(false)
     const [showModal, setShowModal] = useState('')
 
-    useEffect(async () => {
+    useEffect( () => {
+        (async() => {
         await dispatch(allJournals())
+        })();
     }, [dispatch, journal.id, deleteRender])
 
     const handleDelete = async(e) => {

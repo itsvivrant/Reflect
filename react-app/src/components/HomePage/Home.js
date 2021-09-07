@@ -19,8 +19,10 @@ function HomePage() {
     const [journalId, setJournalId] = useState('')
 
 
-    useEffect(async () => {
+    useEffect( () => {
+        (async() => {
         await dispatch(allJournals())
+        })();
     }, [dispatch, renderPage])
 
 

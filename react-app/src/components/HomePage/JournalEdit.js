@@ -51,14 +51,15 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
     const [updateTitleDiv, setUpdateTitleDiv] = useState('')
 
 
-    useEffect(async () => {
-        setUpdateTitleDiv(false)
-       await dispatch(oneJournal(journalId))
-       await setTitle(singleJournal?.title || 'Untitled');
-       await setCoverUrl(singleJournal?.coverUrl);
-       await setCreatedAt(singleJournal?.created_at?.slice(0,17))
-       await setUpdatedAt(singleJournal?.updated_at?.slice(0,17) || "No edits made")
-    }, [ dispatch, journalId, singleJournal.id])
+    useEffect(() => {
+        (async() => {
+            await dispatch(oneJournal(journalId))
+            await setTitle(singleJournal?.title || 'Untitled');
+            await setCoverUrl(singleJournal?.coverUrl);
+            await setCreatedAt(singleJournal?.created_at?.slice(0,17))
+            await setUpdatedAt(singleJournal?.updated_at?.slice(0,17) || "No edits made")
+        })(setUpdateTitleDiv(false));
+    }, [ dispatch, journalId, singleJournal.id, singleJournal?.coverUrl, singleJournal?.title ])
 
 
     const updatedTitle = (e) => setTitle(e.target.value)

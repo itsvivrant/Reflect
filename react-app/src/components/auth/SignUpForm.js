@@ -65,40 +65,50 @@ const SignUpForm = () => {
       <div className='signup-form-page'>
         <div className='signup-form' >
   `        <form onSubmit={onSignUp}>
-            <div>
+            {/* <div className='signup-validatiions'>
               {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
               ))}
-            </div>
+            </div> */}
 
             <div className='signup-inputs'>
               <label>First Name</label>
-              <input placeholder='First Name' type='text'name='first_name' onChange={updateFirst} value={first_name} ></input>
+              <input placeholder='First Name' type='text'name='first_name' onChange={updateFirst} value={first_name} required={true}  ></input>
             </div>
 
             <div className='signup-inputs'>
               <label>Last Name</label>
-              <input placeholder='Last Name' type='text' name='last_name' onChange={updateLast} value={last_name} ></input>
+              {errors.length > 0 &&
+                <p className='errors_message'>
+                  {errors[0].last_name}
+                </p>
+              }
+              <input placeholder='Last Name' type='text' name='last_name' onChange={updateLast} value={last_name} required={true} ></input>
             </div>
 
             <div className='signup-inputs'>
               <label>User Name</label>
-              <input type='text' name='username' onChange={updateUsername} value={username}></input>
+              {errors.length > 0 &&
+                <p className='errors_message'>
+                  {errors[0].username}
+                </p>
+              }
+              <input type='text' name='username' onChange={updateUsername} value={username} required={true} ></input>
             </div>
 
             <div className='signup-inputs'>
               <label>Email</label>
-              <input type='text' name='email' onChange={updateEmail} value={email}></input>
+              <input type='text' name='email' onChange={updateEmail} value={email} required={true} ></input>
             </div>
 
             <div className='signup-inputs'>
               <label>Date Of Birth</label>
-              <input placeholder="Date of Birth" type='date' name='DOB' onChange={updateDob} value={date_of_birth}></input>
+              <input placeholder="Date of Birth" type='date' name='DOB' onChange={updateDob} value={date_of_birth} required={true} ></input>
             </div>
 
             <div className='signup-inputs'>
               <label>Password</label>
-              <input type='password' name='password' onChange={updatePassword} value={password}></input>
+              <input type='password' name='password' onChange={updatePassword} value={password} required={true} ></input>
             </div>
 
             <div className='signup-inputs'>
