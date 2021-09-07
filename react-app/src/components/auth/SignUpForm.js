@@ -65,12 +65,6 @@ const SignUpForm = () => {
       <div className='signup-form-page'>
         <div className='signup-form' >
   `        <form onSubmit={onSignUp}>
-            {/* <div className='signup-validatiions'>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div> */}
-
             <div className='signup-inputs'>
               <label>First Name</label>
               <input placeholder='First Name' type='text'name='first_name' onChange={updateFirst} value={first_name} required={true}  ></input>

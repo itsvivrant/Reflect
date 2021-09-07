@@ -42,11 +42,6 @@ const LoginForm = () => {
         <div className='login-form-page'>
           <div className='login-form'>
             <form className='user-login-info' onSubmit={onLogin}>
-              {/* <div lassName="login-validations-container">
-                {errors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
-              </div> */}
               <div className='login-info-inputs'>
                 <label htmlFor='email'>Email</label>
                 <input name='email' type='text' placeholder='Email' value={email} onChange={updateEmail} required={true}/>

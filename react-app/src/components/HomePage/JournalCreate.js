@@ -44,6 +44,7 @@ function JournalCreate({setRenderPage, renderPage}) {
     const [title, setTitle] = useState('');
     const [coverUrl, setCoverUrl] = useState('')
     const [showModal, setShowModal] = useState(false);
+    const [errors, setErrors] = useState([])
 
 
     const newTitle = (e) => setTitle(e.target.value)
@@ -57,12 +58,16 @@ function JournalCreate({setRenderPage, renderPage}) {
 
     const journal = async(e) => {
         e.preventDefault()
-        await dispatch(createJournal(title, coverUrl))
-        setTitle('')
-        setCoverUrl('')
-        setShowModal(false)
-        setRenderPage(true)
-        // renderPage? setRenderPage(false): setRenderPage(true)
+
+        const data = await dispatch(createJournal(title, coverUrl))
+        if (data) {
+            setErrors(data)
+        } else {
+            setTitle('')
+            setCoverUrl('')
+            setShowModal(false)
+            setRenderPage(true)
+        }
 
     }
 
@@ -74,6 +79,7 @@ function JournalCreate({setRenderPage, renderPage}) {
         e.preventDefault()
         setShowModal(false)
         setRenderPage(true)
+        setErrors([])
         history.push('/')
     }
 
@@ -106,12 +112,22 @@ function JournalCreate({setRenderPage, renderPage}) {
                                 <div className='journal-title-container'>
                                     <form className='journal-form-box'onSubmit={journal} >
                                         <input className='journal-create' type='text' placeholder='Title' value={title} onChange={newTitle}></input>
+                                        {errors.length > 0 &&
+                                            <p className='errors_message'>
+                                            {errors[0].title}
+                                            </p>
+                                        }
                                     </form>
                                 </div>
                                 <div className='create-cover-url-input'>
-                                    <p>Cover Link: </p>
+                                    <p className='cover-p'>Cover Link: </p>
                                     <form className='journal-form-box'onSubmit={journal} >
                                         <input className='cover-url-input' type='text' placeholder='CoverUrl' value={coverUrl} onChange={newCoverUrl}></input>
+                                        {errors.length > 0 &&
+                                            <p className='errors_message'>
+                                            {errors[0].coverUrl}
+                                            </p>
+                                        }
                                     </form>
                                 </div>
                                 <p></p>
