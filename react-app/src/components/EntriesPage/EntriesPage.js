@@ -61,10 +61,6 @@ function EntriesPage() {
                             <p>{allEntries?.length} Entries</p>
                         </div>
                 </div>
-                <div className='entries-length-search'>
-                    <i className="fas fa-search"></i>
-                    <input className='search-input' type='text' placeholder='Search entries...'></input>
-                </div>
                 <div className='entry-list-container'>
                     <div className='entry-list-box'>
                     {allEntries?.map(entry => (
