@@ -54,7 +54,6 @@
     margin-top: 20px;
 }
 
-/* ************************* SIGN UP ****************************************************** */
 
 .signup-redirect .signup-link {
     text-decoration: none;
@@ -70,6 +69,8 @@
 .login-buttons {
     margin-top: 70px;
 }
+
+/* ************************* SIGN UP ****************************************************** */
 
 .signup-container {
     background-image: url(https://i.imgur.com/GCovHP3.jpg);
@@ -103,6 +104,13 @@
     font-size: 15px;
     margin-left: 0px;
     margin-top: 10px;
+}
+
+.signup-inputs p {
+    color: black;
+    font-size: 5px;
+    margin: 0;
+    padding: 0;
 }
 
 .signup-inputs input {

@@ -27,7 +27,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
     const updatedTitle = (e) => setTitle(e.target.value)
     const updatedContent = (value) => {setContent(value)}
 
-    useEffect(async () => {
+    useEffect(() => {
         dispatch(getOneEntry(editEntryId))
 
         setTitle(entry?.title)
