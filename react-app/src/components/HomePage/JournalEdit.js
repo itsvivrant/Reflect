@@ -43,23 +43,23 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
     const dispatch = useDispatch();
     const history = useHistory();
     const singleJournal = useSelector(state=> state.singleJournal)
-    const [title, setTitle] = useState(singleJournal?.title || 'Untitled');
+    const [title, setTitle] = useState(singleJournal?.title);
     const [updatedAt, setUpdatedAt] = useState(singleJournal?.updated_at?.slice(0,17) || "No edits made")
     const [createdAt, setCreatedAt] = useState(singleJournal?.created_at?.slice(0,17) )
-    const [coverUrl, setCoverUrl] = useState(singleJournal?.coverUrl || '')
+    const [coverUrl, setCoverUrl] = useState(singleJournal?.coverUrl)
     const [showModal, setShowModal] = useState(false);
-    const [updateTitleDiv, setUpdateTitleDiv] = useState('')
+    const [updateTitleDiv, setUpdateTitleDiv] = useState(false)
 
 
     useEffect(() => {
-        (async() => {
-            await dispatch(oneJournal(journalId))
-            await setTitle(singleJournal?.title || 'Untitled');
-            await setCoverUrl(singleJournal?.coverUrl);
-            await setCreatedAt(singleJournal?.created_at?.slice(0,17))
-            await setUpdatedAt(singleJournal?.updated_at?.slice(0,17) || "No edits made")
-        })(setUpdateTitleDiv(false));
-    }, [ dispatch, journalId, singleJournal.id, singleJournal?.coverUrl, singleJournal?.title ])
+
+        dispatch(oneJournal(journalId))
+        setTitle(singleJournal?.title);
+        setCoverUrl(singleJournal?.coverUrl);
+        setCreatedAt(singleJournal?.created_at?.slice(0,17))
+        setUpdatedAt(singleJournal?.updated_at?.slice(0,17))
+
+    }, [ dispatch, journalId, singleJournal?.id, singleJournal?.coverUrl, singleJournal?.title ])
 
 
     const updatedTitle = (e) => setTitle(e.target.value)
@@ -68,7 +68,7 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
     const handleSubmit = async(e) => {
         e.preventDefault()
         await dispatch(editJournal(title, coverUrl, singleJournal?.id))
-        await setUpdateTitleDiv(false)
+        setUpdateTitleDiv(false)
         setShowModal(false)
         renderPage? setRenderPage(false): setRenderPage(true)
     }
@@ -79,7 +79,6 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
         await setTitle(singleJournal?.title)
         await setUpdateTitleDiv(false)
         setShowModal(false)
-        setRenderPage(true)
         history.push('/')
     }
 
