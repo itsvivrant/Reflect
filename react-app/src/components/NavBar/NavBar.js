@@ -14,9 +14,6 @@ const NavBar = () => {
   const history = useHistory()
 
 
-
-
-
   const demoLogin = async(e) => {
     const email = 'demo@aa.io'
     const password = 'password'

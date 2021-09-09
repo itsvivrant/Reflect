@@ -9,10 +9,10 @@ function Footer() {
 
                 <div className='top-content'>
                     <div className='linkedin-github'>
-                        <a href='https://github.com/itsvivrant/Reflect'>
+                        <a className='footer-links' href='https://github.com/itsvivrant/Reflect'>
                             <i className='fab fa-github'></i>
                         </a>
-                        <a href='https://www.linkedin.com/in/vivian-ngoc-che-6085a6b5/'>
+                        <a className='footer-links' href='https://www.linkedin.com/in/vivian-ngoc-che-6085a6b5/'>
                             <i className='fab fa-linkedin'></i>
                         </a>
                     </div>

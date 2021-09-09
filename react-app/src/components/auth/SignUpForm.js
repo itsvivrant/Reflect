@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import Footer from '../Footer/Footer'
 import './Auth.css'
@@ -141,10 +141,13 @@ const SignUpForm = () => {
             </div>
 
           </form>`
-          <form onSubmit={onSignUp}>
+            <form onSubmit={onSignUp}>
               <button type='submit' className='submit-entry-bttn signup-bttn'>Sign Up</button>
             </form>
-
+            <div className='signup-links'>
+              <h4>Already have an account? </h4>
+              <a className='link-on-signup' href='/login' exact={true} id='login-nav'>Login</a>
+            </div>
           </div>
       </div>
     </div>

@@ -18,6 +18,12 @@ function HomePage() {
     const [renderPage, setRenderPage] = useState(false);
     const [journalId, setJournalId] = useState('')
 
+    function order(a, b) {
+        return a.created_at < b.created_at ? -1 : (a.created_at > b.created_at ? 1 : 0);
+    }
+
+    journals?.journals?.sort(order)
+
 
     useEffect(async () => {
         await dispatch(allJournals())
@@ -66,7 +72,7 @@ function HomePage() {
                             </div>
                         </div>
                         </>
-                        ))}
+                        )).sort(order)}
                     </div>
                 </div>
             </div>
