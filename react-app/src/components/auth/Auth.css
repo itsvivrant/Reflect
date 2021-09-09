@@ -148,3 +148,15 @@
 .signup-bttn {
     margin-left: 160px;
 }
+
+.signup-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-links a {
+   margin-right: 10px;
+
+}

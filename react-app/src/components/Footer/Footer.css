@@ -23,12 +23,12 @@
     margin-left: 30px;
 }
 
-a {
+.footer-links {
     text-decoration: none;
     color: white;
 }
 
-a:visited {
+.footer-links:visited {
     text-decoration: none;
     color: white;
 }
