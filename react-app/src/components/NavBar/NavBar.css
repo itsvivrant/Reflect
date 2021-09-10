@@ -10,6 +10,17 @@
     text-align: center;
 }
 
+.entries-nav-bar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60px;
+    background: rgb(255, 255, 255);
+    top: -1px;
+    color: white;
+    text-align: center;
+}
+
 .nav-bar-container::before, .nav-bar-container::after {
     display: block;
     height: 16px;

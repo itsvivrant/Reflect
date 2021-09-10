@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { NavLink, Link, Redirect, useHistory} from 'react-router-dom';
+import React from 'react';
+import { Link, useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 import {login} from '../../store/session'
 import LogoutButton from '../auth/LogoutButton';
@@ -8,8 +8,7 @@ import logoTwo from '../NavBar/logo/logo-2.png'
 
 import './NavBar.css'
 
-const EntriesNav = () => {
-  const sessionUser = useSelector((state) => state.session.user)
+const EntriesNav = ({setShowSideBar, showSideBar}) => {
   const dispatch = useDispatch();
   const history = useHistory()
 
@@ -25,32 +24,9 @@ const EntriesNav = () => {
 
   return (
     <>
-    {!sessionUser ?
-    <nav className='nav-bar-container'>
+    <nav className='entries-nav-bar-container'>
       <div className='nav-logo'>
-          <Link to='/'>
-            <img className="logo" src={logoTwo} alt=''/>
-          </Link>
-      </div>
-      <div className='nav-login-signup-container'>
-          <button onClick={demoLogin} className='demo-bttn' type="submit">Demo Login</button>
-          <NavLink to='/login' exact={true} id='login-nav'>
-            Login
-          </NavLink>
-          <NavLink to='/sign-up' exact={true} id='signup-nav'>
-            Sign Up
-          </NavLink>
-
-
-      </div>
-
-    </nav> :
-
-    <nav className='nav-bar-container'>
-      <div className='nav-logo'>
-
-          <i className="fas fa-bars"></i>
-        
+          <i onClick={() => showSideBar ? setShowSideBar(false) : setShowSideBar(true)}className="fas fa-bars"></i>
       </div>
       <div className='nav-logo'>
           <Link to='/'>
@@ -68,7 +44,7 @@ const EntriesNav = () => {
 
 
 
-    </nav>}
+    </nav>
     </>
   );
 }
