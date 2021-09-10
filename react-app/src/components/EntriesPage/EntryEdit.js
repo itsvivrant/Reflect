@@ -17,7 +17,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
     const entry = useSelector(state => state.entry.entry)
 
     const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
+    const [content, setContent] = useState(entry?.content.replace(/<[^>]*>/g, ''))
     const [strengths, setStrengths] = useState("")
     const [editRender, setEditRender] = useState(false)
     const [deleteEntry, setDeleteEntry] = useState(false)
@@ -31,7 +31,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
         dispatch(getOneEntry(editEntryId))
 
         setTitle(entry?.title)
-        setContent(entry?.content.replace(/<[^>]*>/g, '') || "Tell a story")
+        setContent(entry?.content.replace(/<[^>]*>/g, ''))
         setStrengths(entry?.strengths)
 
 
@@ -41,7 +41,6 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, editEntryId))
-        setRenderPage(true)
         setEditRender(true)
         renderPage? setRenderPage(false): setRenderPage(true)
     }
