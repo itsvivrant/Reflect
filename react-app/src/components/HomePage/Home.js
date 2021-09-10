@@ -4,6 +4,7 @@ import { Link} from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { allJournals} from '../../store/journal';
 import SplashPage from './SplashPage/SplashPage';
+import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import JournalCreate from './JournalCreate';
 import JournalEdit from './JournalEdit';
@@ -18,7 +19,7 @@ function HomePage() {
     const [renderPage, setRenderPage] = useState(false);
     const [journalId, setJournalId] = useState('')
 
-    
+
 
 
 
@@ -31,6 +32,8 @@ function HomePage() {
     let main;
     if (sessionUser) {
         main = (
+            <>
+            <NavBar />
             <div className='home-container'>
                 <div className='journal-nav-container'>
                     <div className='journal-nav-header'>
@@ -73,10 +76,14 @@ function HomePage() {
                     </div>
                 </div>
             </div>
+            </>
         )
     } else {
         main = (
+            <>
+            <NavBar />
             <SplashPage />
+            </>
         )
     }
     return(

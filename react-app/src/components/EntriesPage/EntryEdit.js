@@ -29,7 +29,6 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
 
     useEffect(() => {
         dispatch(getOneEntry(editEntryId))
-
         setTitle(entry?.title)
         setContent(entry?.content.replace(/<[^>]*>/g, ''))
         setStrengths(entry?.strengths)

@@ -4,6 +4,7 @@ import {  Link, useParams} from 'react-router-dom';
 import { allJournalEntries } from '../../store/journal';
 import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit'
+import EntriesNav from '../NavBar/EntriesNav';
 import moment from 'moment';
 
 import b3 from '../EntriesPage/background-img/b3.jpg'
@@ -48,6 +49,8 @@ function EntriesPage() {
     }, [dispatch, id, renderPage , journalName])
 
     return(
+        <>
+        <EntriesNav />
         <div className='entry-home-container'>
             <div className='entry-left-container'>
                 <div className='entry-nav'>
@@ -97,7 +100,7 @@ function EntriesPage() {
 
             </div>
         </div>
-
+    </>
     )
 
 }

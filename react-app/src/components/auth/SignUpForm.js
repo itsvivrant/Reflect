@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer'
 import './Auth.css'
 
@@ -61,6 +62,7 @@ const SignUpForm = () => {
 
   return (
     <>
+    <NavBar />
     <div className='signup-container'>
       <div className='signup-form-page'>
         <div className='signup-form' >
