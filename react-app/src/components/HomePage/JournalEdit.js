@@ -56,8 +56,8 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
         dispatch(oneJournal(journalId))
         setTitle(singleJournal?.title);
         setCoverUrl(singleJournal?.coverUrl);
-        setCreatedAt(singleJournal?.created_at?.slice(0,17))
-        setUpdatedAt(singleJournal?.updated_at?.slice(0,17))
+        setCreatedAt(singleJournal?.created_at?.slice(0,17) )
+        setUpdatedAt(singleJournal?.updated_at?.slice(0,17) || "No edits made")
 
     }, [ dispatch, journalId, singleJournal?.id, singleJournal?.coverUrl, singleJournal?.title ])
 
@@ -86,7 +86,6 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
         setUpdateTitleDiv(true)
 
     }
-
 
 
     const handleSelectCover = async(e) => {

@@ -18,11 +18,8 @@ function HomePage() {
     const [renderPage, setRenderPage] = useState(false);
     const [journalId, setJournalId] = useState('')
 
-    function order(a, b) {
-        return a.created_at < b.created_at ? -1 : (a.created_at > b.created_at ? 1 : 0);
-    }
+    
 
-  
 
 
     useEffect(async () => {
@@ -50,7 +47,7 @@ function HomePage() {
 
                 <div className='journal-container'>
                     <div className='journal-gallery'>
-                    {journals?.journals?.map((journal) => (
+                    {journals?.journals?.sort((a, b) => a.created_at - b.created_at).map((journal) => (
                         <>
                         <div className='each-journal'>
                             <Link className='entries-link' key={journal.id} to={`/journals/${journal?.id}/entries`}>
@@ -72,7 +69,7 @@ function HomePage() {
                             </div>
                         </div>
                         </>
-                        )).sort(order)}
+                        ))}
                     </div>
                 </div>
             </div>
