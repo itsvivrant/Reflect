@@ -56,8 +56,8 @@ function EntryCreate({ setRenderPage, currentDate}) {
                 }
             </div>
             <div className='content-title'>
-                <div className='content-title-input'>
-                <p>Title: </p>
+                <div className='content-title-input-container'>
+                    <p>Title: </p>
                     <form onSubmit={entry}>
                         <input className='content-title-input' placeholder="Your title "type='text' onChange={newTitle} value={title}></input>
                     </form>
