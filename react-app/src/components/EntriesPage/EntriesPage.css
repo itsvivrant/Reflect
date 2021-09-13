@@ -181,29 +181,30 @@
 
 }
 
-.content-title-input {
+.content-title-input-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
+   align-items: center;
 }
 
 
-.content-title-input p{
+.content-title-input-container p{
     font-size: 25px;
     font-weight: 600;
     width: 50px;
+
 }
 
-.content-title-input input {
+.content-title-input {
     height: 30px;
-    width:100px;
+    width:300px;
     border: 0;
     font-size: 20px;
-    margin-right: 20em;
+    margin-left:0.5em;
 }
 
 
-.content-title input:focus{
+.content-title-input:focus{
     outline: none;
 }
 
@@ -294,4 +295,10 @@
 
 .editor{
     height: 22em;
+}
+
+.errors-div p{
+    margin: 0;
+    padding: 0;
+    color: red;
 }
