@@ -1,27 +1,31 @@
-/* .entry-home-container {
-    display: grid;
-    grid-template-columns: 10fr 10fr;
-    height: 92vh;
-    width: 96vw;
-    background-color: white;
-} */
-
 .entries-whole {
-    display: grid;
-    grid-template-columns: 5fr 10fr;
-    height: 100%;
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+
 }
 
 .entry-left-container {
+
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    border-right: 4px solid rgb(8, 8, 8);
-    position: sticky;
-    background-color: white;
-    overflow: hidden;
+    position:relative;
+    top:0;
+    left:0px;
+    width:21%;
+    height:100%;
+    background:#151719;
+    /* transition:all 300ms linear; */
+    transition: 850ms;
+    position: relative;
+
+}
+
+.entry-left-container.active {
+    left: -100%;
+    transition: 350ms;
+
 }
 
 .entry-nav {
@@ -33,7 +37,6 @@
     background-color: rgb(52, 51, 51);
 
 }
-
 
 .fas.fa-arrow-left {
     font-size: 26px;
@@ -108,15 +111,11 @@
 .entry-list-container {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     align-self: center;
-    background-color: rgb(253, 253, 253);
-}
-
-.entry-list-box {
-    height: 400px;
+    background-color: rgb(255, 255, 255);
 }
 
 .entry-content {
@@ -145,68 +144,62 @@
     color: grey;
 }
 
-/* ************************ RIGHT SIDE *********************************** */
+/* *********************** Entry Right **********************************  */
 
 .entry-right-container {
-    display: flex;
-    flex-direction: column;
-    background-image: cover;
-    height: 100%;
-
-}
-
-
-/* ********************* ENTRY CREATE ****************************** */
-
-.errors-div p {
-    font-size: 15px;
-    color: red;
-    margin: 0;
-    padding: 0;
-}
-
-.text-editor-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
     width: 100%;
-    padding: 25px;
+    height: 100%;
+    position: relative;
 
 }
 
+.entry-edit-create {
+    display: flex;
+    justify-content: center;
+    height: 77%;
+}
 
-
-.form-edit-container{
-    padding: 40px;
-    height: 100%;
-    width: 100%;
-    justify-content: center;;
+.form-edit-container {
     background-color: white;
-    overflow-y: scroll;
+    padding: 30px;
+    width: 90%;
+    height: 100%;
+    margin-top: 2%;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
+
 .content-title {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
+    justify-content: space-between;
     align-items: center;
     padding: 0;
     margin: 0;
-    width: 100%;
-}
 
-.content-title p{
-    font-size: 25px;
-    font-weight: 600;
 }
 
 .content-title-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.content-title-input p{
+    font-size: 25px;
+    font-weight: 600;
+    width: 50px;
+}
+
+.content-title-input input {
     height: 30px;
-    width: 800px;
-    padding:6px;
+    width:100px;
     border: 0;
     font-size: 20px;
-    margin-left: 7px;
+    margin-right: 20em;
 }
 
 
@@ -237,11 +230,16 @@
     font-size: 20px;
     height: 50px;
 
-
 }
 
-.editor{
-    height: 450px;
+.far.fa-calendar h5 {
+    margin-left: 10px;
+}
+
+.entry-edit-bttns {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
 }
 
 .submit-entry-bttn {
@@ -255,12 +253,11 @@
     outline: none;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  transition: all 0.3s ease 0s;
-  margin-right: 7px;
-
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    transition: all 0.3s ease 0s;
+    margin-right: 1em;
 }
 
 .cancel-entry-bttn {
@@ -274,10 +271,11 @@
     outline: none;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  transition: all 0.3s ease 0s;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    transition: all 0.3s ease 0s;
+
 }
 
 .submit-entry-bttn:hover {
@@ -292,4 +290,8 @@
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
     transform: translateY(-7px);
+}
+
+.editor{
+    height: 22em;
 }

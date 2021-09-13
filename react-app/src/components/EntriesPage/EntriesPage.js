@@ -28,13 +28,14 @@ function EntriesPage() {
 
     const [selectedPicture, setSelectedPicture] = useState('')
     const [showForm, setShowForm] = useState(false)
-    const [showSideBar, setShowSideBar] = useState(false)
+    // const [showSideBar, setShowSideBar] = useState(true)
     const allEntries = useSelector(state => state.journal.entries)
-
     const journal = useSelector(state => state.journal.journal)
     const journalName = journal?.title
-
     const currentDate = moment().format("dddd, MM/DD/YYYY");
+
+    const [sideBar, setSideBar] = useState(false);
+    const showSideBar = () => setSideBar(!sideBar)
 
 
 
@@ -50,10 +51,11 @@ function EntriesPage() {
 
     }, [dispatch, id, renderPage , journalName])
 
-    return(
-        <div className='entries-whole'>
-            {showSideBar &&
-                <div className='entry-left-container'>
+
+    let side;
+    if (!sideBar) {
+        side = (
+            <div className={sideBar ? 'entry-left-container active ': 'entry-left-container'}>
                     <div className='entry-nav'>
                             <div className='left-icon'>
                                 <Link to='/' className="entries-link">
@@ -70,7 +72,7 @@ function EntriesPage() {
                         <input className='search-input' type='text' placeholder='Search entries...'></input>
                     </div>
                     <div className='entry-list-container'>
-                        <div className='entry-list-box'>
+
                         {allEntries?.map(entry => (
 
                             <div onClick={() => (setShowForm(true))}>
@@ -85,13 +87,28 @@ function EntriesPage() {
                                 </div>
                             </div>
                         ))}
-                        </div>
+
                     </div>
-            </div>
-            }
-            <div className='entry-right-container'>
-                <EntriesNav setShowSideBar={setShowSideBar} showSideBar={showSideBar}/>
-                <div className='entry-edit-create' style={{backgroundImage: `url(${selectedPicture})`}}>
+                </div>
+
+        )
+    } else {
+        side = (
+            ""
+        )
+    }
+
+    return(
+
+        <div className='entries-whole'>
+            {side}
+
+
+            <div className='entry-right-container' style={{backgroundImage: `url(${selectedPicture})`}}>
+                <div className='entries-nav'>
+                    <EntriesNav showSideBar={showSideBar} sideBar={sideBar}/>
+                </div>
+                <div className='entry-edit-create' >
 
                     {showForm && editEntryId ?
                         <EntryEdit currentDate={currentDate} setRenderPage={setRenderPage} renderPage={renderPage} editEntryId={editEntryId} setShowForm={setShowForm}/>
@@ -107,6 +124,7 @@ function EntriesPage() {
             </div>
 
         </div>
+
     )
 
 }

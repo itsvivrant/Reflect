@@ -20,13 +20,13 @@ const EntriesNav = ({setShowSideBar, showSideBar}) => {
     history.push('/')
   }
 
-
+  // () => showSideBar ? setShowSideBar(false) : setShowSideBar(true)
 
   return (
     <>
     <nav className='entries-nav-bar-container'>
       <div className='nav-logo'>
-          <i onClick={() => showSideBar ? setShowSideBar(false) : setShowSideBar(true)}className="fas fa-bars"></i>
+          <i onClick={showSideBar} className="fas fa-bars"></i>
       </div>
       <div className='nav-logo'>
           <Link to='/'>
