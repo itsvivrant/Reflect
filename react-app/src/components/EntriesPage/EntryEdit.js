@@ -29,7 +29,6 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
 
     useEffect(() => {
         dispatch(getOneEntry(editEntryId))
-
         setTitle(entry?.title)
         setContent(entry?.content.replace(/<[^>]*>/g, ''))
         setStrengths(entry?.strengths)
@@ -70,14 +69,15 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
                         <form onSubmit={handleUpdateEntry}>
                             <input className='content-title-input' placeholder="edit" type='text' onChange={updatedTitle} value={title}></input>
                         </form>
-                        <div>
+                        <div className='entry-edit-bttns'>
                             <form onSubmit={handleUpdateEntry}>
                                 <button className='submit-entry-bttn' type='submit'>Save</button>
                             </form>
-                        </div>
-                        <div>
                             <button className='cancel-entry-bttn' onClick={cancel}>Cancel</button>
                         </div>
+                        {/* <div>
+
+                        </div> */}
                     </div>
                     <div className='content-date'>
                         <div>

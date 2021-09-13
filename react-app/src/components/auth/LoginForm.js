@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 
 import './Auth.css'
@@ -35,6 +36,7 @@ const LoginForm = () => {
 
   return (
     <>
+    <NavBar />
     <div className='login-page-container'>
         <div className='login-pic-container'>
           <img src="https://i.imgur.com/cFj3GCm.png" />

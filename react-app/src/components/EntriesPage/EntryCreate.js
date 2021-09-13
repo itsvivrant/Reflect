@@ -56,10 +56,12 @@ function EntryCreate({ setRenderPage, currentDate}) {
                 }
             </div>
             <div className='content-title'>
+                <div className='content-title-input'>
                 <p>Title: </p>
-                <form onSubmit={entry}>
-                    <input className='content-title-input' placeholder="Your title. . ."type='text' onChange={newTitle} value={title}></input>
-                </form>
+                    <form onSubmit={entry}>
+                        <input className='content-title-input' placeholder="Your title "type='text' onChange={newTitle} value={title}></input>
+                    </form>
+                </div>
                 <div>
                     <form onSubmit={entry}>
                         <button className='submit-entry-bttn' type='submit'>Save</button>
