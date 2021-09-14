@@ -4,7 +4,7 @@ from app.models import db, Happiness
 # Adds a demo user, you can add other users here if you want
 def seed_happiness():
 
-    h1 = Happiness(user_id=1, overall_happiness=3)
+    h1 = Happiness(user_id=1, overall_happiness=3, happiness_date='09-13-2021')
 
 
     db.session.add(h1)
