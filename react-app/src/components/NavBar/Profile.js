@@ -38,7 +38,7 @@ function Profile() {
                             </div>
                             <div className='happiness-scale'>
                                 <h4>{sessionUser.username}'s Happiness Scale: </h4>
-                                <h3>{userHappiness.overall_happiness} </h3>
+                                <h3>{userHappiness?.overall_happiness} </h3>
                             </div>
                         </div>
                         <div className='profile-content-container'>
