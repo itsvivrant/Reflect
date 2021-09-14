@@ -91,11 +91,11 @@ function JournalCreate({setRenderPage, renderPage}) {
 
     return (
         <>
-        <div className='create-container'>
-            <i className="fas fa-plus" onClick={() => setShowModal(true)}>
+        <button className='journal-create-bttn' onClick={() => setShowModal(true)}>
+            <i className="fas fa-plus" >
                 <p>Journal</p>
             </i>
-        </div>
+        </button>
         {showModal && (
             <Modal>
                <div className="journal-form-container">
