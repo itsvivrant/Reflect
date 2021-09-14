@@ -3,6 +3,7 @@ import { Link, useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 import {login} from '../../store/session'
 import LogoutButton from '../auth/LogoutButton';
+import Profile from './Profile';
 
 import logoTwo from '../NavBar/logo/logo-2.png'
 
@@ -35,10 +36,7 @@ const EntriesNav = ({setShowSideBar, showSideBar}) => {
       </div>
       <div className='user-logout-container'>
         <div className='user-icon'>
-          <i className="fas fa-portrait"></i>
-        </div>
-        <div>
-          <LogoutButton />
+          <Profile />
         </div>
       </div>
 

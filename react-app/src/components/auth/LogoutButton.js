@@ -16,7 +16,7 @@ const LogoutButton = () => {
 
 
 
-  return <i className="fas fa-sign-out-alt" onClick={onLogout}></i>;
+  return <button className="logout-bttn" onClick={onLogout}>Sign Out</button>;
 };
 
 export default LogoutButton;
