@@ -8,6 +8,7 @@ class Happiness(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     overall_happiness = db.Column(db.Integer, nullable=False)
+    happiness_date = db.Column(db.Date, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     updated_at = db.Column(db.DateTime, onupdate=datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -18,6 +19,7 @@ class Happiness(db.Model):
         return {
             'id': self.id,
             'overall_happiness': self.overall_happiness,
+            'happiness_date': self.happiness_date,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'user_id': self.user_id,

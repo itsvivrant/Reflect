@@ -91,16 +91,125 @@
     align-items: center;
 }
 
- .fas.fa-sign-out-alt, .fas.fa-bars, .fas.fa-portrait{
-    font-size: 25px;
+.fas.fa-bars {
+    font-size: 35px;
     color: black;
     margin: 10px;
     cursor: pointer;
 }
 
-/* .fas.fa-portrait {
-    font-size: 34px;
+.fas.fa-portrait {
+    font-size: 40px;
     color: black;
-    margin: 10px;
+    margin: 20px;
+    cursor: pointer;
+}
 
-} */
+
+/* **************** PROFILE BUTTON ************************8 */
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 28%;
+    position: fixed;
+    border-radius: 3px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    animation-duration: 1s;
+    animation-name: slideIn;
+}
+
+@keyframes slideIn {
+    from {
+    right: -100vh;
+    }
+
+    to {
+    right: 0;
+    }
+}
+
+.profile-container {
+    display: flex;
+}
+
+.exit-profile {
+    height: 7%;
+}
+
+.exit-profile i {
+    font-size: 30px;
+    color: black;
+    padding: 18px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.exit-profile i:hover {
+    color: grey;
+}
+
+.profile-pic {
+    text-align: center;
+}
+
+.profile-pic .fa-portrait {
+    font-size: 70px;
+    color: grey;
+}
+
+.profile-username {
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-content {
+    margin-left: 30px;
+    width: 250px;
+}
+
+.profile-content p {
+    margin: 6px;
+}
+
+.logout-bttn {
+    width: 100px;
+    border: none;
+    height: 40px;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 45px;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    outline: none;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    transition: all 0.3s ease 0s;
+    margin-right: 30px;
+}
+
+.logout-bttn:hover {
+    box-shadow: 0px 15px 20px rgb(231, 231, 231);
+    color: #fff;
+    transform: translateY(-7px);
+}
