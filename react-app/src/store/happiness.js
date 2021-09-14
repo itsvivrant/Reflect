@@ -18,7 +18,7 @@ const deleteHappiness = (happiness) => ({
 })
 
 export const getUserHappiness = () => async(dispatch) => {
-    const response = await('/api/users/happiness')
+    const response = await fetch(`/api/users/happiness`)
     const data = await response.json()
     dispatch(getHappiness(data))
 }
@@ -57,11 +57,11 @@ export default function reducer (state = {}, action) {
     let newState = {...state}
     switch(action.type) {
         case GET_HAPPINESS:
-            newState = {...action.entries}
+            newState = {...action.happiness}
             return newState
 
         case UPDATE_HAPPINESS:
-            newState[action.entry.id] = action.entry
+            newState[action.happiness.id] = action.happiness
             return newState
 
         case DELETE_HAPPINESS:

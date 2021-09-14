@@ -31,6 +31,7 @@ def user(id):
 
 @user_routes.route('/happiness', methods=["GET"])
 def happiness():
+    # user = User.query.get(id)
     happiness = Happiness.query.filter(Happiness.user_id == current_user.id).first()
     return {'happiness' : happiness.to_dict()}
 

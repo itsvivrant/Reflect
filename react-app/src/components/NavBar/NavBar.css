@@ -108,10 +108,11 @@
 
 /* **************** PROFILE BUTTON ************************8 */
 
+
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+    /* display: flex;
+    flex-direction: column; */
+    background-color: rgb(233, 233, 233);
     width: 28%;
     position: fixed;
     border-radius: 3px;
@@ -132,9 +133,12 @@
     }
 }
 
-.profile-container {
+.user-profile {
+    background-color: white;
     display: flex;
+    flex-direction: column;
 }
+
 
 .exit-profile {
     height: 7%;
@@ -154,21 +158,41 @@
 
 .profile-pic {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.profile-pic .fa-portrait {
+.profile-pic-content {
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.profile-pic-content .fa-portrait {
     font-size: 70px;
     color: grey;
+
 }
 
 .profile-username {
-    margin: 0;
+    margin: 0 0 25px 0;
     text-align: center;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 1.2px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.happiness-scale {
+    text-align: center;
+    /* margin-top: 2%; */
+    margin: 0 0 10% 2%;
+    padding: 0;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .profile-content-container {
     display: flex;
@@ -177,6 +201,7 @@
     align-items: center;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 40px;
 }
 
 .profile-content {
