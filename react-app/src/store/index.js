@@ -4,12 +4,14 @@ import session from './session'
 import journal from './journal'
 import entry from './entry'
 import singleJournal from './singleJournal'
+import happiness from './happiness'
 
 const rootReducer = combineReducers({
   session,
   journal,
   entry,
-  singleJournal
+  singleJournal,
+  happiness
 });
 
 
