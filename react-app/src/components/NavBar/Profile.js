@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {Modal} from '../../context/Modal';
 import LogoutButton from '../auth/LogoutButton';
-import {getUserHappiness, createHappiness, editHappiness} from '../../store/happiness';
+import {getUserHappiness, createHappiness, editHappiness, deleteUserHappiness} from '../../store/happiness';
 
 
 function Profile() {
@@ -16,6 +16,7 @@ function Profile() {
     const [showCreate, setShowCreate] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [renderPage, setRenderPage] = useState(false);
+    const [deleteRender, setDeleteRender] = useState(false);
 
 
     const newOverallHappiness = (e) => setOverallHappiness(e.target.value)
@@ -24,10 +25,11 @@ function Profile() {
 
     useEffect(() => {
         dispatch(getUserHappiness(sessionUser.id))
-    },[dispatch, renderPage, sessionUser.id])
+    },[dispatch, renderPage, sessionUser.id, deleteRender, userHappiness.id])
 
     const cancel =() => {
         setShowModal(false)
+        setShowCreate(false)
         history.push('/')
     }
 
@@ -38,6 +40,12 @@ function Profile() {
         setHappinessDate('')
         setRenderPage(true)
         setShowCreate(false)
+    }
+
+    const handleDelete = async(e) => {
+        e.preventDefault();
+        await dispatch(deleteUserHappiness(userHappiness.id))
+        setDeleteRender(true)
 
     }
 
@@ -53,12 +61,13 @@ function Profile() {
                 <h4>{sessionUser.username}'s Happiness Scale: </h4>
                 <h3>{userHappiness?.overall_happiness} </h3>
                 <span>Since {userHappiness?.happiness_date?.slice(0,17)}</span>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         )
     } else {
         create = (
-            <div className='happiness-scale'>
-                <button onClick={showCreateDiv} button>Add your happiness scale</button>
+            <div >
+                <button className='create-happiness-bttn' onClick={showCreateDiv} button>Add your happiness scale</button>
             </div>
         )
     }
@@ -78,14 +87,22 @@ function Profile() {
                             <div className='profile-pic-content'>
                                 <i className="fas fa-portrait"></i>
                             </div>
-                            {create}
+                            <div>
+                                {create}
+                            </div>
+                            <div>
                             {showCreate ?
-                                <form onSubmit={handleCreateSubmit}>
-                                    <input type='text' placeholder='0-5' value={overall_happiness} onChange={newOverallHappiness}></input>
-                                    <input type='date' value={happiness_date} onChange={newHappinessDate}></input>
-                                    <button type='submit'>Submit</button>
-                                </form>
+
+                                    <form onSubmit={handleCreateSubmit}>
+                                        <div className='create-happiness-div'>
+                                        <input type='text' placeholder='0-5' value={overall_happiness} onChange={newOverallHappiness}></input>
+                                        <input type='date' value={happiness_date} onChange={newHappinessDate}></input>
+                                        <button type='submit'>Submit</button>
+                                        </div>
+                                    </form>
+
                             :""}
+                            </div>
                         </div>
                         <div className='profile-content-container'>
                             <div className='profile-content'>
