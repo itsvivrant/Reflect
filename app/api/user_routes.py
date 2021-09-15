@@ -29,11 +29,11 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-@user_routes.route('/happiness', methods=["GET"])
-def happiness():
-    # user = User.query.get(id)
-    happiness = Happiness.query.filter(Happiness.user_id == current_user.id).first()
-    return {'happiness' : happiness.to_dict()}
+@user_routes.route('<int:id>/happiness', methods=["GET"])
+def happiness(id):
+    user = User.query.get(id)
+    happiness = Happiness.query.filter(Happiness.user_id == id).first()
+    return happiness.to_dict()
 
 
 @user_routes.route('/create-happiness', methods=["POST"])
