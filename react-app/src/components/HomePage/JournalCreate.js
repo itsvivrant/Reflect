@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createJournal, allJournals} from '../../store/journal';
 import {Modal} from '../../context/Modal'
@@ -44,7 +44,6 @@ function JournalCreate({setRenderPage, renderPage}) {
     const [coverUrl, setCoverUrl] = useState('')
     const [showModal, setShowModal] = useState(false);
     const [errors, setErrors] = useState([]);
-    const [createRender, setCreateRender] = useState(false)
 
 
     const newTitle = (e) => setTitle(e.target.value)
@@ -69,10 +68,8 @@ function JournalCreate({setRenderPage, renderPage}) {
             setErrors([])
             renderPage? setRenderPage(false): setRenderPage(true)
         }
-
-
-
     }
+
 
     const handleSelectCover = async(e) => {
         setCoverUrl(e.target.src)
@@ -107,8 +104,8 @@ function JournalCreate({setRenderPage, renderPage}) {
                         <div className='create-info-box'>
                             <div className='edit-img'>
                                 {coverUrl ?
-                                    <img src={coverUrl} />
-                                : <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" />}
+                                    <img alt='journal cover' src={coverUrl} />
+                                : <img alt='blank journal' src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" />}
                             </div>
                             <div className='edit-info'>
                                 <div className='create-title'>
@@ -166,11 +163,6 @@ function JournalCreate({setRenderPage, renderPage}) {
 
 }
 
-{/* <form className='journal-form-box'onSubmit={journal} >
-                        <input type='text' placeholder='title' value={title} onChange={newTitle}></input>
-                        <input type='text' placeholder='coverUrl' value={coverUrl} onChange={newCoverUrl}></input>
-                        <button type='submit' >Submit</button>
-                    </form> */}
 
 
 export default JournalCreate

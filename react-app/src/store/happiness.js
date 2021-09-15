@@ -1,9 +1,15 @@
-const GET_HAPPINESS = 'happiness/GET_HAPPINESS'
+const GET_HAPPINESS = 'happiness/GET_HAPPINESS';
+const SET_HAPPINESS = 'happiness/SET_HAPPINESS';
 const UPDATE_HAPPINESS = 'happiness/UPDATE_HAPPINESS'
 const DELETE_HAPPINESS = 'happiness/DELETE_HAPPINESS'
 
 const getHappiness = (happiness) => ({
     type: GET_HAPPINESS,
+    happiness
+})
+
+const setHappiness = (happiness) => ({
+    type: SET_HAPPINESS,
     happiness
 })
 
@@ -17,10 +23,31 @@ const deleteHappiness = (happiness) => ({
     happiness
 })
 
-export const getUserHappiness = () => async(dispatch) => {
-    const response = await fetch(`/api/users/happiness`)
+export const getUserHappiness = (id) => async(dispatch) => {
+    const response = await fetch(`/api/users/${id}/happiness`)
     const data = await response.json()
     dispatch(getHappiness(data))
+}
+
+export const createHappiness  = (overall_happiness, happiness_date, user_id) => async(dispatch) => {
+    const response = await fetch(`/api/users/create-happiness`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({overall_happiness, happiness_date, user_id})
+    });
+
+    if (response.ok) {
+        const newData = await response.json();
+        dispatch(setHappiness(newData));
+        return null
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 export const editHappiness = (overall_happiness, happiness_date, user_id, id) => async(dispatch) => {
@@ -58,6 +85,10 @@ export default function reducer (state = {}, action) {
     switch(action.type) {
         case GET_HAPPINESS:
             newState = {...action.happiness}
+            return newState
+
+        case SET_HAPPINESS:
+            newState[action.happiness.id] = action.happiness
             return newState
 
         case UPDATE_HAPPINESS:

@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { Link} from 'react-router-dom';
-import { DragDropContext } from 'react-beautiful-dnd';
 import { allJournals} from '../../store/journal';
 import SplashPage from './SplashPage/SplashPage';
 import NavBar from '../NavBar/NavBar';
-import Footer from '../Footer/Footer';
 import JournalCreate from './JournalCreate';
 import JournalEdit from './JournalEdit';
 import JournalDelete from './JournalDelete';
@@ -23,8 +21,10 @@ function HomePage() {
 
 
 
-    useEffect(async () => {
-        await dispatch(allJournals())
+    useEffect(() => {
+        (async() => {
+            await dispatch(allJournals())
+        })();
     }, [dispatch, renderPage])
 
 

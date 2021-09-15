@@ -39,7 +39,7 @@ const LoginForm = () => {
     <NavBar />
     <div className='login-page-container'>
         <div className='login-pic-container'>
-          <img src="https://i.imgur.com/cFj3GCm.png" />
+          <img src="https://i.imgur.com/cFj3GCm.png" alt='login pic' />
         </div>
         <div className='login-form-page'>
           <div className='login-form'>
