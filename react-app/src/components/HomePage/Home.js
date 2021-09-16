@@ -33,7 +33,7 @@ function HomePage() {
     if (sessionUser) {
         main = (
             <>
-            <NavBar />
+            <NavBar/>
             <div className='home-container'>
                 <div className='journal-nav-container'>
                     <div className='journal-nav-header'>
@@ -47,8 +47,8 @@ function HomePage() {
 
 
                 <div className='journal-gallery'>
-                    {journals?.journals?.sort((a, b) => a.created_at - b.created_at).map((journal) => (
-                        <div className='each-journal-container'>
+                    {journals?.journals?.sort((a, b) => a.created_at - b.created_at).map((journal, idx) => (
+                        <div className='each-journal-container' key={idx}>
                             <div className='each-journal'>
                                 <Link className='entries-link' key={journal.id} to={`/journals/${journal?.id}/entries`}>
                                     <img className='cover-img' alt='' src={journal.coverUrl} />
