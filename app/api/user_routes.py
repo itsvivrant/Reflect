@@ -49,7 +49,7 @@ def new_happiness():
         db.session.add(happiness)
         db.session.commit()
         return happiness.to_dict()
-    return validation_errors_to_error_messages(form.errors)
+    return validation_errors_to_error_messages(form.errors), 401
 
 @user_routes.route('/edit/happiness/<int:id>', methods=["PUT"])
 def update_happiness(id):
@@ -62,12 +62,12 @@ def update_happiness(id):
         happiness.user_id = current_user.id
         db.session.commit()
         return happiness.to_dict()
-    return validation_errors_to_error_messages(form.errors)
+    return validation_errors_to_error_messages(form.errors), 401
 
 @user_routes.route('/delete/happiness/<int:id>', methods=["DELETE"])
 def delete_happiness(id):
     happiness = Happiness.query.get(id)
-    deleted_happiness = happiness
+    delete_happiness = happiness
     db.session.delete(happiness)
     db.session.commit()
-    return deleted_happiness.to_dict()
+    return delete_happiness.to_dict()

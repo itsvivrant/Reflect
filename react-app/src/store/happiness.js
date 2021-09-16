@@ -75,8 +75,13 @@ export const deleteUserHappiness = (id) => async(dispatch) => {
     const response = await fetch(`/api/users/delete/happiness/${id}`, {
         method: "DELETE"
     })
-    const deleteData = await response.json();
-    dispatch(deleteHappiness(deleteData))
+
+
+
+        const deleteData = await response.json();
+        await dispatch(deleteHappiness(deleteData))
+        return null
+
 }
 
 
@@ -96,7 +101,7 @@ export default function reducer (state = {}, action) {
             return newState
 
         case DELETE_HAPPINESS:
-            return newState
+            return null
 
         default:
             return state

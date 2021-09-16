@@ -247,33 +247,53 @@
     padding: 4px;
 }
 
+.happiness-scale i {
+    font-size: 17px;
+    color: grey;
+    cursor: pointer
+}
+
+.happiness-scale i:hover {
+    color: rgb(179, 179, 179)
+}
+
 .create-happiness-bttn {
     width: 170px;
     border: none;
     height: 40px;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 15px;
     background-color: rgb(255, 255, 255);
     color: rgb(3, 3, 3);
     border-radius: 45px;
     border: none;
-    /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
     outline: none;
     cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
     letter-spacing: 1.4px;
-    margin-bottom: 10%;
+    margin-bottom: 20%;
 }
-/* rgb(182, 182, 182); */
+
+.create-happiness-bttn:hover {
+    color:rgb(182, 182, 182);
+
+}
+
 
 .create-happiness-div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     margin-bottom: 30%;
     margin-left: 5%;
 
+}
+
+.create-happiness-div label {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1.4px;
+    font-size: 14px;
+    margin: 2px;
 }
 
 .create-happiness-div button {
@@ -286,4 +306,13 @@
     height: 30px;
     font-size: 12px;
     text-transform: uppercase;
+    margin: 2px;
+    width: 100%;
 }
+
+.create-happiness-div button:hover {
+    color:rgb(182, 182, 182);
+
+}
+
+
