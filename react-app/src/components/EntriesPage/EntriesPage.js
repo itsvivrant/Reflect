@@ -78,10 +78,10 @@ function EntriesPage() {
                             <div onClick={() => (setShowForm(true))}>
                                 <div onClick={() => (setEditEntryId(entry.id))} className='entry-content'  key={entry.id}>
                                     <div className='entry-content-title'>
-                                        <p>{entry?.title.length < 15 ? entry?.title : `${entry?.title.slice(0 , 15)}...`}</p>
+                                        <p>{entry?.title.length < 15 ? entry?.title : `${entry?.title.slice(0 , 14)}...`}</p>
                                     </div>
                                     <div className='entry-content-content'>
-                                        <p>{entry?.content.length < 15 ? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,15).replace(/<[^>]*>/g, '')}...`}</p>
+                                        <p>{entry?.content.length < 15 ? entry?.content.replace(/<[^>]*>/g, '') : `${entry?.content.slice(0,14).replace(/<[^>]*>/g, '')}...`}</p>
                                     </div>
                                     <div className='entry-content-created'> <p>{entry.created_at?.slice(0,17)}</p></div>
                                 </div>

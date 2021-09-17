@@ -42,6 +42,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
         await dispatch(editEntry(title, content, strengths, sessionUser.id, editEntryId))
         setEditRender(true)
         renderPage? setRenderPage(false): setRenderPage(true)
+        setShowForm(false)
     }
 
     const handleDeleteEntry = async(e) => {
