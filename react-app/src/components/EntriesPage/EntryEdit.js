@@ -40,8 +40,9 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
     const handleUpdateEntry = async(e) => {
         e.preventDefault()
         await dispatch(editEntry(title, content, strengths, sessionUser.id, editEntryId))
-        // setEditRender(true)
+        setEditRender(true)
         renderPage? setRenderPage(false): setRenderPage(true)
+        setShowForm(false)
     }
 
     const handleDeleteEntry = async(e) => {
@@ -96,7 +97,7 @@ function EntryEdit({editEntryId, setShowForm, setRenderPage, renderPage, current
                             className="editor"
                             name="content"
                             type="text"
-                            value={content}
+                            value={content || ''}
                             onChange={updatedContent}
                         />
                     </div>

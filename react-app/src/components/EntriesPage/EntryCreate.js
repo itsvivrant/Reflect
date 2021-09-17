@@ -80,7 +80,7 @@ function EntryCreate({ setRenderPage, currentDate}) {
                     name="content"
                     type="text"
                     placeholder="Tell a story"
-                    value={content}
+                    value={content }
                     onChange={newContent}
                 />
             </div>
