@@ -66,7 +66,6 @@ def new_entry(id):
             user_id = current_user.id,
             journal_id = id
         )
-        print(entry)
         db.session.add(entry)
         db.session.commit()
         return entry.to_dict()
