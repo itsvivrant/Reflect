@@ -50,9 +50,6 @@ function JournalEdit({journalId, setRenderPage, renderPage}) {
     const [showModal, setShowModal] = useState(false);
     const [updateTitleDiv, setUpdateTitleDiv] = useState(false)
 
-    /*
-    sklfjlksdf
-    */
 
     useEffect(() => {
 
